@@ -247,7 +247,7 @@ a:hover{color:var(--peri)}
 
 .reel-btn{background:var(--f-yellow);color:var(--btn-text)}
 .reel-btn:hover{background:var(--ink);color:var(--btn-text)}
-.slider-ui .circle:focus-visible,.slider-ui .pill-btn:focus-visible{outline-offset:-6px}
+.slider-ui .circle:focus-visible,.slider-ui .pill-btn:focus-visible{outline-offset:3px}
 
 
 .cv-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block}
@@ -536,6 +536,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   .feat{gap:14px;padding-block:22px}
   .feat-thumb{flex-basis:100%}
 }
+
+.circle,.dots button{-webkit-tap-highlight-color:transparent}
 </style>
 
 <header class="site">
@@ -926,8 +928,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   }
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function restart(){ clearInterval(timer); if (!reduce) timer = setInterval(function(){ go(idx+1); }, 4500); }
-  document.getElementById('prev').addEventListener('click', function(){ go(idx-1); restart(); });
-  document.getElementById('next').addEventListener('click', function(){ go(idx+1); restart(); });
+  document.getElementById('prev').addEventListener('click', function(e){ go(idx-1); restart(); if (e.detail) this.blur(); });
+  document.getElementById('next').addEventListener('click', function(e){ go(idx+1); restart(); if (e.detail) this.blur(); });
   track.addEventListener('mouseenter', function(){ clearInterval(timer); });
   track.addEventListener('mouseleave', restart);
   window.addEventListener('resize', layout);
