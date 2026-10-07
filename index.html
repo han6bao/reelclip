@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Reelclip</title>
 <meta name="description" content="Reelclip is a Seattle production company making brand campaigns, product promotions, events and music videos worth seeing.">
+<meta name="theme-color" content="#111111">
 <link rel="icon" href="img/frog-stack-color.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
 </head>
@@ -502,12 +503,46 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .cover-lg .cv-artist{font-size:clamp(26px,8.4cqi,92px) !important}
 .cover-md .cv-artist{font-size:clamp(18px,8.4cqi,48px) !important}
 .cover-sm .cv-artist{font-size:clamp(13px,8.4cqi,26px) !important}
+
+/* ---------- mobile polish ---------- */
+.menu-btn{display:none}
+a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
+@media (max-width:760px){
+  header.site .wrap{flex-wrap:nowrap;padding-block:12px}
+  .logo img{width:38px}
+  .logo span{font-size:22px}
+  .menu-btn{display:flex;flex-direction:column;justify-content:center;gap:6px;width:44px;height:44px;padding:0 10px;border:1.5px solid var(--line);border-radius:999px;background:transparent;cursor:pointer;box-sizing:border-box}
+  .menu-btn span{display:block;height:2px;border-radius:2px;background:var(--ink);transition:transform .25s ease,opacity .2s}
+  .menu-btn[aria-expanded="true"] span:first-child{transform:translateY(4px) rotate(45deg)}
+  .menu-btn[aria-expanded="true"] span:last-child{transform:translateY(-4px) rotate(-45deg)}
+  nav.main{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;gap:0;padding:8px 18px 22px;background:var(--cream);border-bottom:1px solid var(--line)}
+  nav.main.open{display:flex}
+  nav.main a{font-size:28px;font-weight:900;letter-spacing:-.02em;padding:14px 0;border-bottom:1px solid var(--line) !important}
+  nav.main a.cta{margin-top:18px;text-align:center;font-size:15px;letter-spacing:.08em;padding:16px 18px;border-bottom:0 !important}
+  /* hero + carousel */
+  .hero-h{font-size:clamp(30px,9vw,44px) !important}
+  .slide{flex-basis:88vw !important;aspect-ratio:4/5 !important;border-radius:16px}
+  .track{gap:12px !important}
+  .slide-play{width:56px !important;height:56px !important;inset:auto 16px 16px auto !important;margin:0 !important}
+  .cover-lg .cv-artist{font-size:clamp(30px,13cqi,64px) !important}
+  .cover-lg .cv-song{font-size:clamp(17px,5.4cqi,26px) !important}
+  .cover-lg .cv-main{max-width:78% !important}
+  .slider-ui{gap:12px}
+  .circle{width:44px;height:44px}
+  /* tighter vertical rhythm */
+  .define-cta{margin-block:24px 8px}
+  .define-cta-inner{padding-block:36px 44px}
+  .band-dark{margin-top:72px !important}
+  .feat{gap:14px;padding-block:22px}
+  .feat-thumb{flex-basis:100%}
+}
 </style>
 
 <header class="site">
   <div class="wrap">
     <a class="logo" href="#home" aria-label="Reelclip home"><img src="img/frog-stack-color.png" alt=""><span>REELCLIP</span></a>
-    <nav class="main" aria-label="Main">
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu"><span></span><span></span></button>
+    <nav class="main" id="main-nav" aria-label="Main">
       <a href="#team" data-nav="team">TEAM</a>
       <a href="#work" data-nav="work">WORK</a>
       <a href="#manifesto" data-nav="manifesto">MANIFESTO</a>
@@ -1277,6 +1312,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   }
   casesReady = true;
   route();
+
+
+  // mobile menu
+  var menuBtn = document.getElementById('menu-btn'), mainNav = document.getElementById('main-nav');
+  function setMenu(open){ mainNav.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', String(open)); menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu'); }
+  menuBtn.addEventListener('click', function(){ setMenu(!mainNav.classList.contains('open')); });
+  mainNav.addEventListener('click', function(e){ if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') setMenu(false); });
 
   // form
   document.getElementById('contact-form').addEventListener('submit', function(e){
