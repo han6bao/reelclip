@@ -495,6 +495,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 
 .stills-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:16px}
 @media (max-width:760px){.stills-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px}}
+.stills-grid.is-vertical{grid-template-columns:repeat(5,minmax(0,1fr)) !important}
+.stills-grid.is-vertical .still-slot{aspect-ratio:9/16}
+.beat img{object-position:50% 30%}
+@media (max-width:760px){.stills-grid.is-vertical{grid-template-columns:repeat(2,minmax(0,1fr)) !important}}
 
 /* keep long artist names inside their covers */
 .slide,.feat-thumb,.wk-thumb,.frame-box,.case-hero{container-type:inline-size}
@@ -849,7 +853,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     {artist:'NuWav', song:'Brand Commercial', vimeo:'1188246827', label:'REELCLIP · COMMERCIAL', kind:'Brand commercial', img:'img/nuwav.jpg'},
     {artist:'Peristera', song:'Brand Promo', vimeo:'1188246963', label:'REELCLIP · BRAND PROMO', kind:'Brand promotion', img:'img/peristera.jpg',
      reels:['1188246767','1188246724','1188246591','1188246537','1188246488'],
-     reelImgs:{'1188246767':'img/peristera-reel-01.jpg','1188246724':'img/peristera-reel-02.jpg','1188246591':'img/peristera-reel-03.jpg','1188246537':'img/peristera-reel-04.jpg','1188246488':'img/peristera-reel-05.jpg'}},
+     reelImgs:{'1188246767':'img/peristera-reel-01.jpg','1188246724':'img/peristera-reel-02.jpg','1188246591':'img/peristera-reel-03.jpg','1188246537':'img/peristera-reel-04.jpg','1188246488':'img/peristera-reel-05.jpg'},
+     deliverables:"Brand promo film + 5 vertical reels", stills:["img/peristera.jpg", "img/peristera-reel-03.jpg", "img/peristera-reel-05.jpg", "img/peristera-reel-01.jpg", "img/peristera-reel-02.jpg", "img/peristera-reel-04.jpg"], stillAlts:["Two models in Peristera hoodies on a white studio backdrop, with the PERISTERA wordmark across the frame", "Model in a cobalt Peristera hoodie with the dove and NOT MONEY print on the back", "Brown paint-splatter hoodie with the puff-print logo, laid flat", "Model in sunglasses wearing a black Peristera crewneck with the dove and NOT MONEY back print", "Masked model in a charcoal hoodie and black gloves against a white wall", "Model in a lime ski mask wearing a cream S4NT GEAR crewneck with a sleeve print"], stillsVertical:true, allStills:true, reelsLine:"Five vertical cuts, one per piece, made for Reels, TikTok and Stories.", brief:"Launch the new Peristera drop with a clean studio campaign that lets the dove, the back prints and the fit do the talking.", beats:[{"img": "img/peristera.jpg", "title": "The white room", "text": "Two models on a seamless backdrop, with the Peristera wordmark set right over the frame."}, {"img": "img/peristera-reel-03.jpg", "title": "Back prints first", "text": "Shot from behind so the dove and the NOT MONEY graphic lead every look."}, {"img": "img/peristera-reel-05.jpg", "title": "Every piece, up close", "text": "Each piece gets its own moment, down to the paint-splatter hoodie laid flat."}], result:"A brand promo plus five vertical cuts for Reels, TikTok and Stories, so the drop shows up in every feed.", aboutShort:"A streetwear label named after the Greek word for dove, and the bird shows up across its bold back prints.", about:["Peristera makes heavyweight hoodies and crewnecks built around big back graphics, led by its dove and NOT MONEY print and a puff-print graffiti logo.", "The collection in this shoot runs from cobalt and black to charcoal, brown and cream, styled with ski masks, gloves and dark denim for a clean, low-key look."], facts:{"The name": "Greek for \"dove\"", "Signature print": "Dove + NOT MONEY back graphic", "Pieces in the shoot": "Hoodies + crewnecks", "Colorways": "Cobalt, black, charcoal, brown, cream"}},
     {artist:"Jack's BBQ", song:'Commercial Campaign', vimeo:'1188290142', vh:'28804a6535', label:'REELCLIP · COMMERCIAL', kind:'Commercial campaign', img:'img/jacks-bbq.jpg',
      file:'img/jacks-bbq.mp4', poster:'img/jacks-still-02.jpg',
      stills:['img/jacks-still-01.jpg','img/jacks-still-02.jpg','img/jacks-still-06.jpg','img/jacks-still-10.jpg','img/jacks-still-03.jpg','img/jacks-still-04.jpg','img/jacks-still-05.jpg','img/jacks-still-12.jpg','img/jacks-still-09.jpg','img/jacks-still-13.jpg','img/jacks-still-14.jpg'],
@@ -1257,7 +1262,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     }).join('');
     return '<section class="wrap" style="padding-block:8px 80px">'+
       '<div class="row-head"><h2 class="big mega" style="">REELS</h2><span class="mono" style="color:var(--peri)">'+String(m.reels.length).padStart(2,'0')+' · BUILT FOR VERTICAL</span></div>'+
-      '<p style="margin:14px 0 0;max-width:560px;color:var(--muted);font-size:16px;line-height:1.5">'+ph('A line on how the campaign was cut down for Reels, TikTok and Stories.')+'</p>'+
+      '<p style="margin:14px 0 0;max-width:560px;color:var(--muted);font-size:16px;line-height:1.5">'+(m.reelsLine ? esc(m.reelsLine) : ph('A line on how the campaign was cut down for Reels, TikTok and Stories.'))+'</p>'+
       '<div class="reels-row">'+tiles+'</div></section>';
   }
   function ph(text){ return '<span class="ph">['+esc(text)+']</span>'; }
@@ -1275,11 +1280,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     else if (still1) hero = '<div class="case-hero"><img class="cv-bg" src="'+esc(still1)+'" alt=""></div>';
     else hero = '<div class="case-hero is-empty"><span class="mono">HERO VIDEO / STILL COMING SOON</span></div>';
     var beatImgs = (v.beats||[]).map(function(b){ return b.img; });
-    var stills = (w.stills || v.stills || []).filter(function(x){ return beatImgs.indexOf(x) < 0; });
+    var stills = (w.stills || v.stills || []).filter(function(x){ return v.allStills ? (x !== v.img) : beatImgs.indexOf(x) < 0; });
     var allStills = (w.stills || v.stills || []);
     if (!stills.length && still1) stills.push(still1);
     var slots = '';
-    var nSlots = 8;
+    var nSlots = v.stillsVertical ? stills.length : 8;
     for (var s = 0; s < nSlots; s++) {
       slots += stills[s]
         ? '<figure class="still-slot"><img src="'+esc(stills[s])+'" alt="'+esc((v.stillAlts && v.stillAlts[allStills.indexOf(stills[s])]) || ('Still '+(s+1)+' from '+w.client+', '+w.title))+'" loading="lazy"></figure>'
@@ -1314,7 +1319,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       reelsHtml(v)+
       '<section class="band-dark"><div class="wrap" style="padding-block:72px">'+
         '<div class="row-head"><h2 class="big mega" style="">'+(v.framesOnly ? 'FRAMES' : 'STILLS')+'</h2><span class="mono" style="color:var(--peri)">'+String(nSlots).padStart(2,'0')+' FRAMES</span></div>'+
-        '<div class="stills-grid">'+slots+'</div>'+
+        '<div class="stills-grid'+(v.stillsVertical?' is-vertical':'')+'">'+slots+'</div>'+
       '</div></section>'+
       '<section class="wrap" style="padding-block:72px;display:flex;flex-wrap:wrap;gap:48px">'+
         '<div style="flex:1 1 280px;display:flex;flex-direction:column;gap:14px"><div class="eyebrow" style="color:var(--peri)">CREDITS</div><div class="credits">'+
