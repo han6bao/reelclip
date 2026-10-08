@@ -953,9 +953,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     {session:'brand', m:1},
     {session:'product', m:5},
     {session:'product', client:'Lulu Coffee', title:'Product Video', kind:'Product promotion', video:'', img:''},
-    {session:'product', client:'[RESTAURANT NAME]', title:'[Promo Title]', kind:'Food + hospitality promo', video:'', img:''},
-    {session:'events', client:'[EVENT NAME]', title:'[Event Highlight]', kind:'Event highlight film', video:'', img:''},
-    {session:'events', client:'[EVENT NAME]', title:'[Event Recap]', kind:'Event recap + social cutdowns', video:'', img:''}
+    {session:'product', client:'Zadart Rentals', title:'Product Video', kind:'Product promotion', video:'', img:''},
+    {session:'events', client:'TurboTax', title:'Sneakercon Event Recap', kind:'Event recap', video:'', img:''},
+    {session:'events', client:'Mariah The Scientist', title:'Live at Sarajevo', kind:'Event recap', video:'', img:''},
+    {session:'events', client:'Chilan Salmon', title:'Event Recap', kind:'Event recap', video:'', img:''},
+    {session:'events', client:'Laid Back Allure', title:'Event Recap', kind:'Event recap', video:'', img:''}
   ];
   var sessionTabs = document.getElementById('session-tabs'), featList = document.getElementById('feat-list'), activeSession = 'product';
   var playSm = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>';
@@ -1134,12 +1136,19 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   WORK.push({industry:'product', client:MEDIA[5].artist, title:MEDIA[5].song, type:'Product promotion', year:'', img:MEDIA[5].img, video:mediaUrl(MEDIA[5]), _v:MEDIA[5]});
   // Lulu Coffee: video coming (add the Vimeo link + a still once uploaded).
   WORK.push({industry:'product', client:'Lulu Coffee', title:'Product Video', type:'Product promotion', year:'', img:'', video:''});
+  WORK.push({industry:'product', client:'Zadart Rentals', title:'Product Video', type:'Product promotion', year:'', img:'', video:''});
   WORK.push({industry:'brand', client:MEDIA[4].artist, title:MEDIA[4].song, type:'Brand promotion', year:'', img:MEDIA[4].img, video:mediaUrl(MEDIA[4]), _v:MEDIA[4]});
   WORK.push({industry:'brand', client:MEDIA[1].artist, title:MEDIA[1].song, type:'Brand commercial', year:'', img:MEDIA[1].img, video:mediaUrl(MEDIA[1]), _v:MEDIA[1]});
   WORK.push({industry:'brand', client:MEDIA[2].artist, title:MEDIA[2].song, type:'Brand promo + reels', year:'', img:MEDIA[2].img, video:mediaUrl(MEDIA[2]), _v:MEDIA[2]});
   WORK.push({industry:'brand', industryLabel:'Food + Hospitality', client:MEDIA[3].artist, title:MEDIA[3].song, type:'Commercial campaign', year:'2024', img:MEDIA[3].img, video:mediaUrl(MEDIA[3]), _v:MEDIA[3]});
-  WORK.push({industry:'events', client:'[EVENT NAME]', title:'[Event Highlight]', type:'Event highlight film', year:'', img:'', video:''});
-  WORK.push({industry:'events', client:'[EVENT NAME]', title:'[Event Recap]', type:'Event recap + social cutdowns', year:'', img:'', video:''});
+  // Placeholders: videos coming soon (add the Vimeo link in video and a still in img once uploaded).
+  WORK.push({industry:'brand', client:'Anthony Langdon', title:'Brand Video', type:'Brand video', year:'', img:'', video:''});
+  WORK.push({industry:'brand', client:'Cerise', title:'Brand Video', type:'Brand video', year:'', img:'', video:''});
+  WORK.push({industry:'brand', client:'EarthWise', title:'Commercial', type:'Commercial', year:'', img:'', video:''});
+  WORK.push({industry:'events', client:'TurboTax', title:'Sneakercon Event Recap', type:'Event recap', year:'', img:'', video:''});
+  WORK.push({industry:'events', client:'Mariah The Scientist', title:'Live at Sarajevo', type:'Event recap', year:'', img:'', video:''});
+  WORK.push({industry:'events', client:'Chilan Salmon', title:'Event Recap', type:'Event recap', year:'', img:'', video:''});
+  WORK.push({industry:'events', client:'Laid Back Allure', title:'Event Recap', type:'Event recap', year:'', img:'', video:''});
   // Music videos come from the VIDEOS list above, so they stay in sync with the homepage.
   VIDEOS.forEach(function(v){
     WORK.push({industry:'music', client:v.artist, title:v.song, type:'Official music video', year:'', img:v.img||'', video:'https://www.youtube.com/watch?v='+v.id, _v:v});
