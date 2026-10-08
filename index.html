@@ -849,7 +849,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     {artist:'Saint Meadow', song:"Can't Complain", id:'UxMQmc6O-Hc', img:'img/cant-complain.jpg'},
     {artist:'TBG Kam Bino', song:'My Life', id:'yw29Pb25cv4', img:'img/my-life.jpg', credits:{Director:'Manzano Bros'}},
     {artist:'YoungCam206', song:'Ruthless', id:'BmQsCqWYwIU', img:'img/ruthless.jpg'},
-    {artist:'Rell Moore', song:'Chrome Hearts', id:'pGa1R2Cle9Y', img:'img/chrome-hearts.jpg'},
+    {artist:'Rell Moore', song:'Chrome Hearts', id:'pGa1R2Cle9Y', img:'img/chrome-hearts.jpg', vimeo:"1233931834", year:"2023", deliverables:"Official music video (2:20)", brief:"Bring Rell Moore's \"Chrome Hearts\" to the screen with a music video built for YouTube, with visual effects layered into the edit.", result:"Released in April 2023 as the official music video for \"Chrome Hearts\" on the Reel Clip YouTube channel.", creditList:[["Created by", "Reelclip"], ["Directed, shot + edited by", "Manzano Bros (@manzano_bros)", "https://www.instagram.com/manzano_bros/"], ["Visual effects", "@kcoyi", "https://www.instagram.com/kcoyi/"]], aboutShort:"Rell Moore is a rapper whose single \"Chrome Hearts\" got the full music video treatment from Reelclip.", about:["\"Chrome Hearts\" is Rell Moore's track named after the luxury jewelry and fashion house that has become a staple in hip-hop style. The official video premiered on the Reel Clip YouTube channel in April 2023."], facts:{"Artist": "Rell Moore", "Instagram": "@rellmoore1221", "Track": "\"Chrome Hearts\"", "Released": "April 2023", "Runtime": "2:20"}},
     {artist:'Tha Baby', song:'Street Runner', id:'R9Jg3Q0VCIg', img:'img/street-runner.jpg'},
     {artist:'SlotLifeBaby', song:'Different Time', id:'7-Qx9Rd7YCg', img:'img/different-time.jpg'}
   ];
@@ -1165,7 +1165,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   WORK.push({industry:'events', client:'Laidback Allure', title:'Event Recap', type:'Event recap', year:'', img:'', video:'', aboutShort:"Grown-and-sexy R&B nights in Seattle, built on the dance and sing-along songs R&B fans know by heart.", about:["Laidback Allure throws R&B parties around Seattle, best known for its Late Nights R&B series. The nights celebrate the dance floor and karaoke classics that R&B lovers hold dear, and have taken over rooms like Neumos on Capitol Hill and Good Bar in Pioneer Square."], facts:{"Known for": "Late Nights R&B series", "Music": "R&B dance + sing-along classics", "Past venues": "Neumos, Good Bar", "Vibe": "Grown and sexy"}});
   // Music videos come from the VIDEOS list above, so they stay in sync with the homepage.
   VIDEOS.forEach(function(v){
-    WORK.push({industry:'music', client:v.artist, title:v.song, type:'Official music video', year:'', img:v.img||'', video:'https://www.youtube.com/watch?v='+v.id, _v:v});
+    WORK.push({industry:'music', client:v.artist, title:v.song, type:'Official music video', year:v.year||'', img:v.img||'', video:mediaUrl(v), _v:v});
   });
 
   var playIcon = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>';
