@@ -881,6 +881,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
      facts:{'Owner':'Jack Timmons','Style':'Texas-style, oak-smoked barbecue','Known for':'Brisket, spare ribs, smoked sausage, breakfast tacos','Original location':'3924 Airport Way S, Seattle (SoDo)','Neighborhoods':'SoDo, South Lake Union, Redmond and more'}},
     {artist:'TurboTax', song:'Renton Landing Team Video', vimeo:'1186140040', label:'REELCLIP · BRAND PROMO', kind:'Brand promotion', img:'img/turbotax.jpg', aboutShort:"The team behind TurboTax's in-person store at The Landing in Renton, where tax experts help people file face to face.", about:["TurboTax is Intuit's tax software, used by millions of people to file every year. Its in-person stores pair that software with local tax experts, so people can sit down with someone and get their return done."], facts:{"Brand": "TurboTax (Intuit)", "Location": "The Landing, Renton, WA", "What they do": "In-person tax prep with local experts"}},
     {artist:'Gerard Cycles', song:'Product Promotion', vimeo:'1186139171', label:'REELCLIP · PRODUCT', kind:'Product promotion', img:'img/gerard-cycles.jpg', aboutShort:"A Kirkland bike shop and bike brand, building carbon road and gravel bikes by hand under founder and master fitter John Gerard Sheehan.", about:["Gerard Cycles builds its own road and gravel bikes, including the carbon Force 100 and the Trail Force RX, each handcrafted in Kirkland. Founder John Gerard Sheehan oversees every fit himself.", "The shop also does custom builds, service and upgrades, and keeps the local riding community going with workshops, group rides, race support and youth programs for riders ages 9 to 17."], facts:{"Founder": "John Gerard Sheehan", "Based in": "Kirkland, WA", "Known for": "Force 100 + Trail Force RX", "Services": "Custom builds, bike fitting, service, group rides"}}
+    ,{artist:'Lulu Coffee', song:'Product Video', drive:'1n9rMRbSdYiiaCLJfjBk4WoxPOxmJNMvh', label:'REELCLIP · PRODUCT', kind:'Product promotion', aboutShort:"A hot-pink Seattle coffee shop known for locally roasted coffee, playful drink names and walls made for photos.", about:["Owner Taylor Platt has wanted her own coffee shop since she started as a barista at 16. She opened the West Seattle flagship in 2020, and it thrived through the pandemic. A second cafe followed in SoDo, under the Big R sign next to the Old Rainier Brewery.", "The menu covers locally roasted coffee with collagen or MCT boosts, teas, blended drinks, energy drinks, baked goods and snacks, with names like Living La Vida Mocha and The Wake and Bake."], facts:{"Owner": "Taylor Platt", "Locations": "West Seattle + SoDo", "Known for": "Bright pink cafes, playful drink names", "Menu": "Coffee, tea, blended + energy drinks, baked goods"}}
   ];
   // Vertical reels play in the same player but stay out of its main list.
   var REELS = [];
@@ -888,7 +889,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   var PLAY = VIDEOS.concat(MEDIA.filter(function(m){ return !m.hero; }), REELS);
   function slugify(t){ return String(t).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
   function projSlug(m){ return slugify(m.artist+'-'+m.song); }
-  function mediaUrl(m){ return m.vimeo ? 'https://vimeo.com/'+m.vimeo : 'https://www.youtube.com/watch?v='+m.id; }
+  function mediaUrl(m){ return m.drive ? 'https://drive.google.com/file/d/'+m.drive+'/view' : m.vimeo ? 'https://vimeo.com/'+m.vimeo : 'https://www.youtube.com/watch?v='+m.id; }
   // Homepage carousel order: Peristera, Jack's BBQ, Gerard Cycles, TurboTax, then music videos last.
   var CAROUSEL = [MEDIA[2], MEDIA[3], MEDIA[5], MEDIA[4], VIDEOS[5], VIDEOS[0]];  // six slides
   var labels = CAROUSEL.map(function(v){ return v.artist+' — '+v.song; });
@@ -952,7 +953,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     {session:'brand', m:2},
     {session:'brand', m:1},
     {session:'product', m:5},
-    {session:'product', client:'Lulu Coffee', title:'Product Video', kind:'Product promotion', video:'', img:''},
+    {session:'product', m:6},
     {session:'product', client:'Zadart Rentals', title:'Product Video', kind:'Product promotion', video:'', img:''},
     {session:'events', client:'TurboTax', title:'Sneakercon Event Recap', kind:'Event recap', video:'', img:''},
     {session:'events', client:'Mariah The Scientist', title:'Live at Sarajevo', kind:'Event recap', video:'', img:''},
@@ -1009,7 +1010,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   var player = document.getElementById('player'), pframe = document.getElementById('player-frame'),
       pfall = document.getElementById('player-fallback'), plist = document.getElementById('player-list'), lastFocus = null, blocked = false;
   document.addEventListener('securitypolicyviolation', function(e){
-    if (/youtube|vimeo/.test(e.blockedURI || '')) { blocked = true; pframe.hidden = true; pfall.hidden = false; }
+    if (/youtube|vimeo|drive\.google/.test(e.blockedURI || '')) { blocked = true; pframe.hidden = true; pfall.hidden = false; }
   });
   PLAY.forEach(function(v,i){
     if (v.reel) return;
@@ -1023,12 +1024,12 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     if (player.hidden) lastFocus = document.activeElement;
     document.getElementById('player-artist').textContent = v.artist.toUpperCase();
     document.getElementById('player-title').textContent = v.song;
-    var yt = document.getElementById('player-yt'); yt.href = mediaUrl(v); yt.textContent = v.vimeo ? 'WATCH ON VIMEO ↗' : 'WATCH ON YOUTUBE ↗';
+    var yt = document.getElementById('player-yt'); yt.href = mediaUrl(v); yt.textContent = v.drive ? 'WATCH ON GOOGLE DRIVE ↗' : v.vimeo ? 'WATCH ON VIMEO ↗' : 'WATCH ON YOUTUBE ↗';
     plist.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-current', String(+b.dataset.i===i)); });
     pframe.classList.toggle('vertical', !!v.reel);
     var local = !!v.file;
     pframe.hidden = blocked && !local; pfall.hidden = !blocked || local;
-    var embed = v.vimeo ? 'https://player.vimeo.com/video/'+v.vimeo+'?'+(v.vh ? 'h='+v.vh+'&' : '')+'autoplay=1&title=0&byline=0&portrait=0' : 'https://www.youtube-nocookie.com/embed/'+v.id+'?autoplay=1&rel=0';
+    var embed = v.drive ? 'https://drive.google.com/file/d/'+v.drive+'/preview' : v.vimeo ? 'https://player.vimeo.com/video/'+v.vimeo+'?'+(v.vh ? 'h='+v.vh+'&' : '')+'autoplay=1&title=0&byline=0&portrait=0' : 'https://www.youtube-nocookie.com/embed/'+v.id+'?autoplay=1&rel=0';
     pframe.innerHTML = local ? '<video src="'+esc(v.file)+'" controls autoplay playsinline style="width:100%;height:100%;display:block;background:#000"></video>' : blocked ? '' : '<iframe src="'+embed+'" title="'+esc(v.artist+' — '+v.song)+'" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
     player.hidden = false; document.body.classList.add('locked'); clearInterval(timer);
     player.querySelector('.player-x').focus();
@@ -1040,7 +1041,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   player.addEventListener('click', function(e){ if (e.target.closest('[data-close]')) closePlayer(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !player.hidden) closePlayer(); });
   document.addEventListener('click', function(e){
-    var a = e.target.closest('a[href*="youtube.com/watch"], a[href*="vimeo.com/"]');
+    var a = e.target.closest('a[href*="youtube.com/watch"], a[href*="vimeo.com/"], a[href*="drive.google.com/file/"]');
     if (!a || a.id === 'player-yt') return;
     var i = PLAY.findIndex(function(v){ return mediaUrl(v) === a.href.replace(/\/$/,''); });
     if (i < 0) return;
@@ -1135,7 +1136,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   var WORK = [];
   WORK.push({industry:'product', client:MEDIA[5].artist, title:MEDIA[5].song, type:'Product promotion', year:'', img:MEDIA[5].img, video:mediaUrl(MEDIA[5]), _v:MEDIA[5]});
   // Lulu Coffee: video coming (add the Vimeo link + a still once uploaded).
-  WORK.push({industry:'product', client:'Lulu Coffee', title:'Product Video', type:'Product promotion', year:'', img:'', video:'', aboutShort:"A hot-pink Seattle coffee shop known for locally roasted coffee, playful drink names and walls made for photos.", about:["Owner Taylor Platt has wanted her own coffee shop since she started as a barista at 16. She opened the West Seattle flagship in 2020, and it thrived through the pandemic. A second cafe followed in SoDo, under the Big R sign next to the Old Rainier Brewery.", "The menu covers locally roasted coffee with collagen or MCT boosts, teas, blended drinks, energy drinks, baked goods and snacks, with names like Living La Vida Mocha and The Wake and Bake."], facts:{"Owner": "Taylor Platt", "Locations": "West Seattle + SoDo", "Known for": "Bright pink cafes, playful drink names", "Menu": "Coffee, tea, blended + energy drinks, baked goods"}});
+  WORK.push({industry:'product', client:MEDIA[6].artist, title:MEDIA[6].song, type:'Product promotion', year:'', img:'', video:mediaUrl(MEDIA[6]), _v:MEDIA[6]});
   WORK.push({industry:'product', client:'Zadart Rentals', title:'Product Video', type:'Product promotion', year:'', img:'', video:'', aboutShort:"Bellevue's exotic and luxury car rental company, with Lamborghinis, McLarens and Bentleys available by the day.", about:["Zadart started with one leased BMW, when founder Jonny Netz was 17 and still in high school in Kirkland. It grew into a fleet of exotic and luxury cars run from a storefront on Bel-Red Road in Bellevue, built mostly on word of mouth and five-star reviews.", "Beyond rentals, Zadart handles delivery and detailing, so the car shows up ready for the occasion."], facts:{"Founder": "Jonny Netz", "Based in": "Bellevue, WA", "Fleet": "Lamborghini, McLaren, Bentley, Mercedes-AMG", "Services": "Exotic car rentals, delivery, detailing"}});
   WORK.push({industry:'brand', client:MEDIA[4].artist, title:MEDIA[4].song, type:'Brand promotion', year:'', img:MEDIA[4].img, video:mediaUrl(MEDIA[4]), _v:MEDIA[4]});
   WORK.push({industry:'brand', client:MEDIA[1].artist, title:MEDIA[1].song, type:'Brand commercial', year:'', img:MEDIA[1].img, video:mediaUrl(MEDIA[1]), _v:MEDIA[1]});
