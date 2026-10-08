@@ -1290,8 +1290,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     var credits = Object.assign({Director:'', 'Director of Photography':'', Producer:'', Editor:'', Color:''}, v.credits || {}, w.credits || {});
     var next = WORK[(idx + 1) % WORK.length];
     var hero;
-    if (v.file) hero = '<div class="case-hero"><video class="cv-bg" src="'+esc(v.file)+'" poster="'+esc(v.poster||v.img||'')+'" controls playsinline preload="metadata"></video></div>';
-    else if (w._v) hero = '<a class="case-hero" href="'+src+'" aria-label="Play '+esc(w.client+', '+w.title)+'">'+cover(w._v, Math.max(0, VIDEOS.indexOf(w._v)), 'lg')+'<span class="play big-play">'+playIcon+'</span></a>';
+    if (w._v) hero = '<a class="case-hero" href="'+src+'" aria-label="Play '+esc(w.client+', '+w.title)+'">'+cover(w._v, Math.max(0, VIDEOS.indexOf(w._v)), 'lg')+'<span class="play big-play">'+playIcon+'</span></a>';
     else if (still1) hero = '<div class="case-hero"><img class="cv-bg" src="'+esc(still1)+'" alt=""></div>';
     else hero = '<div class="case-hero is-empty"><span class="mono">HERO VIDEO / STILL COMING SOON</span></div>';
     var beatImgs = (v.beats||[]).map(function(b){ return b.img; });
@@ -1319,7 +1318,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
         '</div>'+
       '</section>'+
       '<section class="wrap" style="padding-block:8px">'+hero+
-        (src && !v.file ? '<div class="case-watch"><a href="'+src+'" class="pill-btn reel-btn">'+playIcon+' WATCH THE FILM</a></div>' : '')+
+        (src ? '<div class="case-watch"><a href="'+src+'" class="pill-btn reel-btn">'+playIcon+' WATCH THE FILM</a></div>' : '')+
       '</section>'+
       '<section class="wrap case-brief">'+
         '<div class="eyebrow">THE BRIEF</div>'+
