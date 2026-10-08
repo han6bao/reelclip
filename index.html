@@ -879,8 +879,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
      about:["Jack's BBQ is a Texas-style barbecue restaurant in Seattle, founded by Jack Timmons, a Dallas native and Texas A&M graduate who trained at the university's barbecue camp before opening his first location. The original roadhouse in SoDo, on Airport Way South, is known for oak-smoked brisket cooked low and slow in steel offset smokers over Texas post oak and Washington applewood.",
             "The menu covers the Texas classics: brisket, spare ribs and smoked sausage on the Texas Trinity plate, plus breakfast tacos, Texas chili, corn pudding and pecan pie. Jack's has grown to several locations around the Puget Sound, including South Lake Union and Redmond, and works with local philanthropic partners throughout the year."],
      facts:{'Owner':'Jack Timmons','Style':'Texas-style, oak-smoked barbecue','Known for':'Brisket, spare ribs, smoked sausage, breakfast tacos','Original location':'3924 Airport Way S, Seattle (SoDo)','Neighborhoods':'SoDo, South Lake Union, Redmond and more'}},
-    {artist:'TurboTax', song:'Brand Promotion', vimeo:'1186140040', label:'REELCLIP · BRAND PROMO', kind:'Brand promotion', img:'img/turbotax.jpg'},
-    {artist:'Gerard Cycles', song:'Product Promotion', vimeo:'1186139171', label:'REELCLIP · PRODUCT', kind:'Product promotion', img:'img/gerard-cycles.jpg'}
+    {artist:'TurboTax', song:'Renton Landing Team Video', vimeo:'1186140040', label:'REELCLIP · BRAND PROMO', kind:'Brand promotion', img:'img/turbotax.jpg', aboutShort:"The team behind TurboTax's in-person store at The Landing in Renton, where tax experts help people file face to face.", about:["TurboTax is Intuit's tax software, used by millions of people to file every year. Its in-person stores pair that software with local tax experts, so people can sit down with someone and get their return done."], facts:{"Brand": "TurboTax (Intuit)", "Location": "The Landing, Renton, WA", "What they do": "In-person tax prep with local experts"}},
+    {artist:'Gerard Cycles', song:'Product Promotion', vimeo:'1186139171', label:'REELCLIP · PRODUCT', kind:'Product promotion', img:'img/gerard-cycles.jpg', aboutShort:"A Kirkland bike shop and bike brand, building carbon road and gravel bikes by hand under founder and master fitter John Gerard Sheehan.", about:["Gerard Cycles builds its own road and gravel bikes, including the carbon Force 100 and the Trail Force RX, each handcrafted in Kirkland. Founder John Gerard Sheehan oversees every fit himself.", "The shop also does custom builds, service and upgrades, and keeps the local riding community going with workshops, group rides, race support and youth programs for riders ages 9 to 17."], facts:{"Founder": "John Gerard Sheehan", "Based in": "Kirkland, WA", "Known for": "Force 100 + Trail Force RX", "Services": "Custom builds, bike fitting, service, group rides"}}
   ];
   // Vertical reels play in the same player but stay out of its main list.
   var REELS = [];
@@ -957,7 +957,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     {session:'events', client:'TurboTax', title:'Sneakercon Event Recap', kind:'Event recap', video:'', img:''},
     {session:'events', client:'Mariah The Scientist', title:'Live at Sarajevo', kind:'Event recap', video:'', img:''},
     {session:'events', client:'Chilan Salmon', title:'Event Recap', kind:'Event recap', video:'', img:''},
-    {session:'events', client:'Laid Back Allure', title:'Event Recap', kind:'Event recap', video:'', img:''}
+    {session:'events', client:'Laidback Allure', title:'Event Recap', kind:'Event recap', video:'', img:''}
   ];
   var sessionTabs = document.getElementById('session-tabs'), featList = document.getElementById('feat-list'), activeSession = 'product';
   var playSm = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>';
@@ -1135,8 +1135,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   var WORK = [];
   WORK.push({industry:'product', client:MEDIA[5].artist, title:MEDIA[5].song, type:'Product promotion', year:'', img:MEDIA[5].img, video:mediaUrl(MEDIA[5]), _v:MEDIA[5]});
   // Lulu Coffee: video coming (add the Vimeo link + a still once uploaded).
-  WORK.push({industry:'product', client:'Lulu Coffee', title:'Product Video', type:'Product promotion', year:'', img:'', video:''});
-  WORK.push({industry:'product', client:'Zadart Rentals', title:'Product Video', type:'Product promotion', year:'', img:'', video:''});
+  WORK.push({industry:'product', client:'Lulu Coffee', title:'Product Video', type:'Product promotion', year:'', img:'', video:'', aboutShort:"A hot-pink Seattle coffee shop known for locally roasted coffee, playful drink names and walls made for photos.", about:["Owner Taylor Platt has wanted her own coffee shop since she started as a barista at 16. She opened the West Seattle flagship in 2020, and it thrived through the pandemic. A second cafe followed in SoDo, under the Big R sign next to the Old Rainier Brewery.", "The menu covers locally roasted coffee with collagen or MCT boosts, teas, blended drinks, energy drinks, baked goods and snacks, with names like Living La Vida Mocha and The Wake and Bake."], facts:{"Owner": "Taylor Platt", "Locations": "West Seattle + SoDo", "Known for": "Bright pink cafes, playful drink names", "Menu": "Coffee, tea, blended + energy drinks, baked goods"}});
+  WORK.push({industry:'product', client:'Zadart Rentals', title:'Product Video', type:'Product promotion', year:'', img:'', video:'', aboutShort:"Bellevue's exotic and luxury car rental company, with Lamborghinis, McLarens and Bentleys available by the day.", about:["Zadart started with one leased BMW, when founder Jonny Netz was 17 and still in high school in Kirkland. It grew into a fleet of exotic and luxury cars run from a storefront on Bel-Red Road in Bellevue, built mostly on word of mouth and five-star reviews.", "Beyond rentals, Zadart handles delivery and detailing, so the car shows up ready for the occasion."], facts:{"Founder": "Jonny Netz", "Based in": "Bellevue, WA", "Fleet": "Lamborghini, McLaren, Bentley, Mercedes-AMG", "Services": "Exotic car rentals, delivery, detailing"}});
   WORK.push({industry:'brand', client:MEDIA[4].artist, title:MEDIA[4].song, type:'Brand promotion', year:'', img:MEDIA[4].img, video:mediaUrl(MEDIA[4]), _v:MEDIA[4]});
   WORK.push({industry:'brand', client:MEDIA[1].artist, title:MEDIA[1].song, type:'Brand commercial', year:'', img:MEDIA[1].img, video:mediaUrl(MEDIA[1]), _v:MEDIA[1]});
   WORK.push({industry:'brand', client:MEDIA[2].artist, title:MEDIA[2].song, type:'Brand promo + reels', year:'', img:MEDIA[2].img, video:mediaUrl(MEDIA[2]), _v:MEDIA[2]});
@@ -1144,11 +1144,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   // Placeholders: videos coming soon (add the Vimeo link in video and a still in img once uploaded).
   WORK.push({industry:'brand', client:'Anthony Langdon', title:'Brand Video', type:'Brand video', year:'', img:'', video:''});
   WORK.push({industry:'brand', client:'Cerise', title:'Brand Video', type:'Brand video', year:'', img:'', video:''});
-  WORK.push({industry:'brand', client:'EarthWise', title:'Commercial', type:'Commercial', year:'', img:'', video:''});
-  WORK.push({industry:'events', client:'TurboTax', title:'Sneakercon Event Recap', type:'Event recap', year:'', img:'', video:''});
-  WORK.push({industry:'events', client:'Mariah The Scientist', title:'Live at Sarajevo', type:'Event recap', year:'', img:'', video:''});
+  WORK.push({industry:'brand', client:'EarthWise', title:'Commercial', type:'Commercial', year:'', img:'', video:'', aboutShort:"Seattle's architectural salvage warehouse, saving doors, tubs, beams and hardware from the region's old homes and factories.", about:["For more than 30 years, Earthwise Architectural Salvage has pulled antique doors, clawfoot tubs, beams, banisters and hardware out of historic homes, industrial buildings and old factories across the region, and given them a second life.", "Its SoDo warehouse works as a living archive of Seattle's built environment, where reuse is part sustainability and part preservation."], facts:{"Business": "Earthwise Architectural Salvage", "Warehouse": "3447 4th Ave S, Seattle (SoDo)", "Known for": "Reclaimed doors, tubs, beams + hardware", "Salvaging for": "30+ years"}});
+  WORK.push({industry:'events', client:'TurboTax', title:'Sneakercon Event Recap', type:'Event recap', year:'', img:'', video:'', aboutShort:"TurboTax at Sneaker Con Seattle, the one-day show where the city's sneakerheads come to buy, sell and trade.", about:["Sneaker Con is the touring sneaker convention that turns a single day into the biggest sneaker store in town. The Seattle stop brings together hundreds of vendors, rare pairs, live bartering and exclusive drops, with no fees for buyers or sellers.", "TurboTax is Intuit's tax software, used by millions of people to file every year, with in-person stores and tax experts around the Seattle area."], facts:{"Brand": "TurboTax (Intuit)", "Event": "Sneaker Con Seattle", "What happens": "Buy, sell + trade, live bartering, exclusive drops", "Crowd": "Sneaker collectors, resellers and fans of all ages"}});
+  WORK.push({industry:'events', client:'Mariah The Scientist', title:'Live at Sarajevo', type:'Event recap', year:'', img:'', video:'', aboutShort:"Atlanta R&B singer-songwriter Mariah The Scientist, live at Sarajevo, the Mediterranean kitchen and late-night lounge on 1st Avenue in downtown Seattle.", about:["Mariah The Scientist is an R&B singer-songwriter from Atlanta. Her 2025 album Hearts Sold Separately debuted at No. 1 on Billboard's Top R&B Albums chart, and its single \"Burning Blue\" became her biggest hit yet, reaching the Top 30 of the Hot 100 and going 2x Platinum.", "Sarajevo Restaurant & Lounge serves Balkan, Greek and Turkish small plates by day, with a patio looking out over Puget Sound. At night it turns into one of downtown's late-night spots, with DJs most nights of the week."], facts:{"Artist": "Mariah The Scientist", "Hometown": "Atlanta, GA", "Latest album": "Hearts Sold Separately (2025)", "Venue": "Sarajevo Restaurant & Lounge", "Address": "2332 1st Ave, Seattle", "What's served": "Balkan + Mediterranean small plates, cocktails, late-night DJs"}});
   WORK.push({industry:'events', client:'Chilan Salmon', title:'Event Recap', type:'Event recap', year:'', img:'', video:''});
-  WORK.push({industry:'events', client:'Laid Back Allure', title:'Event Recap', type:'Event recap', year:'', img:'', video:''});
+  WORK.push({industry:'events', client:'Laidback Allure', title:'Event Recap', type:'Event recap', year:'', img:'', video:'', aboutShort:"Grown-and-sexy R&B nights in Seattle, built on the dance and sing-along songs R&B fans know by heart.", about:["Laidback Allure throws R&B parties around Seattle, best known for its Late Nights R&B series. The nights celebrate the dance floor and karaoke classics that R&B lovers hold dear, and have taken over rooms like Neumos on Capitol Hill and Good Bar in Pioneer Square."], facts:{"Known for": "Late Nights R&B series", "Music": "R&B dance + sing-along classics", "Past venues": "Neumos, Good Bar", "Vibe": "Grown and sexy"}});
   // Music videos come from the VIDEOS list above, so they stay in sync with the homepage.
   VIDEOS.forEach(function(v){
     WORK.push({industry:'music', client:v.artist, title:v.song, type:'Official music video', year:'', img:v.img||'', video:'https://www.youtube.com/watch?v='+v.id, _v:v});
@@ -1233,12 +1233,13 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   }
   function aboutHtml(m){
     if (!m.about) return '';
+    var name = m.artist || m.client;
     var facts = m.facts ? '<dl class="about-facts">'+Object.keys(m.facts).map(function(k){ return '<div><dt>'+esc(k)+'</dt><dd>'+esc(m.facts[k])+'</dd></div>'; }).join('')+'</dl>' : '';
-    return '<section class="wrap about-client" aria-labelledby="about-'+projSlug(m)+'">'+
+    return '<section class="wrap about-client" aria-labelledby="about-'+slugify(name)+'">'+
       '<div class="about-text"><div class="eyebrow" style="color:var(--peri)">ABOUT THE CLIENT</div>'+
-      '<h2 id="about-'+projSlug(m)+'" class="about-title">'+esc(m.artist)+'</h2>'+
+      '<h2 id="about-'+slugify(name)+'" class="about-title">'+esc(name)+'</h2>'+
       (m.aboutShort ? '<p class="about-short">'+esc(m.aboutShort)+'</p>' : '')+
-      '<details class="about-more"><summary>More about '+esc(m.artist)+'</summary>'+m.about.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('')+'</details>'+
+      '<details class="about-more"><summary>More about '+esc(name)+'</summary>'+m.about.map(function(p){ return '<p>'+esc(p)+'</p>'; }).join('')+'</details>'+
       '</div>'+facts+'</section>';
   }
   function reelsHtml(m){
@@ -1262,7 +1263,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   function renderCase(slug){
     var idx = WORK.findIndex(function(w){ return w.slug === slug; });
     if (idx < 0) { caseRoot.innerHTML = '<section class="wrap" style="padding-block:80px"><h1 class="big" style="font-size:48px">Case study not found.</h1><p style="margin-top:16px"><a href="#work">← Back to all work</a></p></section>'; return; }
-    var w = WORK[idx], v = w._v || {}, ind = INDUSTRIES.filter(function(i){ return i.key===w.industry; })[0] || {label:'', color:'var(--peri)'};
+    var w = WORK[idx], v = w._v || w, ind = INDUSTRIES.filter(function(i){ return i.key===w.industry; })[0] || {label:'', color:'var(--peri)'};
     var src = w.video || (w._v ? mediaUrl(w._v) : '');
     var still1 = w.img || v.img || '';
     var credits = Object.assign({Director:'', 'Director of Photography':'', Producer:'', Editor:'', Color:''}, v.credits || {}, w.credits || {});
