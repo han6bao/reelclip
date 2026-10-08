@@ -952,7 +952,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     {session:'brand', m:2},
     {session:'brand', m:1},
     {session:'product', m:5},
-    {session:'product', client:'[CLIENT NAME]', title:'[Product Launch]', kind:'Product photo + video', video:'', img:''},
+    {session:'product', client:'Lulu Coffee', title:'Product Video', kind:'Product promotion', video:'', img:''},
     {session:'product', client:'[RESTAURANT NAME]', title:'[Promo Title]', kind:'Food + hospitality promo', video:'', img:''},
     {session:'events', client:'[EVENT NAME]', title:'[Event Highlight]', kind:'Event highlight film', video:'', img:''},
     {session:'events', client:'[EVENT NAME]', title:'[Event Recap]', kind:'Event recap + social cutdowns', video:'', img:''}
@@ -1132,6 +1132,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   // Example: {industry:'brand', client:'Client', title:'Title', type:'Brand campaign', year:'2026', img:'img/still.jpg', video:'https://vimeo.com/123'}
   var WORK = [];
   WORK.push({industry:'product', client:MEDIA[5].artist, title:MEDIA[5].song, type:'Product promotion', year:'', img:MEDIA[5].img, video:mediaUrl(MEDIA[5]), _v:MEDIA[5]});
+  // Lulu Coffee: video coming (add the Vimeo link + a still once uploaded).
+  WORK.push({industry:'product', client:'Lulu Coffee', title:'Product Video', type:'Product promotion', year:'', img:'', video:''});
   WORK.push({industry:'brand', client:MEDIA[4].artist, title:MEDIA[4].song, type:'Brand promotion', year:'', img:MEDIA[4].img, video:mediaUrl(MEDIA[4]), _v:MEDIA[4]});
   WORK.push({industry:'brand', client:MEDIA[1].artist, title:MEDIA[1].song, type:'Brand commercial', year:'', img:MEDIA[1].img, video:mediaUrl(MEDIA[1]), _v:MEDIA[1]});
   WORK.push({industry:'brand', client:MEDIA[2].artist, title:MEDIA[2].song, type:'Brand promo + reels', year:'', img:MEDIA[2].img, video:mediaUrl(MEDIA[2]), _v:MEDIA[2]});
