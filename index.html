@@ -192,6 +192,7 @@ form input,form select,form textarea{font:inherit;font-size:17px;color:var(--ink
 .player-frame iframe{width:100%;height:100%;border:0;display:block}
 .player-fallback{display:flex;flex-direction:column;align-items:flex-start;gap:16px;color:var(--on-dark-soft);font-size:16px;line-height:1.5}
 .player-fallback p{margin:0;max-width:56ch}
+.player-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .player-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
 .player-list button{font:inherit;text-align:left;background:#1F1F1F;color:var(--on-dark);border:2px solid transparent;border-radius:10px;padding:10px 12px;cursor:pointer;display:flex;flex-direction:column;gap:2px;min-height:44px}
 .player-list button:hover{border-color:var(--peri)}
@@ -801,6 +802,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       <button type="button" class="circle player-x" data-close aria-label="Close video"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
     </div>
     <div class="player-frame" id="player-frame"></div>
+    <div class="player-actions"><a id="player-case" class="pill-btn reel-btn" href="#work">READ THE CASE STUDY →</a></div>
     <div class="player-fallback" id="player-fallback" hidden>
       <p>Videos play right here once the site is live. This preview can't load the video player, so open it there for now.</p>
       <a id="player-yt" class="pill-btn big-pill" href="#" target="_blank" rel="noopener">WATCH ON YOUTUBE ↗</a>
@@ -1040,6 +1042,9 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     document.getElementById('player-title').textContent = v.song;
     var yt = document.getElementById('player-yt'); yt.href = mediaUrl(v); yt.textContent = v.drive ? 'WATCH ON GOOGLE DRIVE ↗' : v.vimeo ? 'WATCH ON VIMEO ↗' : 'WATCH ON YOUTUBE ↗';
     plist.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-current', String(+b.dataset.i===i)); });
+    var pc = document.getElementById('player-case');
+    var wk = (typeof WORK !== 'undefined') ? WORK.filter(function(w){ return w._v === v || (v.reel && w._v && w._v.artist === v.artist); })[0] : null;
+    pc.hidden = !wk; if (wk) { pc.href = '#case-' + wk.slug; pc.setAttribute('aria-label', 'Read the ' + v.artist + ' case study'); }
     pframe.classList.toggle('vertical', !!v.reel);
     var local = !!v.file;
     pframe.hidden = blocked && !local; pfall.hidden = !blocked || local;
