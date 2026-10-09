@@ -980,11 +980,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     {session:'product', m:6},
     {session:'product', m:7},
     {session:'events', m:8},
-    {session:'events', m:12},
-    {session:'events', m:13},
     {session:'events', m:9},
     {session:'events', m:10},
-    {session:'events', m:11}
+    {session:'events', m:11},
+    {session:'events', m:12},
+    {session:'events', m:13}
   ];
   var sessionTabs = document.getElementById('session-tabs'), featList = document.getElementById('feat-list'), activeSession = 'product';
   var playSm = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>';
@@ -1177,11 +1177,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   WORK.push({industry:'brand', client:'Cerise', title:'Brand Video', type:'Brand video', year:'', img:'', video:''});
   WORK.push({industry:'brand', client:'EarthWise', title:'Commercial', type:'Commercial', year:'', img:'', video:'', aboutShort:"Seattle's architectural salvage warehouse, saving doors, tubs, beams and hardware from the region's old homes and factories.", about:["For more than 30 years, Earthwise Architectural Salvage has pulled antique doors, clawfoot tubs, beams, banisters and hardware out of historic homes, industrial buildings and old factories across the region, and given them a second life.", "Its SoDo warehouse works as a living archive of Seattle's built environment, where reuse is part sustainability and part preservation."], facts:{"Business": "Earthwise Architectural Salvage", "Warehouse": "3447 4th Ave S, Seattle (SoDo)", "Known for": "Reclaimed doors, tubs, beams + hardware", "Salvaging for": "30+ years"}});
   WORK.push({industry:'events', client:MEDIA[8].artist, title:MEDIA[8].song, type:'Event recap', year:'', img:'', video:mediaUrl(MEDIA[8]), _v:MEDIA[8]});
-  WORK.push({industry:'events', client:MEDIA[12].artist, title:MEDIA[12].song, type:'Event recap', year:'', img:'', video:mediaUrl(MEDIA[12]), _v:MEDIA[12]});
-  WORK.push({industry:'events', client:MEDIA[13].artist, title:MEDIA[13].song, type:'Event recap', year:'', img:'', video:mediaUrl(MEDIA[13]), _v:MEDIA[13]});
   WORK.push({industry:'events', titleFirst:true, client:MEDIA[9].artist, title:MEDIA[9].song, type:'Event recap', year:'2026', img:'', video:mediaUrl(MEDIA[9]), _v:MEDIA[9]});
   WORK.push({industry:'events', client:MEDIA[10].artist, title:MEDIA[10].song, type:'Event recap', year:'', img:'', video:mediaUrl(MEDIA[10]), _v:MEDIA[10]});
   WORK.push({industry:'events', client:MEDIA[11].artist, title:MEDIA[11].song, type:'Event recap', year:'2024', img:'', video:mediaUrl(MEDIA[11]), _v:MEDIA[11]});
+  WORK.push({industry:'events', client:MEDIA[12].artist, title:MEDIA[12].song, type:'Event recap', year:'', img:'', video:mediaUrl(MEDIA[12]), _v:MEDIA[12]});
+  WORK.push({industry:'events', client:MEDIA[13].artist, title:MEDIA[13].song, type:'Event recap', year:'', img:'', video:mediaUrl(MEDIA[13]), _v:MEDIA[13]});
   // Music videos come from the VIDEOS list above, so they stay in sync with the homepage.
   VIDEOS.forEach(function(v){
     WORK.push({industry:'music', client:v.artist, title:v.song, type:'Official music video', year:v.year||'', img:v.img||'', video:mediaUrl(v), _v:v});
