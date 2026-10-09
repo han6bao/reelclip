@@ -34,7 +34,7 @@ NEW_SECTORS = [
   h1="Video for sports, fitness + recreation",
   lede="Teams, gyms, studios, clubs, gear and events: video with real movement and energy.",
   intro=["Sport is motion, sweat and sound. We film fast, close and on the move, then cut to the rhythm so the energy comes through on any screen.",
-         "We've filmed a TurboTax pickleball activation at Bellevue Pickleball Club and a brand film for Gerard Cycles' hand-built road and gravel bikes, and we bring that same energy to teams, studios and events."],
+         "We've covered a TurboTax pickleball activation at Bellevue Pickleball Club and filmed a brand film for Gerard Cycles' hand-built road and gravel bikes, and we bring that same energy to teams, studios and events."],
   makes=["Gym and studio brand films","Membership and class promos","Athlete and coach profiles","Tournament and event recaps","Gear and apparel launches","Sponsor activation coverage","Facility tours","Social content for game days"],
   work=["turbotax-three-event-campaign","gerard-cycles-brand-film","nuwav-jacket-launch-commercial"],
   services=["commercial-video-production","event-videography","social-media-video","product-video-production"],
@@ -73,7 +73,7 @@ NEW_SECTORS = [
   h1="Video for manufacturing, industrial + infrastructure",
   lede="Factories, fleets, farms, labs and job sites: cinematic video that makes complex operations look as impressive as they are.",
   intro=["Industrial businesses are full of incredible visuals that nobody outside the gates ever sees. We turn the process, the scale and the people into films that win customers, recruits and trust.",
-         "We filmed Gerard Cycles' hand-building process in detail and Chilean Salmon's multi-day educational program, and we're comfortable working around safety protocols, PPE and active operations."],
+         "We filmed Gerard Cycles' hand-building process up close, from the hands building each frame to the finished bike, and we're comfortable working around safety protocols, PPE and active operations."],
   makes=["Capabilities and process films","Recruiting films for skilled trades","Facility and plant tours","Safety and training video","Project and infrastructure milestones","Trade show and conference content","Sustainability and impact stories","Drone and aerial site footage"],
   work=["gerard-cycles-brand-film","chilean-salmon-culinary-event-film","jack-s-bbq-commercial-campaign"],
   services=["corporate-video-production","brand-films","production-crew","event-videography"],
@@ -192,7 +192,7 @@ NICHES = [
  ("Education & Training","nonprofit-education-public","Educational and training video that's clear, engaging and easy to follow.",["Course and training modules","Instructor-led video","Program promos"]),
  ("Med Spas & Aesthetics","health-wellness","Med spa and aesthetics video that builds trust and fills the appointment book.",["Treatment explainers","Provider introductions","Spa tours and social content"]),
  ("Wellness Brands","health-wellness","Wellness brand video that feels calm, credible and real.",["Product launches","Founder stories","Lifestyle content"]),
- ("Universities & Colleges","nonprofit-education-public","Campus video for admissions, programs and events, like our work at the University of Washington.",["Campus and program films","Student stories","Event coverage"]),
+ ("Universities & Colleges","nonprofit-education-public","Campus video for admissions, programs and events, like our Chilean Salmon program filmed at the University of Washington.",["Campus and program films","Student stories","Event coverage"]),
  ("Nonprofits & Foundations","nonprofit-education-public","Nonprofit and foundation films that inspire giving and show impact.",["Impact films","Gala and fundraiser videos","Donor stories"]),
  ("Travel Brands","travel-tourism","Travel brand campaigns that sell the trip before the booking.",["Destination campaigns","Experience films","Social booking content"]),
  # industrial + infrastructure
@@ -217,7 +217,7 @@ NICHES = [
  ("Health Technology","health-wellness","Health tech video that explains the product and the impact on patients and providers.",["Product explainers","Customer stories","Launch films"]),
  ("Community Organizations","nonprofit-education-public","Video for community organizations that shows the work and the people behind it.",["Program films","Event coverage","Volunteer and member stories"]),
  ("Mental Health Organizations","health-wellness","Thoughtful, respectful video for mental health organizations and services.",["Awareness campaigns","Service explainers","Provider introductions"]),
- ("Biotechnology","health-wellness","Biotech video for investors, partners and recruits, like the life-science hub in Bothell.",["Science and pipeline explainers","Lab and team films","Investor and recruiting video"]),
+ ("Biotechnology","health-wellness","Biotech video for investors, partners and recruits, from Bothell's life-science corridor to Seattle.",["Science and pipeline explainers","Lab and team films","Investor and recruiting video"]),
 ]
 
 # Items from the master list that already have a dedicated page elsewhere (name -> path)
