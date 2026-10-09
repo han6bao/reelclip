@@ -6,7 +6,7 @@ import json, os, html, datetime, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from seo_content import SITE, EMAIL, WORK_SEO, SERVICES, INDUSTRIES as CORE_INDUSTRIES, CITIES
 from seo_niches import NEW_SECTORS, NICHES as RAW_NICHES, ALIASES, KEYWORDS
-from seo_cards import CARD, angle, NICHE_WORK, SECTOR_WORK, SERVICE_WORK
+from seo_cards import CARD, angle, NICHE_WORK, SECTOR_WORK, SERVICE_WORK, FALLBACK_BY_SECTOR, FALLBACK_DEFAULT, FALLBACK_TEXT, NO_HERO_ON_BUSINESS
 import re
 INDUSTRIES = CORE_INDUSTRIES + NEW_SECTORS
 
@@ -149,6 +149,7 @@ def work_cards(slugs, n=None, ctx=None):
         if k not in WORK: continue
         w = WORK[k]
         a = angle(k, ctx)
+        if not a and ctx and 'example' in ctx and k in FALLBACK_TEXT: a = FALLBACK_TEXT[k]
         img, text = (a if a else (w["img"], CARD.get(k, w["aboutShort"])))
         out.append(f'''<a class="work-card" href="{wurl(k)}"><div class="thumb"><img src="/{e(img)}" alt="{e(wname(w))}" loading="lazy" width="640" height="360"></div>
 <span class="k">{e(w["type"])}{(" · " + e(w["year"])) if w["year"] else ""}</span><span class="n">{e(wname(w))}</span><span class="s">{e(text)}</span></a>''')
@@ -220,6 +221,25 @@ def video_embed(w):
         return f'<div class="hero-media"><img src="/{e(poster)}" alt="{e(wname(w))}"></div>', None
     btn = f'''<a href="{e(src)}" data-embed="{e(src)}" aria-label="Play {e(wname(w))}" style="position:absolute;inset:0;display:block"><img src="/{e(poster)}" alt="{e(wname(w))}" width="1600" height="900" fetchpriority="high" style="width:100%;height:100%;object-fit:cover"><span style="position:absolute;inset:0;margin:auto;width:84px;height:84px;border-radius:999px;background:var(--yellow);display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l14 8-14 8z" fill="#111"/></svg></span></a>'''
     return f'<div class="hero-media">{btn}</div>', src
+
+def hero_video(k, poster=None):
+    """Playable hero (click to load) for project k, with an optional context poster."""
+    w = dict(WORK[k])
+    # multi-film projects: play the film that matches the poster (e.g. pickleball still -> pickleball recap)
+    if poster and w.get('films'):
+        key = {'ev-pb': 'Pickleball', 'ev-go': 'Grand Opening', 'ev-tt': 'Sneaker Con'}
+        for pre, word in key.items():
+            if '/' + pre in '/' + poster.split('img/')[-1] or poster.split('/')[-1].startswith(pre):
+                f = next((f for f in w['films'] if word in f['name']), None)
+                if f and f.get('vimeo'): w['vimeo'] = f['vimeo']
+                break
+    if poster:
+        w['img'] = poster
+        if w.get('file'): w['poster'] = poster
+    return video_embed(w)[0]
+
+def fallback_for(sector):
+    return FALLBACK_BY_SECTOR.get(sector, FALLBACK_DEFAULT)
 
 def build_work():
     order = sorted(WORK_SEO, key=lambda k: WORK_SEO[k].get('feature', 99))
@@ -298,21 +318,26 @@ def build_industries():
         '/industries', schema=[cs]) + body + foot(), '0.8')
     for i in INDUSTRIES:
         c, cs = crumbs([("Home", "/"), ("Industries", "/industries"), (i['name'], None)])
-        img = (SECTOR_IMG.get(i['slug']) or [None])[0]
+        swork = [k for k in i['work'] if k in WORK]
+        sexample = not swork
+        if sexample: swork = [fallback_for(i['slug'])]
+        sa = FALLBACK_TEXT.get(swork[0]) if sexample else angle(swork[0], [i['slug']])
+        img = (SECTOR_IMG.get(i['slug']) or [sa[0] if sa else WORK[swork[0]]['img']])[0]
+        shero = hero_video(swork[0], img)
         svc = ''.join(f'<a class="card" href="/services/{s}"><span class="tag">Service</span><h3>{e(SVC[s]["name"])}</h3><p>{e(SVC[s]["lede"])}</p></a>' for s in i['services'])
         locs = ''.join(f'<a href="/locations/{ct}">{e(i["name"].split(",")[0])} video in {e(CITY[ct]["name"])}</a>' for ct in i['cities'] if ct in CITY)
         body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>{e(i["name"])}</p><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p>
 <div class="ctas"><a class="btn" href="/#contact">START A PROJECT →</a><a class="btn ghost" href="#work">SEE THE WORK</a></div>
-{f'<div class="hero-media"><img src="/{e(img)}" alt="{e(i["name"])} video by Reelclip" width="1600" height="900" fetchpriority="high"></div>' if img else ''}</div>
+{shero}<p class="mono" style="color:var(--soft);margin-top:-8px">{("EXAMPLE HERO FILM: " if sexample else "WATCH: ") + e(wname(WORK[swork[0]]).upper())}</p></div>
 <section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px">{"".join(f"<p class=muted>{e(p)}</p>" for p in i["intro"])}</div>
 <div class="card"><h3>What we make</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in i["makes"])}</ul></div></section>
-{f'<section id="work"><div class="section-head"><h2>Work</h2></div>{work_cards(i["work"], ctx=[i["slug"]])}</section>' if i["work"] else ''}
+<section id="work"><div class="section-head"><h2>{"A hero film we've made" if sexample else "Work"}</h2></div>{work_cards(swork, ctx=(["example"] if sexample else [i["slug"]]))}</section>
 {('<section><div class="section-head"><h2>Specialties</h2></div><div class="chips">' + ''.join(f'<a href="/industries/{x["slug"]}">{e(x["name"])}</a>' for x in NICHES if x['sector'] == i['slug']) + '</div></section>') if any(x['sector'] == i['slug'] for x in NICHES) else ''}
 <section><div class="section-head"><h2>Services for {e(i["name"].lower())}</h2></div><div class="grid g4">{svc}</div></section>
 <section><div class="section-head"><h2>Questions</h2></div>{faq_html(i["faqs"])}</section>
 <section><p class="mono" style="color:var(--soft);margin-bottom:12px">WHERE WE WORK</p><div class="chips">{locs}<a href="/locations">All areas →</a></div></section>
 {cta_band()}'''
-        write('/industries/' + i['slug'], head(i['title'], i['desc'], '/industries/' + i['slug'], img or 'img/ev-tt.jpg', [cs, faq_schema(i['faqs'])]) + body + foot(), '0.7')
+        write('/industries/' + i['slug'], head(i['title'], i['desc'], '/industries/' + i['slug'], img, [cs, faq_schema(i['faqs'])]) + body + foot(), '0.7')
 
 SECTOR_IMG = {
  'food-beverage': ['img/jacks-bbq.jpg','img/lula.jpg','img/ev-cs.jpg','img/lula-06.jpg'],
@@ -331,8 +356,11 @@ def build_niches():
         path = '/industries/' + x['slug']
         c, cs = crumbs([("Home", "/"), ("Industries", "/industries"), (sec['name'], "/industries/" + sec['slug']), (nm, None)])
         ws = [k for k in NICHE_WORK.get(nm, []) if k in WORK]
-        a0 = angle(ws[0], [nm, x['sector']]) if ws else None
-        img = (a0[0] if a0 else WORK[ws[0]]['img']) if ws else None
+        example = not ws
+        if example: ws = [fallback_for(x['sector'])]
+        a0 = (angle(ws[0], [x['sector']]) or FALLBACK_TEXT.get(ws[0])) if example else angle(ws[0], [nm, x['sector']])
+        img = a0[0] if a0 else WORK[ws[0]]['img']
+        hero = hero_video(ws[0], img)
         makes = x['ideas'] + [m for m in sec['makes'] if m not in x['ideas']][:5]
         svc = ''.join(f'<a class="card" href="/services/{s}"><span class="tag">Service</span><h3>{e(SVC[s]["name"])} for {e(low)}</h3><p>{e(SVC[s]["lede"])}</p></a>' for s in sec['services'])
         cities = niche_cities(nm)
@@ -352,22 +380,22 @@ def build_niches():
                   "areaServed": {"@type": "State", "name": "Washington"}, "url": SITE + path}]
         body = f"""{c}<div class="hero"><p class="eyebrow"><i></i>{e(sec["name"])}</p><h1>Video production for {e(low)}</h1>
 <p class="lede">{e(x["line"])}</p>
-<div class="ctas"><a class="btn" href="/#contact">START A PROJECT \u2192</a>{'<a class="btn ghost" href="#work">SEE RELATED WORK</a>' if ws else '<a class="btn ghost" href="/work">SEE OUR WORK</a>'}</div>
-{f'<div class="hero-media"><img src="/{e(img)}" alt="Video production for {e(low)} by Reelclip" width="1600" height="900" fetchpriority="high"></div>' if img else ''}</div>
+<div class="ctas"><a class="btn" href="/#contact">START A PROJECT \u2192</a><a class="btn ghost" href="#work">{"SEE AN EXAMPLE" if example else "SEE RELATED WORK"}</a></div>
+{hero}<p class="mono" style="color:var(--soft);margin-top:-8px">{("EXAMPLE HERO FILM: " if example else "WATCH: ") + e(wname(WORK[ws[0]]).upper())}</p></div>
 <section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px"><h2>Video made for {e(low)}</h2><p class="muted">{e(sec["intro"][0])}</p><p class="muted">{e(sec["intro"][1])}</p></div>
 <div class="card"><h3>What we make for {e(low)}</h3><ul class="ticks">{"".join(f"<li>{e(m)}</li>" for m in makes)}</ul></div></section>
 <section><div class="section-head"><h2>Services</h2><a class="btn ghost" href="/services">ALL SERVICES</a></div><div class="grid g4">{svc}</div></section>
-{f'<section id="work"><div class="section-head"><h2>Related work</h2><a class="btn ghost" href="/work">ALL WORK</a></div>{work_cards(ws, ctx=[nm, x["sector"]])}</section>' if ws else ''}
+<section id="work"><div class="section-head"><h2>{"A hero film we've made" if example else "Related work"}</h2><a class="btn ghost" href="/work">ALL WORK</a></div>{work_cards(ws, ctx=([x["sector"], "example"] if example else [nm, x["sector"]]))}</section>
 <section><div class="section-head"><h2>Questions from {e(low)}</h2></div>{faq_html(faqs)}</section>
 {PATHS}
 <section><p class="mono" style="color:var(--soft);margin-bottom:12px">{e(nm.upper())} VIDEO ACROSS WASHINGTON</p><div class="chips">{locs}<a href="/locations">All areas \u2192</a></div>
 <p class="mono" style="color:var(--soft);margin:22px 0 12px">MORE IN {e(sec["name"].upper())}</p><div class="chips"><a href="/industries/{sec["slug"]}">{e(sec["name"])}</a>{sib}</div></section>
 {cta_band(f"Let's make something for your {low.rstrip('s') if low.endswith('s') and not low.endswith('ss') else low} brand." if False else "Let's make something worth watching.", f"Tell us about your business and what you need. We make video for {low} across Washington.")}"""
-        write(path, head(title, desc, path, img or 'img/ev-tt.jpg', schema) + body + foot(), '0.6')
+        write(path, head(title, desc, path, img, schema) + body + foot(), '0.6')
 
 # ---------- locations ----------
 REGION_WORK = {"King County": ["turbotax-three-event-campaign", "chilean-salmon-culinary-event-film", "gerard-cycles-brand-film"],
-               "Pierce County": ["slotlifebaby-different-time", "tha-baby-street-runner", "turbotax-three-event-campaign"]}
+               "Pierce County": ["turbotax-three-event-campaign", "tha-baby-street-runner", "slotlifebaby-different-time"]}
 HERO_POOL = ['img/ev-tt.jpg','img/gerard-cycles.jpg','img/zadart-02.jpg','img/ev-go-cover.jpg','img/ev-pb-00.jpg','img/jacks-bbq.jpg','img/nuwav.jpg','img/lula.jpg','img/ev-cs.jpg','img/zadart.jpg','img/peristera.jpg','img/ev-go-02.jpg']
 DEFAULT_WORK = ["turbotax-three-event-campaign", "nuwav-jacket-launch-commercial", "zadart-exotic-car-campaign"]
 TIER_TEXT = {"home": "{n} is part of our home turf. We shoot here all the time, and we can usually be on site quickly.",
@@ -404,10 +432,12 @@ def build_locations():
     for ct in CITIES:
         n = ct['name']; nwa = n if ',' in n else n + ', WA'
         c, cs = crumbs([("Home", "/"), ("Locations", "/locations"), (n, None)])
-        ws = [k for k, m in WORK_SEO.items() if ct['slug'] in m['cities']]
-        ws = (ws + [x for x in REGION_WORK.get(ct['county'], DEFAULT_WORK) if x not in ws])[:3]
         here = [k for k, m in WORK_SEO.items() if ct['slug'] in m['cities']]
-        img = WORK[here[0]]['img'] if here else HERO_POOL[sum(map(ord, ct['slug'])) % len(HERO_POOL)]
+        here = [k for k in here if k not in NO_HERO_ON_BUSINESS] + [k for k in here if k in NO_HERO_ON_BUSINESS]  # business work leads
+        region = [x for x in REGION_WORK.get(ct['county'], DEFAULT_WORK) if x not in here]
+        ws = ([k for k in here if k not in NO_HERO_ON_BUSINESS] + [k for k in region if k not in NO_HERO_ON_BUSINESS] + [k for k in here if k in NO_HERO_ON_BUSINESS] + [k for k in region if k in NO_HERO_ON_BUSINESS])[:3]
+        biz_here = [k for k in here if k not in NO_HERO_ON_BUSINESS]
+        img = WORK[biz_here[0]]['img'] if biz_here else HERO_POOL[sum(map(ord, ct['slug'])) % len(HERO_POOL)]
         svc = ''.join(f'<a class="card" href="/locations/{ct["slug"]}/{s}"><span class="tag">{e(SVC[s]["short"])}</span><h3>{e(SVC[s]["name"])} in {e(n)}</h3><p>{e(t.format(n=n))}</p></a>' for s, t in SVC_LINES.items())
         near = ''.join(f'<a href="/locations/{x["slug"]}">{e(x["name"])}</a>' for x in nearby(ct))
         faqs = [(f"Do you offer video production in {n}?", TIER_TEXT[ct['tier']].format(n=n) + f" Reelclip is based in Seattle, {ct['route'] if ct['tier']!='home' or ct['slug']!='seattle' else 'and shoots all over the city'}."),
@@ -424,14 +454,14 @@ def build_locations():
         body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>{e(ct["county"])}</p><h1>Video production in {e(nwa)}</h1>
 <p class="lede">Commercials, brand films, product launches, events and social content for {e(n)} businesses, from a Seattle team {e(ct["route"]) if ct["slug"]!="seattle" else "that calls this city home"}.</p>
 <div class="ctas"><a class="btn" href="/#contact">START A PROJECT IN {e(n.upper())} →</a><a class="btn ghost" href="/work">SEE THE WORK</a></div>
-<div class="hero-media"><img src="/{e(img)}" alt="{e(("A Reelclip shoot in " + n) if here else "A still from a Reelclip production")}" width="1600" height="900" fetchpriority="high"></div></div>
+<div class="hero-media"><img src="/{e(img)}" alt="{e(("A Reelclip shoot in " + n) if biz_here else "A still from a Reelclip production")}" width="1600" height="900" fetchpriority="high"></div></div>
 <section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px"><h2>Video for {e(n)} businesses</h2><p class="muted">{e(ct["angle"])}</p>
 <p class="muted">{e(TIER_TEXT[ct["tier"]].format(n=n))}</p>{did}</div>
 <div class="card"><h3>{e(n)} industries we work with</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in ct["biz"])}</ul></div></section>
 <section><div class="section-head"><h2>What we make in {e(n)}</h2><a class="btn ghost" href="/services">ALL SERVICES</a></div><div class="grid g3">{svc}</div></section>
 <section><div class="section-head"><h2>Industries we serve in {e(n)}</h2><a class="btn ghost" href="/industries">ALL INDUSTRIES</a></div><div class="chips">{"".join(f'<a href="/industries/{NICHE[x]["slug"]}">{e(x)} video</a>' for x in city_niches(ct, 12))}</div></section>
 <section><div class="card"><h3>Why {e(n)} brands hire Reelclip</h3><ul class="ticks c2"><li>Commercial polish with a creative point of view</li><li>One team from concept to final delivery</li><li>Crew sized to your budget and timeline</li><li>Vertical and horizontal versions planned from day one</li><li>Fast turnaround for events and launches</li><li>We film wherever your story lives: your space or a location you choose</li></ul></div></section>
-<section><div class="section-head"><h2>{"Work from " + e(n) if here else ("Work near " + e(n) if ct["county"] in REGION_WORK else "Recent work")}</h2><a class="btn ghost" href="/work">ALL WORK</a></div>{work_cards(ws)}</section>
+<section><div class="section-head"><h2>{"Work from " + e(n) if biz_here else ("Work near " + e(n) if ct["county"] in REGION_WORK else "Recent work")}</h2><a class="btn ghost" href="/work">ALL WORK</a></div>{work_cards(ws)}</section>
 <section><div class="section-head"><h2>{e(n)} video production questions</h2></div>{faq_html(faqs)}</section>
 {PATHS}
 <section><p class="mono" style="color:var(--soft);margin-bottom:12px">NEARBY AREAS</p><div class="chips">{near}<a href="/locations">All areas →</a></div></section>

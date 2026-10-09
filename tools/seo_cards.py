@@ -162,3 +162,20 @@ SERVICE_WORK = {
  "corporate-video-production": [CS, TT],
  "content-partnerships": [],
 }
+
+# When an industry has no directly matching project, show a business hero film that makes sense as a format example.
+FALLBACK_BY_SECTOR = {
+ "food-beverage": "jack-s-bbq-commercial-campaign", "hospitality-nightlife": "jack-s-bbq-commercial-campaign",
+ "luxury-lifestyle": "peristera-first-collection-launch", "fashion-apparel": "peristera-first-collection-launch",
+ "retail-brands": TT, "automotive": ZA, "travel-tourism": ZA, "sports-fitness": TT, "corporate-events": TT,
+}
+FALLBACK_DEFAULT = GE
+FALLBACK_TEXT = {
+ GE: ("img/gerard-cycles.jpg", "A 60-second website hero film for Gerard Cycles: the same brand-film format we'd build around your business."),
+ "jack-s-bbq-commercial-campaign": ("img/jacks-bbq.jpg", "A 30-second commercial for Jack's BBQ, built around the people behind the business: the format we'd bring to yours."),
+ "peristera-first-collection-launch": ("img/peristera.jpg", "A launch film and reels for Peristera's first collection, the product-first approach we'd bring to your brand."),
+ TT: ("img/ev-go-cover.jpg", "TurboTax's Bellevue grand opening and activations, delivered in one week: the kind of coverage we'd bring to your business."),
+ ZA: ("img/zadart-01.jpg", "A social-first promo for Zadart's exotic car rentals, with rolling shots and FPV drone: the energy we'd bring to your brand."),
+}
+# Music videos that shouldn't lead a business or city page
+NO_HERO_ON_BUSINESS = {"slotlifebaby-different-time", "saint-meadow-can-t-complain", "tbg-kam-bino-my-life", "youngcam206-ruthless", "rell-moore-chrome-hearts", "tha-baby-street-runner"}
