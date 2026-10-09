@@ -44,6 +44,9 @@
       99.9%{left:calc(var(--x) + 3 * (var(--w) + var(--g)) + 20px);opacity:0}
       100%{left:var(--x);top:var(--y);opacity:1}
     }
+    #rc-loader.finish .runner,#rc-loader.finish .torch{animation:none}
+    #rc-loader.finish .runner:nth-child(4){opacity:1;transform:translateY(-6px) rotate(-2deg)}
+    #rc-loader.finish .torch{left:calc(var(--x) + 3 * (var(--w) + var(--g)));top:calc(var(--y) - 6px);opacity:1}
     @media (max-width:600px){#rc-loader .track{--w:64px;--g:14px;--h:56px}}
     @media (prefers-reduced-motion:reduce){#rc-loader .runner,#rc-loader .torch{animation:none}#rc-loader .runner{opacity:1}#rc-loader .torch{display:none}}
     #rc-loader .label{font:500 12px/1 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.24em;color:#8DA2DB}
@@ -60,7 +63,7 @@
     (function(){
       var el = document.getElementById('rc-loader'), t0 = Date.now(), gone = false;
       var LAP = 2400; // one full relay: blue > pink > yellow > green
-      function hide(){ if (gone) return; gone = true; var t = Date.now() - t0, end = Math.max(1, Math.ceil(t / LAP)) * LAP - 150; setTimeout(function(){ el.classList.add('done'); setTimeout(function(){ el.remove(); }, 600); }, Math.max(0, end - t)); }
+      function hide(){ if (gone) return; gone = true; var t = Date.now() - t0, end = Math.max(1, Math.ceil(t / LAP)) * LAP - 150; setTimeout(function(){ el.classList.add('finish'); setTimeout(function(){ el.classList.add('done'); setTimeout(function(){ el.remove(); }, 600); }, 450); }, Math.max(0, end - t)); }
       window.addEventListener('load', hide); setTimeout(hide, 2 * LAP);
     })();
   </script>
