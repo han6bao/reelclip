@@ -10,6 +10,44 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
 </head>
 <body>
+<div id="rc-loader" aria-hidden="true">
+  <style>
+    #rc-loader{position:fixed;inset:0;z-index:9999;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .5s ease,visibility .5s;overflow:hidden}
+    #rc-loader.done{opacity:0;visibility:hidden}
+    #rc-loader .track{position:relative;width:min(860px,88vw);height:130px;--w:120px}
+    #rc-loader .runner{position:absolute;top:0;width:var(--w);opacity:0;--L:calc((100% - var(--w)) / 4);animation:rc-leg 3.2s linear infinite}
+    #rc-loader .runner img{width:100%;height:auto;display:block;animation:rc-bob .28s ease-in-out infinite alternate}
+    #rc-loader .runner:nth-child(1){--i:0}
+    #rc-loader .runner:nth-child(2){--i:1;animation-delay:.8s}
+    #rc-loader .runner:nth-child(3){--i:2;animation-delay:1.6s}
+    #rc-loader .runner:nth-child(4){--i:3;animation-delay:2.4s}
+    @keyframes rc-leg{
+      0%{opacity:0;left:calc(var(--L) * var(--i) - 24px)}
+      3%{opacity:1}
+      25%{opacity:1;left:calc(var(--L) * (var(--i) + 1) + 6px)}
+      30%{opacity:0;left:calc(var(--L) * (var(--i) + 1) + 18px)}
+      100%{opacity:0;left:calc(var(--L) * (var(--i) + 1) + 18px)}
+    }
+    @keyframes rc-bob{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-10px) rotate(3deg)}}
+    @media (max-width:600px){#rc-loader .track{--w:76px;height:84px}}
+    @media (prefers-reduced-motion:reduce){#rc-loader .runner{animation:none}#rc-loader .runner:first-child{opacity:1;left:calc(50% - var(--w) / 2)}#rc-loader .runner img{animation:none}}
+    #rc-loader .label{font:500 12px/1 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.24em;color:#8DA2DB}
+  </style>
+  <div class="track">
+    <div class="runner"><img src="img/runner-lb.png" alt=""></div>
+    <div class="runner"><img src="img/runner-pink.png" alt=""></div>
+    <div class="runner"><img src="img/runner-yellow.png" alt=""></div>
+    <div class="runner"><img src="img/runner-green.png" alt=""></div>
+  </div>
+  <div class="label">LOADING</div>
+  <script>
+    (function(){
+      var el = document.getElementById('rc-loader'), t0 = Date.now(), gone = false;
+      function hide(){ if (gone) return; gone = true; var wait = Math.max(0, 1400 - (Date.now() - t0)); setTimeout(function(){ el.classList.add('done'); setTimeout(function(){ el.remove(); }, 600); }, wait); }
+      window.addEventListener('load', hide); setTimeout(hide, 5000);
+    })();
+  </script>
+</div>
 
 
 <style>
