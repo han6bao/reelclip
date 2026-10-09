@@ -16,6 +16,7 @@ module.exports = async (req, res) => {
   const email = String(body.email || '').trim().slice(0, 200);
   const brand = String(body.brand || '').trim().slice(0, 200);
   const service = String(body.service || '').trim().slice(0, 100);
+  const type = String(body.type || '').trim().slice(0, 100);
   const budget = String(body.budget || '').trim().slice(0, 100);
   const message = String(body.message || '').trim().slice(0, 5000);
   if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false, error: 'Name and a valid email are required' });
@@ -23,7 +24,7 @@ module.exports = async (req, res) => {
   const key = process.env.RESEND_API_KEY;
   if (!key) return res.status(500).json({ ok: false, error: 'Email is not configured' });
 
-  const rows = [['Name', name], ['Email', email], ['Brand / artist', brand], ['Needs', service], ['Budget', budget]];
+  const rows = [['Name', name], ['Email', email], ['Brand / artist', brand], ['Working style', type], ['Needs', service], ['Budget', budget]];
   const html = '<h2 style="font-family:sans-serif">New Reelclip inquiry</h2><table style="font-family:sans-serif;font-size:14px">' +
     rows.map(([k, v]) => `<tr><td style="padding:4px 12px 4px 0;color:#666">${k}</td><td><b>${esc(v) || '—'}</b></td></tr>`).join('') +
     `</table><p style="font-family:sans-serif;font-size:14px;white-space:pre-wrap">${esc(message) || '(no message)'}</p>`;
