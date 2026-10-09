@@ -104,7 +104,7 @@ document.addEventListener('click',function(ev){{var b=ev.target.closest('[data-e
 
 def cta_band(title="Let's make something worth watching.", text="Tell us what you're building. We'll come back with ideas, a plan and a quote."):
     return f'''<section><div class="cta-band"><div><h2>{e(title)}</h2><p>{e(text)}</p></div>
-<a class="btn" href="/#contact">START A PROJECT →</a><img src="/img/runner-pink.png" alt="" width="120" height="105" loading="lazy"></div></section>'''
+<a class="btn" href="/#contact">START A PROJECT →</a></div></section>'''
 
 PATHS = f'''<section><div class="section-head"><h2>How we can work together</h2></div>
 <div class="paths">

@@ -121,8 +121,6 @@ details p{margin-top:10px;color:var(--muted)}
 .cta-band h2{max-width:760px}
 .cta-band p{max-width:620px;margin-top:10px}
 .cta-band .btn{background:#111;color:var(--ink)}
-.cta-band img{position:absolute;right:28px;bottom:16px;width:120px;opacity:.95}
-@media (max-width:760px){.cta-band{padding-bottom:120px}.cta-band img{width:90px}}
 .paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 @media (max-width:860px){.paths{grid-template-columns:1fr}}
 .paths a{background:var(--panel);border-radius:16px;padding:24px;text-decoration:none;display:flex;flex-direction:column;gap:8px;box-shadow:inset 0 0 0 1px var(--line)}
