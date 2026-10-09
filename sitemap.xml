@@ -29,7 +29,7 @@
   <url><loc>https://reel-clip.com/work/rell-moore-chrome-hearts-music-video</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://reel-clip.com/work/tha-baby-street-runner-music-video</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://reel-clip.com/work/slotlifebaby-different-time-music-video</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
-  <url><loc>https://reel-clip.com/industries</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://reel-clip.com/industries</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://reel-clip.com/industries/food-beverage</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://reel-clip.com/industries/fashion-apparel</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://reel-clip.com/industries/automotive</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
@@ -37,6 +37,14 @@
   <url><loc>https://reel-clip.com/industries/hospitality-nightlife</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://reel-clip.com/industries/music-entertainment</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://reel-clip.com/industries/retail-brands</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://reel-clip.com/industries/corporate-enterprise</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://reel-clip.com/industries/real-estate-design</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://reel-clip.com/industries/sports-fitness</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://reel-clip.com/industries/health-wellness</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://reel-clip.com/industries/nonprofit-education-public</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://reel-clip.com/industries/industrial-infrastructure</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://reel-clip.com/industries/travel-tourism</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
+  <url><loc>https://reel-clip.com/industries/luxury-lifestyle</loc><lastmod>2026-10-09</lastmod><priority>0.7</priority></url>
   <url><loc>https://reel-clip.com/locations</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://reel-clip.com/locations/seattle</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
   <url><loc>https://reel-clip.com/locations/bellevue</loc><lastmod>2026-10-09</lastmod><priority>0.8</priority></url>
@@ -339,4 +347,103 @@
   <url><loc>https://reel-clip.com/locations/vancouver-wa/event-videography</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://reel-clip.com/locations/vancouver-wa/social-media-video</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
   <url><loc>https://reel-clip.com/locations/vancouver-wa/corporate-video-production</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/restaurants</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/fine-dining</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/breweries-and-distilleries</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/coffee-shops-and-cafes</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/hotels-and-resorts</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/catering-companies</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/food-manufacturers</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/culinary-events</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/hospitality-groups</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/luxury-fashion</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/jewelry-and-accessories</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/spas-and-wellness</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/eyewear</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/fashion-designers</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/footwear-and-sneakers</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/fragrance-and-perfume</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/barbershops-and-salons</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/lifestyle-brands</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/watches-and-luxury-goods</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/luxury-retail</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/shopping-centers-and-malls</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/pet-products</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/car-dealerships</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/vehicle-customization</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/yacht-and-boat-rentals</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/luxury-car-rentals</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/automotive-brands</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/auto-detailing</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/bicycle-brands</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/aviation-and-private-jets</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/automotive-events</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/law-firms</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/professional-services</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/startups-and-venture-backed-brands</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/b2b-brands</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/recruitment-and-staffing</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/fintech-and-financial-services</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/real-estate-development</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/business-conferences</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/ai-and-emerging-technology</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/brand-activations</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/experiential-marketing</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/live-entertainment</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/conventions-and-trade-shows</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/private-events</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/concerts-and-music-festivals</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/art-exhibitions-and-galleries</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/community-events</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/event-production-companies</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/music-artists-and-record-labels</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/influencers-and-content-creators</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/residential-real-estate</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/interior-design-studios</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/construction-companies</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/commercial-real-estate</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/architecture-firms</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/luxury-properties</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/coworking-spaces</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/professional-sports-teams</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/fitness-and-gym-brands</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/pickleball-and-racket-sports</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/cycling-and-bicycle-companies</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/fitness-studios</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/golf-courses-and-clubs</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/sports-events-and-tournaments</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/athletic-apparel</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/adventure-and-tourism</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/sports-equipment</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/martial-arts-and-boxing</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/sporting-events-and-sponsorships</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/dental-practices</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/education-and-training</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/med-spas-and-aesthetics</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/wellness-brands</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/universities-and-colleges</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/nonprofits-and-foundations</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/travel-brands</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/building-materials</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/community-development</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/manufacturing-and-industrial</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/logistics-and-supply-chain</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/agriculture-and-farming</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/government-and-public-agencies</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/utilities-and-public-services</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/engineering-and-infrastructure</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/energy-and-sustainability</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/environmental-organizations</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/tourism-and-destination-marketing</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/defense-and-aerospace</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/trade-associations</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/luxury-experiences</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/public-health-campaigns</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/healthcare-organizations</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/medical-clinics</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/research-institutions</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/health-technology</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/community-organizations</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/mental-health-organizations</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
+  <url><loc>https://reel-clip.com/industries/biotechnology</loc><lastmod>2026-10-09</lastmod><priority>0.6</priority></url>
 </urlset>

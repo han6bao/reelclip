@@ -4,7 +4,10 @@ Run from the repo root:  node tools/extract-data.js && python3 tools/build_seo.p
 """
 import json, os, html, datetime, sys
 sys.path.insert(0, os.path.dirname(__file__))
-from seo_content import SITE, EMAIL, WORK_SEO, SERVICES, INDUSTRIES, CITIES
+from seo_content import SITE, EMAIL, WORK_SEO, SERVICES, INDUSTRIES as CORE_INDUSTRIES, CITIES
+from seo_niches import NEW_SECTORS, NICHES as RAW_NICHES, ALIASES, KEYWORDS
+import re
+INDUSTRIES = CORE_INDUSTRIES + NEW_SECTORS
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 TODAY = datetime.date.today().isoformat()
@@ -12,6 +15,26 @@ WORK = {w['slug']: w for w in json.load(open(os.path.join(os.path.dirname(__file
 SVC = {s['slug']: s for s in SERVICES}
 IND = {i['slug']: i for i in INDUSTRIES}
 CITY = {c['slug']: c for c in CITIES}
+def slugify(t): return re.sub(r'-+', '-', re.sub(r'[^a-z0-9]+', '-', t.lower().replace('&', 'and').replace('\u00e9', 'e'))).strip('-')
+NICHES = [dict(name=n, slug=slugify(n), sector=sec, line=line, ideas=ideas) for n, sec, line, ideas in RAW_NICHES]
+NICHE = {x['name']: x for x in NICHES}
+assert not (set(x['slug'] for x in NICHES) & set(IND)), 'niche slug clashes with sector'
+def city_niches(ct, k=10):
+    out = []
+    for b in ct['biz']:
+        bl = b.lower()
+        for kw, names in KEYWORDS:
+            if kw in bl:
+                for nm in names:
+                    if nm in NICHE and nm not in out: out.append(nm)
+    for nm in ['Restaurants', 'Professional Services', 'Residential Real Estate', 'Medical Clinics', 'Community Events', 'Lifestyle Brands']:
+        if len(out) >= 6: break
+        if nm not in out: out.append(nm)
+    return out[:k]
+def niche_cities(nm):
+    hits = [c['slug'] for c in CITIES if nm in city_niches(c, 40)]
+    sec = IND[NICHE[nm]['sector']]['cities']
+    return list(dict.fromkeys(hits + sec + ['seattle', 'bellevue', 'tacoma']))[:12]
 PAGES = []  # (path, priority)
 
 e = lambda s: html.escape(str(s), quote=True)
@@ -78,7 +101,7 @@ def crumbs(items):
 
 def foot():
     svc = ''.join(f'<li><a href="/services/{s["slug"]}">{e(s["name"])}</a></li>' for s in SERVICES[:6]) + '<li><a href="/services">All services \u2192</a></li>'
-    ind = ''.join(f'<li><a href="/industries/{i["slug"]}">{e(i["name"])}</a></li>' for i in INDUSTRIES)
+    ind = ''.join(f'<li><a href="/industries/{i["slug"]}">{e(i["name"])}</a></li>' for i in CORE_INDUSTRIES) + '<li><a href="/industries">All industries \u2192</a></li>'
     feat = sorted([k for k in WORK_SEO if WORK_SEO[k].get('feature')], key=lambda k: WORK_SEO[k]['feature'])[:8]
     wk = ''.join(f'<li><a href="{wurl(k)}">{e(WORK[k]["client"] if not WORK[k]["titleFirst"] else WORK[k]["title"])}</a></li>' for k in feat)
     MAIN = ['seattle','bellevue','tacoma','redmond','kirkland','renton','federal-way','everett']
@@ -256,30 +279,87 @@ def build_work():
 
 # ---------- industries ----------
 def build_industries():
-    cards = ''.join(f'<a class="card" href="/industries/{i["slug"]}"><span class="tag">Industry</span><h3>{e(i["name"])}</h3><p>{e(i["lede"])}</p></a>' for i in INDUSTRIES)
+    cards = ''.join(f'<a class="card" href="/industries/{i["slug"]}"><span class="tag">{sum(1 for x in NICHES if x["sector"]==i["slug"])} specialties</span><h3>{e(i["name"])}</h3><p>{e(i["lede"])}</p></a>' for i in INDUSTRIES)
+    groups = ''.join(f'<div><h3 style="font-size:18px;margin-bottom:12px"><a href="/industries/{i["slug"]}" style="text-decoration:none">{e(i["name"])}</a></h3><div class="chips">' + ''.join(f'<a href="/industries/{x["slug"]}">{e(x["name"])}</a>' for x in NICHES if x['sector'] == i['slug']) + '</div></div>' for i in INDUSTRIES)
     c, cs = crumbs([("Home", "/"), ("Industries", None)])
-    body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>Industries</p><h1>Video production by industry</h1>
-<p class="lede">Every industry sells differently. Here's how we approach video for the businesses we work with most.</p></div>
-<section><div class="grid g3">{cards}</div></section>{cta_band()}'''
-    write('/industries/', head("Video Production by Industry | Food, Fashion, Automotive, Events | Reelclip",
-        "Video production for food and beverage, spirits and tequila brands, fashion, automotive, corporate events, hospitality, music and retail brands across Washington.",
-        '/industries', schema=[cs]) + body + foot(), '0.7')
+    total = len(NICHES) + len(ALIASES)
+    body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>Industries</p><h1>Video production for every industry</h1>
+<p class="lede">From restaurants and law firms to biotech, pickleball clubs and private jets: {total}+ industries, one creative production team, available across Washington.</p>
+<div class="ctas"><a class="btn" href="/#contact">START A PROJECT \u2192</a><a class="btn ghost" href="#all">FIND YOUR INDUSTRY</a></div></div>
+<section><div class="grid g3">{cards}</div></section>
+<section id="all"><div class="section-head"><h2>Every industry we serve</h2></div><div class="grid g2" style="gap:36px 28px">{groups}</div></section>{cta_band()}'''
+    write('/industries/', head("Video Production for Every Industry | Washington | Reelclip",
+        "Video production for 100+ industries: restaurants, spirits, law firms, startups, real estate, healthcare, biotech, sports, manufacturing and more across Washington.",
+        '/industries', schema=[cs]) + body + foot(), '0.8')
     for i in INDUSTRIES:
         c, cs = crumbs([("Home", "/"), ("Industries", "/industries"), (i['name'], None)])
-        img = WORK[i['work'][0]]['img']
+        img = (SECTOR_IMG.get(i['slug']) or [None])[0]
         svc = ''.join(f'<a class="card" href="/services/{s}"><span class="tag">Service</span><h3>{e(SVC[s]["name"])}</h3><p>{e(SVC[s]["lede"])}</p></a>' for s in i['services'])
         locs = ''.join(f'<a href="/locations/{ct}">{e(i["name"].split(",")[0])} video in {e(CITY[ct]["name"])}</a>' for ct in i['cities'] if ct in CITY)
         body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>{e(i["name"])}</p><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p>
 <div class="ctas"><a class="btn" href="/#contact">START A PROJECT →</a><a class="btn ghost" href="#work">SEE THE WORK</a></div>
-<div class="hero-media"><img src="/{e(img)}" alt="{e(i["name"])} video by Reelclip" width="1600" height="900" fetchpriority="high"></div></div>
+{f'<div class="hero-media"><img src="/{e(img)}" alt="{e(i["name"])} video by Reelclip" width="1600" height="900" fetchpriority="high"></div>' if img else ''}</div>
 <section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px">{"".join(f"<p class=muted>{e(p)}</p>" for p in i["intro"])}</div>
 <div class="card"><h3>What we make</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in i["makes"])}</ul></div></section>
 <section id="work"><div class="section-head"><h2>Work</h2></div>{work_cards(i["work"])}</section>
+{('<section><div class="section-head"><h2>Specialties</h2></div><div class="chips">' + ''.join(f'<a href="/industries/{x["slug"]}">{e(x["name"])}</a>' for x in NICHES if x['sector'] == i['slug']) + '</div></section>') if any(x['sector'] == i['slug'] for x in NICHES) else ''}
 <section><div class="section-head"><h2>Services for {e(i["name"].lower())}</h2></div><div class="grid g4">{svc}</div></section>
 <section><div class="section-head"><h2>Questions</h2></div>{faq_html(i["faqs"])}</section>
 <section><p class="mono" style="color:var(--soft);margin-bottom:12px">WHERE WE WORK</p><div class="chips">{locs}<a href="/locations">All areas →</a></div></section>
 {cta_band()}'''
-        write('/industries/' + i['slug'], head(i['title'], i['desc'], '/industries/' + i['slug'], img, [cs, faq_schema(i['faqs'])]) + body + foot(), '0.7')
+        write('/industries/' + i['slug'], head(i['title'], i['desc'], '/industries/' + i['slug'], img or 'img/ev-tt.jpg', [cs, faq_schema(i['faqs'])]) + body + foot(), '0.7')
+
+SECTOR_IMG = {
+ 'food-beverage': ['img/jacks-bbq.jpg','img/lula.jpg','img/ev-cs.jpg','img/lula-06.jpg'],
+ 'fashion-apparel': ['img/nuwav.jpg','img/peristera.jpg'],
+ 'automotive': ['img/zadart.jpg','img/zadart-02.jpg','img/zadart-04.jpg'],
+ 'corporate-events': ['img/ev-go-cover.jpg','img/ev-tt.jpg','img/ev-go-05.jpg','img/ev-pb-00.jpg'],
+ 'hospitality-nightlife': ['img/ev-ms-h1.jpg','img/ev-la.jpg','img/lula.jpg'],
+ 'music-entertainment': ['img/ev-ms-h2.jpg','img/mv-cc.jpg','img/mv-dt.jpg','img/mv-ch.jpg'],
+ 'retail-brands': ['img/ev-go-cover.jpg','img/ev-go-01.jpg','img/gerard-cycles.jpg'],
+ 'sports-fitness': ['img/ev-pb-00.jpg','img/ev-pb-03.jpg','img/gerard-cycles.jpg'],
+ 'travel-tourism': ['img/zadart-01.jpg','img/zadart-08.jpg','img/ev-ms-h1.jpg'],
+ 'luxury-lifestyle': ['img/peristera.jpg','img/zadart-03.jpg','img/nuwav.jpg'],
+}
+def build_niches():
+    for idx, x in enumerate(NICHES):
+        sec = IND[x['sector']]; nm = x['name']; low = nm.lower()
+        path = '/industries/' + x['slug']
+        c, cs = crumbs([("Home", "/"), ("Industries", "/industries"), (sec['name'], "/industries/" + sec['slug']), (nm, None)])
+        ws = [k for k in sec['work'] if k in WORK]
+        pool = SECTOR_IMG.get(x['sector'])
+        img = pool[idx % len(pool)] if pool else None
+        makes = x['ideas'] + [m for m in sec['makes'] if m not in x['ideas']][:5]
+        svc = ''.join(f'<a class="card" href="/services/{s}"><span class="tag">Service</span><h3>{e(SVC[s]["name"])} for {e(low)}</h3><p>{e(SVC[s]["lede"])}</p></a>' for s in sec['services'])
+        cities = niche_cities(nm)
+        locs = ''.join(f'<a href="/locations/{ct}">{e(nm)} video in {e(CITY[ct]["name"])}</a>' for ct in cities if ct in CITY)
+        sib = ''.join(f'<a href="/industries/{y["slug"]}">{e(y["name"])}</a>' for y in NICHES if y['sector'] == x['sector'] and y is not x)
+        faqs = [(f"Do you make video for {low}?", x['line'] + " Reelclip is based in Seattle and works across Washington."),
+                (f"What kind of videos do {low} need?", "Most start with " + ', '.join(i.lower() for i in x['ideas'][:-1]) + f" and {x['ideas'][-1].lower()}, then add vertical cutdowns for social. We'll recommend the right mix for your goals and budget."),
+                sec['faqs'][0],
+                (f"How much does video for {low} cost?", "It depends on scope: shoot days, crew, locations and how many deliverables you need. Share your budget range on the project form and we'll design the strongest version that fits it.")]
+        title = f"Video Production for {nm} | Seattle + Washington | Reelclip"
+        if len(title) > 70: title = f"{nm} Video Production | Reelclip"
+        desc = f"{x['line']} Seattle-based Reelclip makes video for {low} across Washington."
+        if len(desc) > 160: desc = x['line'][:157].rstrip() + ('\u2026' if len(x['line']) > 157 else '')
+        schema = [cs, faq_schema(faqs), {"@context": "https://schema.org", "@type": "Service", "name": f"Video production for {low}", "serviceType": "Video production",
+                  "audience": {"@type": "BusinessAudience", "name": nm}, "description": x['line'],
+                  "provider": {"@id": SITE + "/#org", "@type": "ProfessionalService", "name": "Reelclip", "url": SITE + "/"},
+                  "areaServed": {"@type": "State", "name": "Washington"}, "url": SITE + path}]
+        body = f"""{c}<div class="hero"><p class="eyebrow"><i></i>{e(sec["name"])}</p><h1>Video production for {e(low)}</h1>
+<p class="lede">{e(x["line"])}</p>
+<div class="ctas"><a class="btn" href="/#contact">START A PROJECT \u2192</a><a class="btn ghost" href="#work">SEE RELATED WORK</a></div>
+{f'<div class="hero-media"><img src="/{e(img)}" alt="Video production for {e(low)} by Reelclip" width="1600" height="900" fetchpriority="high"></div>' if img else ''}</div>
+<section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px"><h2>Video made for {e(low)}</h2><p class="muted">{e(sec["intro"][0])}</p><p class="muted">{e(sec["intro"][1])}</p></div>
+<div class="card"><h3>What we make for {e(low)}</h3><ul class="ticks">{"".join(f"<li>{e(m)}</li>" for m in makes)}</ul></div></section>
+<section><div class="section-head"><h2>Services</h2><a class="btn ghost" href="/services">ALL SERVICES</a></div><div class="grid g4">{svc}</div></section>
+<section id="work"><div class="section-head"><h2>Related work</h2><a class="btn ghost" href="/work">ALL WORK</a></div>{work_cards(ws)}</section>
+<section><div class="section-head"><h2>Questions from {e(low)}</h2></div>{faq_html(faqs)}</section>
+{PATHS}
+<section><p class="mono" style="color:var(--soft);margin-bottom:12px">{e(nm.upper())} VIDEO ACROSS WASHINGTON</p><div class="chips">{locs}<a href="/locations">All areas \u2192</a></div>
+<p class="mono" style="color:var(--soft);margin:22px 0 12px">MORE IN {e(sec["name"].upper())}</p><div class="chips"><a href="/industries/{sec["slug"]}">{e(sec["name"])}</a>{sib}</div></section>
+{cta_band(f"Let's make something for your {low.rstrip('s') if low.endswith('s') and not low.endswith('ss') else low} brand." if False else "Let's make something worth watching.", f"Tell us about your business and what you need. We make video for {low} across Washington.")}"""
+        write(path, head(title, desc, path, img or 'img/ev-tt.jpg', schema) + body + foot(), '0.6')
 
 # ---------- locations ----------
 REGION_WORK = {"King County": ["turbotax-three-event-campaign", "chilean-salmon-culinary-event-film", "gerard-cycles-brand-film"],
@@ -345,6 +425,7 @@ def build_locations():
 <p class="muted">{e(TIER_TEXT[ct["tier"]].format(n=n))}</p>{did}</div>
 <div class="card"><h3>{e(n)} industries we work with</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in ct["biz"])}</ul></div></section>
 <section><div class="section-head"><h2>What we make in {e(n)}</h2><a class="btn ghost" href="/services">ALL SERVICES</a></div><div class="grid g3">{svc}</div></section>
+<section><div class="section-head"><h2>Industries we serve in {e(n)}</h2><a class="btn ghost" href="/industries">ALL INDUSTRIES</a></div><div class="chips">{"".join(f'<a href="/industries/{NICHE[x]["slug"]}">{e(x)} video</a>' for x in city_niches(ct, 12))}</div></section>
 <section><div class="card"><h3>Why {e(n)} brands hire Reelclip</h3><ul class="ticks c2"><li>Commercial polish with a creative point of view</li><li>One team from concept to final delivery</li><li>Crew sized to your budget and timeline</li><li>Vertical and horizontal versions planned from day one</li><li>Fast turnaround for events and launches</li><li>We film wherever your story lives: your space or a location you choose</li></ul></div></section>
 <section><div class="section-head"><h2>{"Work from " + e(n) if here else "Work near " + e(n)}</h2><a class="btn ghost" href="/work">ALL WORK</a></div>{work_cards(ws)}</section>
 <section><div class="section-head"><h2>{e(n)} video production questions</h2></div>{faq_html(faqs)}</section>
@@ -401,6 +482,7 @@ def build_city_services():
 <section><div class="section-head"><h2>How it works in {e(n)}</h2></div><ol class="steps">{steps}</ol></section>
 <section class="grid g2"><div class="card"><h3>Typical deliverables</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in sv["deliverables"])}</ul></div>
 <div class="card"><h3>{e(n)} businesses we make this for</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in ct["biz"])}</ul></div></section>
+<section><p class="mono" style="color:var(--soft);margin-bottom:12px">{e(sv["name"].upper())} FOR {e(n.upper())} INDUSTRIES</p><div class="chips">{"".join(f'<a href="/industries/{NICHE[x]["slug"]}">{e(x)}</a>' for x in city_niches(ct, 8))}</div></section>
 <section><div class="section-head"><h2>{e(sv["name"])} examples</h2><a class="btn ghost" href="/work">ALL WORK</a></div>{work_cards(ws)}</section>
 <section><div class="section-head"><h2>Questions about {e(sv["name"].lower())} in {e(n)}</h2></div>{faq_html(faqs)}</section>
 <section><p class="mono" style="color:var(--soft);margin-bottom:12px">MORE IN {e(n.upper())}</p><div class="chips"><a href="/locations/{ct["slug"]}">Video production in {e(n)}</a>{other}</div>
@@ -417,7 +499,7 @@ def build_sitemap():
     return len(urls)
 
 if __name__ == '__main__':
-    build_services(); build_work(); build_industries(); build_locations(); build_city_services()
+    build_services(); build_work(); build_industries(); build_locations(); build_city_services(); build_niches()
     n = build_sitemap()
     json.dump(ORG, open(os.path.join(os.path.dirname(__file__), 'org.json'), 'w'), ensure_ascii=False)
     print(f"built {len(PAGES)} pages, sitemap has {n} URLs")
