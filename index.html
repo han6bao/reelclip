@@ -15,50 +15,44 @@
     #rc-loader{position:fixed;inset:0;z-index:9999;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .5s ease,visibility .5s;overflow:hidden}
     #rc-loader.done{opacity:0;visibility:hidden}
     #rc-loader .track{--w:110px;--g:30px;--h:96px;position:relative;display:flex;gap:var(--g);height:calc(var(--h) + 24px);align-items:flex-end}
-    #rc-loader .runner{width:var(--w);opacity:.28;animation:rc-turn 2.4s ease-in-out infinite}
+    #rc-loader .runner{width:var(--w);opacity:.14;animation:rc-turn 2.4s ease-in-out infinite}
     #rc-loader .runner img{width:100%;height:auto;display:block}
     #rc-loader .runner:nth-child(2){animation-delay:.6s}
     #rc-loader .runner:nth-child(3){animation-delay:1.2s}
     #rc-loader .runner:nth-child(4){animation-delay:1.8s}
-    #rc-loader .torch{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 10px 4px rgba(255,255,255,.55),0 0 22px 8px rgba(251,225,58,.45);animation:rc-torch 2.4s ease-in-out infinite;--x:calc(var(--w) * .86);--y:calc(24px + var(--h) * .02)}
     @keyframes rc-turn{
-      0%{opacity:.28;transform:none}
-      3%{opacity:1;transform:translateY(-10px) rotate(-3deg)}
-      7%{transform:translateY(0) rotate(3deg)}
-      11%{transform:translateY(-10px) rotate(-3deg)}
-      15%{transform:translateY(0) rotate(3deg)}
-      19%{opacity:1;transform:translateY(-8px) rotate(-2deg)}
-      26%{opacity:.28;transform:none}
-      100%{opacity:.28;transform:none}
+      0%{opacity:.14;transform:translateY(6px) scale(.96)}
+      5%{opacity:1;transform:translateY(-8px) scale(1.04) rotate(-3deg)}
+      10%{transform:translateY(0) scale(1.04) rotate(3deg)}
+      15%{transform:translateY(-8px) scale(1.04) rotate(-3deg)}
+      21%{opacity:1;transform:translateY(0) scale(1.04) rotate(2deg)}
+      30%{opacity:.14;transform:translateY(6px) scale(.96)}
+      100%{opacity:.14;transform:translateY(6px) scale(.96)}
     }
-    @keyframes rc-torch{
-      0%,18%{left:calc(var(--x) + 0px);top:var(--y)}
-      25%{left:calc(var(--x) + var(--w) + var(--g));top:var(--y)}
-      21.5%{top:calc(var(--y) - 30px)}
-      25%,43%{left:calc(var(--x) + var(--w) + var(--g));top:var(--y)}
-      46.5%{top:calc(var(--y) - 30px)}
-      50%,68%{left:calc(var(--x) + 2 * (var(--w) + var(--g)));top:var(--y)}
-      71.5%{top:calc(var(--y) - 30px)}
-      75%,93%{left:calc(var(--x) + 3 * (var(--w) + var(--g)));top:var(--y);opacity:1}
-      96.5%{top:calc(var(--y) - 30px);opacity:0}
-      99.9%{left:calc(var(--x) + 3 * (var(--w) + var(--g)) + 20px);opacity:0}
-      100%{left:var(--x);top:var(--y);opacity:1}
-    }
-    #rc-loader.finish .runner,#rc-loader.finish .torch{animation:none}
-    #rc-loader.finish .runner:nth-child(4){opacity:1;transform:translateY(-6px) rotate(-2deg)}
-    #rc-loader.finish .torch{left:calc(var(--x) + 3 * (var(--w) + var(--g)));top:calc(var(--y) - 6px);opacity:1}
+    #rc-loader.finish .runner{animation:none}
+    #rc-loader.finish .runner:nth-child(4){opacity:1;transform:translateY(-4px) scale(1.04)}
+    #rc-loader.finish .runner:not(:nth-child(4)){opacity:.14;transform:translateY(6px) scale(.96)}
     @media (max-width:600px){#rc-loader .track{--w:64px;--g:14px;--h:56px}}
-    @media (prefers-reduced-motion:reduce){#rc-loader .runner,#rc-loader .torch{animation:none}#rc-loader .runner{opacity:1}#rc-loader .torch{display:none}}
-    #rc-loader .label{font:500 12px/1 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.24em;color:#8DA2DB}
+    #rc-loader{gap:40px}
+    @media (prefers-reduced-motion:reduce){#rc-loader .runner,#rc-loader .label span{animation:none;opacity:1}#rc-loader .bar i{animation:none;width:100%}}
+    #rc-loader .bar{width:calc(4 * var(--w) + 3 * var(--g));height:3px;border-radius:3px;background:#262626;overflow:hidden;margin-top:-6px}
+    #rc-loader .bar i{display:block;height:100%;width:0;border-radius:3px;background:#8DA2DB;animation:rc-fill 2.4s linear forwards}
+    @keyframes rc-fill{0%{width:0;background:#8DA2DB}24.9%{background:#8DA2DB}25%{background:#F77BA8}49.9%{background:#F77BA8}50%{background:#FBE13A}74.9%{background:#FBE13A}75%{background:#86C255}93%{width:100%}100%{width:100%;background:#86C255}}
+    #rc-loader .label{font:500 12px/1 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.32em;color:#D2CCBF}
+    #rc-loader .label span{animation:rc-dot 1.2s steps(1) infinite;opacity:0}
+    #rc-loader .label span:nth-child(2){animation-delay:.3s}
+    #rc-loader .label span:nth-child(3){animation-delay:.6s}
+    @keyframes rc-dot{0%{opacity:0}25%,100%{opacity:1}}
+    #rc-loader.finish .bar i{animation:none;width:100%;background:#86C255}
   </style>
   <div class="track">
     <div class="runner"><img src="img/runner-lb.png" alt=""></div>
     <div class="runner"><img src="img/runner-pink.png" alt=""></div>
     <div class="runner"><img src="img/runner-yellow.png" alt=""></div>
     <div class="runner"><img src="img/runner-green.png" alt=""></div>
-    <span class="torch"></span>
+    <div class="bar" style="position:absolute;left:0;bottom:-18px;margin:0"><i></i></div>
   </div>
-  <div class="label">LOADING</div>
+  <div class="label">LOADING<span>.</span><span>.</span><span>.</span></div>
   <script>
     (function(){
       var el = document.getElementById('rc-loader'), t0 = Date.now(), gone = false;
