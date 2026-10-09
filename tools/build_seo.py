@@ -77,11 +77,13 @@ def crumbs(items):
     return f'<nav class="crumbs" aria-label="Breadcrumb">{links}</nav>', schema
 
 def foot():
-    svc = ''.join(f'<li><a href="/services/{s["slug"]}">{e(s["name"])}</a></li>' for s in SERVICES)
+    svc = ''.join(f'<li><a href="/services/{s["slug"]}">{e(s["name"])}</a></li>' for s in SERVICES[:6]) + '<li><a href="/services">All services \u2192</a></li>'
     ind = ''.join(f'<li><a href="/industries/{i["slug"]}">{e(i["name"])}</a></li>' for i in INDUSTRIES)
     feat = sorted([k for k in WORK_SEO if WORK_SEO[k].get('feature')], key=lambda k: WORK_SEO[k]['feature'])[:8]
     wk = ''.join(f'<li><a href="{wurl(k)}">{e(WORK[k]["client"] if not WORK[k]["titleFirst"] else WORK[k]["title"])}</a></li>' for k in feat)
-    cities = ''.join(f'<a href="/locations/{c["slug"]}">{e(c["name"])}</a>' for c in CITIES)
+    MAIN = ['seattle','bellevue','tacoma','redmond','kirkland','renton','federal-way','everett']
+    cities = ''.join(f'<a href="/locations/{c}">{e(CITY[c]["name"])}</a>' for c in MAIN)
+    rest = ''.join(f'<a href="/locations/{c["slug"]}">{e(c["name"])}</a>' for c in CITIES if c['slug'] not in MAIN)
     return f'''</main>
 <footer class="site"><div class="wrap">
   <div class="cols">
@@ -91,7 +93,9 @@ def foot():
     <div><h4>SERVICES</h4><ul>{svc}</ul></div>
     <div><h4>INDUSTRIES</h4><ul>{ind}</ul></div>
     <div><h4>WORK</h4><ul>{wk}<li><a href="/work">All work →</a></li></ul></div>
-    <div><h4>AREAS SERVED</h4><div class="city-cloud">{cities}</div></div>
+    <div><h4>AREAS SERVED</h4><div class="city-cloud">{cities}</div>
+      <details class="more-areas"><summary>{len(CITIES) - len(MAIN)} more areas</summary><div class="city-cloud">{rest}</div></details>
+      <p style="margin-top:12px"><a href="/locations">Areas served \u2192</a></p></div>
   </div>
   <div class="base"><span>© {datetime.date.today().year} Reelclip · Seattle, WA</span><span><a href="/">Home</a> · <a href="/work">Work</a> · <a href="/locations">Locations</a> · <a href="/#contact">Contact</a></span></div>
 </div></footer>

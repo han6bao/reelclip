@@ -141,3 +141,8 @@ footer.site .base{display:flex;flex-wrap:wrap;justify-content:space-between;gap:
 .city-cloud{display:flex;flex-wrap:wrap;gap:6px 14px}
 .city-cloud a{font-size:14px;color:var(--muted);text-decoration:none}
 .city-cloud a:hover{color:var(--ink)}
+details.more-areas{background:none;box-shadow:none;padding:0;margin-top:12px;border-radius:0}
+details.more-areas summary{font-size:14px;font-weight:700;color:var(--ink);justify-content:flex-start;gap:8px}
+details.more-areas summary::after{content:"\25BE";font-size:12px}
+details.more-areas[open] summary::after{content:"\25B4"}
+details.more-areas .city-cloud{margin-top:12px}
