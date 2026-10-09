@@ -2,7 +2,7 @@
 // Set in Vercel > Project > Settings > Environment Variables:
 //   RESEND_API_KEY  (required)  your Resend API key
 //   CONTACT_TO      (optional)  where inquiries go, default thereelclip@gmail.com
-//   CONTACT_FROM    (optional)  sender, e.g. "Reelclip <hello@yourdomain.com>" once your domain is verified in Resend
+//   CONTACT_FROM    (optional)  sender, default "Reelclip <hello@reel-clip.com>" (reel-clip.com must be verified in Resend)
 const esc = (s) => String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 module.exports = async (req, res) => {
@@ -34,7 +34,7 @@ module.exports = async (req, res) => {
       method: 'POST',
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: process.env.CONTACT_FROM || 'Reelclip Website <onboarding@resend.dev>',
+        from: process.env.CONTACT_FROM || 'Reelclip <hello@reel-clip.com>',
         to: [process.env.CONTACT_TO || 'thereelclip@gmail.com'],
         reply_to: email,
         subject: `New inquiry: ${name}${brand ? ' / ' + brand : ''}`,
