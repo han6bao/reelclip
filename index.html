@@ -349,7 +349,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .next-card .eyebrow{color:#111}
 .next-name{font-size:clamp(32px,4vw,60px);margin-top:auto;position:relative;z-index:1}
 .next-title{font-size:18px;font-weight:600;position:relative;z-index:1}
-.next-frog{position:absolute;right:-20px;bottom:-24px;width:200px;height:auto}
+.next-frog{position:absolute;right:28px;bottom:24px;width:150px;height:auto}
+@media (max-width:600px){.next-card{padding-bottom:110px}.next-frog{width:96px;right:20px;bottom:18px}}
 
 /* vertical reels */
 .films-row{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
@@ -1391,7 +1392,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
           Object.keys(credits).map(function(k){ return '<span>'+esc(k)+'</span><span>'+(credits[k] ? esc(credits[k]) : ph('Name'))+'</span>'; }).join('')+
           '<span>Production</span><span>Reelclip</span>')+
         '</div></div>'+
-        '<a href="#case-'+next.slug+'" class="next-card"><span class="eyebrow">NEXT PROJECT</span><span class="big next-name">'+esc(next.client)+' →</span><span class="next-title">'+esc(next.title)+'</span><img src="img/frog-lounge-white.png" alt="" class="next-frog"></a>'+
+        '<a href="#case-'+next.slug+'" class="next-card"><span class="eyebrow">NEXT PROJECT</span><span class="big next-name">'+esc(next.client)+' →</span><span class="next-title">'+esc(next.title)+'</span><img src="img/runner-pink.png" alt="" class="next-frog"></a>'+
       '</section>';
   }
   casesReady = true;
