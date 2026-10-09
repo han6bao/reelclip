@@ -14,23 +14,38 @@
   <style>
     #rc-loader{position:fixed;inset:0;z-index:9999;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .5s ease,visibility .5s;overflow:hidden}
     #rc-loader.done{opacity:0;visibility:hidden}
-    #rc-loader .track{position:relative;width:min(860px,88vw);height:130px;--w:120px}
-    #rc-loader .runner{position:absolute;top:0;width:var(--w);opacity:0;--L:calc((100% - var(--w)) / 4);animation:rc-leg 3.2s linear infinite}
-    #rc-loader .runner img{width:100%;height:auto;display:block;animation:rc-bob .28s ease-in-out infinite alternate}
-    #rc-loader .runner:nth-child(1){--i:0}
-    #rc-loader .runner:nth-child(2){--i:1;animation-delay:.8s}
-    #rc-loader .runner:nth-child(3){--i:2;animation-delay:1.6s}
-    #rc-loader .runner:nth-child(4){--i:3;animation-delay:2.4s}
-    @keyframes rc-leg{
-      0%{opacity:0;left:calc(var(--L) * var(--i) - 24px)}
-      3%{opacity:1}
-      25%{opacity:1;left:calc(var(--L) * (var(--i) + 1) + 6px)}
-      30%{opacity:0;left:calc(var(--L) * (var(--i) + 1) + 18px)}
-      100%{opacity:0;left:calc(var(--L) * (var(--i) + 1) + 18px)}
+    #rc-loader .track{--w:110px;--g:30px;--h:96px;position:relative;display:flex;gap:var(--g);height:calc(var(--h) + 24px);align-items:flex-end}
+    #rc-loader .runner{width:var(--w);opacity:.28;animation:rc-turn 2.4s ease-in-out infinite}
+    #rc-loader .runner img{width:100%;height:auto;display:block}
+    #rc-loader .runner:nth-child(2){animation-delay:.6s}
+    #rc-loader .runner:nth-child(3){animation-delay:1.2s}
+    #rc-loader .runner:nth-child(4){animation-delay:1.8s}
+    #rc-loader .torch{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;box-shadow:0 0 10px 4px rgba(255,255,255,.55),0 0 22px 8px rgba(251,225,58,.45);animation:rc-torch 2.4s ease-in-out infinite;--x:calc(var(--w) * .86);--y:calc(24px + var(--h) * .02)}
+    @keyframes rc-turn{
+      0%{opacity:.28;transform:none}
+      3%{opacity:1;transform:translateY(-10px) rotate(-3deg)}
+      7%{transform:translateY(0) rotate(3deg)}
+      11%{transform:translateY(-10px) rotate(-3deg)}
+      15%{transform:translateY(0) rotate(3deg)}
+      19%{opacity:1;transform:translateY(-8px) rotate(-2deg)}
+      26%{opacity:.28;transform:none}
+      100%{opacity:.28;transform:none}
     }
-    @keyframes rc-bob{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-10px) rotate(3deg)}}
-    @media (max-width:600px){#rc-loader .track{--w:76px;height:84px}}
-    @media (prefers-reduced-motion:reduce){#rc-loader .runner{animation:none}#rc-loader .runner:first-child{opacity:1;left:calc(50% - var(--w) / 2)}#rc-loader .runner img{animation:none}}
+    @keyframes rc-torch{
+      0%,18%{left:calc(var(--x) + 0px);top:var(--y)}
+      25%{left:calc(var(--x) + var(--w) + var(--g));top:var(--y)}
+      21.5%{top:calc(var(--y) - 30px)}
+      25%,43%{left:calc(var(--x) + var(--w) + var(--g));top:var(--y)}
+      46.5%{top:calc(var(--y) - 30px)}
+      50%,68%{left:calc(var(--x) + 2 * (var(--w) + var(--g)));top:var(--y)}
+      71.5%{top:calc(var(--y) - 30px)}
+      75%,93%{left:calc(var(--x) + 3 * (var(--w) + var(--g)));top:var(--y);opacity:1}
+      96.5%{top:calc(var(--y) - 30px);opacity:0}
+      99.9%{left:calc(var(--x) + 3 * (var(--w) + var(--g)) + 20px);opacity:0}
+      100%{left:var(--x);top:var(--y);opacity:1}
+    }
+    @media (max-width:600px){#rc-loader .track{--w:64px;--g:14px;--h:56px}}
+    @media (prefers-reduced-motion:reduce){#rc-loader .runner,#rc-loader .torch{animation:none}#rc-loader .runner{opacity:1}#rc-loader .torch{display:none}}
     #rc-loader .label{font:500 12px/1 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.24em;color:#8DA2DB}
   </style>
   <div class="track">
@@ -38,6 +53,7 @@
     <div class="runner"><img src="img/runner-pink.png" alt=""></div>
     <div class="runner"><img src="img/runner-yellow.png" alt=""></div>
     <div class="runner"><img src="img/runner-green.png" alt=""></div>
+    <span class="torch"></span>
   </div>
   <div class="label">LOADING</div>
   <script>
