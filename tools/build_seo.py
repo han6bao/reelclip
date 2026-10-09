@@ -341,8 +341,7 @@ def build_locations():
 <p class="muted">{e(TIER_TEXT[ct["tier"]].format(n=n))}</p>{did}</div>
 <div class="card"><h3>{e(n)} industries we work with</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in ct["biz"])}</ul></div></section>
 <section><div class="section-head"><h2>What we make in {e(n)}</h2><a class="btn ghost" href="/services">ALL SERVICES</a></div><div class="grid g3">{svc}</div></section>
-<section class="grid g2"><div class="card"><h3>Places we'd love to shoot in {e(n)}</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in ct["spots"])}</ul></div>
-<div class="card"><h3>Why {e(n)} brands hire Reelclip</h3><ul class="ticks"><li>Commercial polish with a creative point of view</li><li>One team from concept to final delivery</li><li>Crew sized to your budget and timeline</li><li>Vertical and horizontal versions planned from day one</li><li>Fast turnaround for events and launches</li></ul></div></section>
+<section><div class="card"><h3>Why {e(n)} brands hire Reelclip</h3><ul class="ticks c2"><li>Commercial polish with a creative point of view</li><li>One team from concept to final delivery</li><li>Crew sized to your budget and timeline</li><li>Vertical and horizontal versions planned from day one</li><li>Fast turnaround for events and launches</li><li>We film wherever your story lives: your space or a location you choose</li></ul></div></section>
 <section><div class="section-head"><h2>{"Work from " + e(n) if here else "Work near " + e(n)}</h2><a class="btn ghost" href="/work">ALL WORK</a></div>{work_cards(ws)}</section>
 <section><div class="section-head"><h2>{e(n)} video production questions</h2></div>{faq_html(faqs)}</section>
 {PATHS}
