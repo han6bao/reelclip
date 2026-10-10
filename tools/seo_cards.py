@@ -9,7 +9,7 @@ CARD = {
  "peristera-first-collection-launch": "A first-collection launch film plus five stylized reels, one for each look.",
  "gerard-cycles-brand-film": "A 60-second website hero film for a Kirkland bike brand that hand-builds carbon frames.",
  "jack-s-bbq-commercial-campaign": "A 30-second restaurant commercial built around the pitmaster, the crew and the regulars.",
- "lula-coffee-co-brand-film": "A 30-second brand film for a hot-pink, woman-owned Seattle coffee shop.",
+ "lula-coffee-co-brand-film": "A 30-second brand film for a hot-pink Seattle coffee shop.",
  "zadart-exotic-car-campaign": "A music-video-style promo for two Lamborghinis, with rolling shots and FPV drone.",
  "turbotax-tax-season-promo": "A tax-season street-team promo for TurboTax, filmed run-and-gun by a two-person crew in Renton.",
  "laid-back-allure-weekend-recap": "A recap of Laid Back Allure's R&B event weekend, plus vertical cuts for social.",
@@ -32,8 +32,8 @@ _a(MS, ["automotive", "Luxury Car Rentals", "Automotive Events"], "img/ev-ms-01.
    "The recap opens on a luxury rental partner's yellow Lamborghini Urus in the alley before Mariah The Scientist's night at Sarajevo.")
 _a(MS, ["Brand Activations", "corporate-events"], "img/ev-ms-01.jpg",
    "One recap for several partners: the venue, the artist and a luxury vehicle rental feature, all woven together.")
-_a(MS, ["food-beverage", "Restaurants", "hospitality-nightlife"], "img/ev-ms-06.jpg",
-   "A night at Sarajevo, the Mediterranean restaurant and late-night lounge on 1st Avenue, with Mariah The Scientist.")
+_a(MS, ["hospitality-nightlife", "Private Events"], "img/ev-ms-06.jpg",
+   "A night at Sarajevo, a Belltown nightclub, with Mariah The Scientist performing for a packed room.")
 _a(MS, ["music-entertainment", "Concerts & Music Festivals", "Live Entertainment"], "img/ev-ms-h1.jpg",
    "Mariah The Scientist live at Sarajevo: the arrival, the performance and the fan moments, filmed solo.")
 _a(MS, ["travel-tourism", "Luxury Experiences"], "img/ev-ms-01.jpg",
@@ -103,7 +103,7 @@ def angle(work, ctxs):
 
 # Which projects genuinely fit each niche. Niches not listed show no work section (we don't fake relevance).
 NICHE_WORK = {
- "Restaurants": ["jack-s-bbq-commercial-campaign", MS],
+ "Restaurants": ["jack-s-bbq-commercial-campaign"],
  "Coffee Shops & Cafés": [LU],
  "Catering Companies": [CS, TT],
  "Food Manufacturers": [CS],
@@ -141,7 +141,7 @@ NICHE_WORK = {
 
 # Fact-checked sector and service lists (override the originals)
 SECTOR_WORK = {
- "food-beverage": ["jack-s-bbq-commercial-campaign", LU, CS, MS],
+ "food-beverage": ["jack-s-bbq-commercial-campaign", LU, CS],
  "fashion-apparel": ["nuwav-jacket-launch-commercial", "peristera-first-collection-launch"],
  "automotive": [ZA, MS],
  "corporate-events": [TT, CS, "turbotax-tax-season-promo"],

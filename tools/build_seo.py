@@ -293,7 +293,7 @@ def build_work():
 {f'<section><div class="section-head"><h2>How we shot it</h2></div><div class="grid g3">{beats}</div></section>' if beats else ""}
 {f'<section><div class="card"><h3>Scope of work</h3><ul class="ticks c2">{"".join(f"<li>{e(x)}</li>" for x in w["scope"])}</ul></div></section>' if w["scope"] else ""}
 {f'<section><div class="section-head"><h2>Frames</h2></div><div class="frames">{frames}</div></section>' if frames else ""}
-<section class="grid g2">{f'<div class="card"><h3>About {e(w["client"] if not w["titleFirst"] else w["title"])}</h3>{"".join(f"<p>{e(p)}</p>" for p in w["about"]) or f"<p>{e(w["aboutShort"])}</p>"}{f"<dl class=facts style=margin-top:8px>{facts}</dl>" if facts else ""}</div>' if (w["about"] or w["aboutShort"]) else ""}
+<section class="grid g2">{f'<div class="card"><h3>About {e(w["client"] if not w["titleFirst"] else w["title"])}</h3>{("".join(f"<h4 style=\"margin:6px 0 0;font-size:15px\">{e(sec['name'])}</h4>" + "".join(f"<p>{e(p)}</p>" for p in sec['paras']) for sec in w["aboutSections"])) if w.get("aboutSections") else ("".join(f"<p>{e(p)}</p>" for p in w["about"]) or f"<p>{e(w["aboutShort"])}</p>")}{f"<dl class=facts style=margin-top:8px>{facts}</dl>" if facts else ""}</div>' if (w["about"] or w["aboutShort"]) else ""}
 {f'<div class="card"><h3>Credits</h3><div class="credits">{credits}</div></div>' if credits else ""}</section>
 <section><p class="mono" style="color:var(--soft);margin-bottom:12px">SERVICES</p><div class="chips">{svc}</div>
 {f'<p class="mono" style="color:var(--soft);margin:22px 0 12px">INDUSTRIES</p><div class="chips">{ind}</div>' if ind else ""}

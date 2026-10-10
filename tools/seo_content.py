@@ -254,7 +254,7 @@ INDUSTRIES = [
 # angle: what makes this city distinct for video. spots: real shoot-location ideas. biz: industries to pitch locally.
 CITIES = [
  dict(slug="seattle", name="Seattle", county="King County", tier="home", route="Reelclip is based here",
-  angle="Seattle is home base. We've filmed across the city, from Jack's BBQ in SoDo and Lula Coffee Co. to Sarajevo on 1st Avenue, Chilean Salmon at the University of Washington and Sneaker Con Seattle.",
+  angle="Seattle is home base. We've filmed across the city, from Jack's BBQ in SoDo and Lula Coffee Co. to the Sarajevo nightclub in Belltown, Chilean Salmon at the University of Washington and Sneaker Con Seattle.",
   biz=["Tech and startup brands","Restaurants, cafes + bars","Fashion and streetwear","Event agencies + venues","Nonprofits and institutions"],
   spots=["Pike Place Market and the waterfront","Capitol Hill streets and venues","Pioneer Square brick and alleys","SoDo warehouses and studios","South Lake Union glass and steel","Kerry Park skyline views"]),
  dict(slug="bellevue", name="Bellevue", county="King County", tier="home", route="across Lake Washington on I-90 or SR 520",

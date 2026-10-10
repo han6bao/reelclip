@@ -21,7 +21,7 @@ const out = WORK.filter(w => w._v).map(w => {
     img: v.img || w.img || '', poster: v.poster || '', vimeo: v.vimeo || '', youtube: v.id || '', drive: v.drive || '', file: v.file || '',
     deliverables: v.deliverables || '', brief: v.brief || '', result: v.result || '', line: v.line || '',
     approach: v.approach || [], beats: (v.beats || []).map(x => ({title: x.title, text: x.text, img: x.img || ''})),
-    scope: v.scope || [], creditList: v.creditList || [], aboutShort: v.aboutShort || '', about: v.about || [], facts: v.facts || {},
+    scope: v.scope || [], creditList: v.creditList || [], aboutShort: v.aboutShort || '', about: v.about || [], aboutSections: v.aboutSections || [], facts: v.facts || {},
     stills: v.stills || [], stillAlts: v.stillAlts || [],
     films: (v.films || []).map(f => ({name: f.name, len: f.len, crew: f.crew, img: f.img || f.v.img, vimeo: f.v.vimeo}))
   };

@@ -57,11 +57,12 @@
     "https://www.instagram.com/gior.mov/"
    ]
   ],
-  "aboutShort": "An independent bike brand making high-performance carbon road and gravel frames, engineered in the USA for speed and adventure.",
+  "aboutShort": "An independent bike brand making high-performance carbon road and gravel bikes, each one handcrafted in Kirkland.",
   "about": [
    "Gerard Cycles builds its own road and gravel bikes, including the carbon Force 100 and the Trail Force RX, each handcrafted in Kirkland. Founder John Gerard Sheehan oversees every fit himself.",
    "The shop also does custom builds, service and upgrades, and keeps the local riding community going with workshops, group rides, race support and youth programs for riders ages 9 to 17."
   ],
+  "aboutSections": [],
   "facts": {
    "Founder": "John Gerard Sheehan",
    "Based in": "Kirkland, WA",
@@ -145,17 +146,18 @@
     "Reelclip"
    ]
   ],
-  "aboutShort": "A hot-pink, woman-owned Seattle coffee shop with locations in West Seattle and SoDo, known for playful drink names and bright, photo-ready cafes.",
+  "aboutShort": "A hot-pink Seattle coffee shop with locations in West Seattle and SoDo, known for playful drink names and bright, photo-ready cafes.",
   "about": [
-   "Coffee industry veteran Taylor Platt opened Lula Coffee Co. in West Seattle in 2020, with a cheerful cafe and a drive-thru, and it thrived through the pandemic. A second cafe followed in SoDo in 2023, on Airport Way South by the Old Rainier Brewery's giant R sign.",
-   "The SoDo shop is all hot-pink counters and walls, puffy clouds on the ceiling and a plush blue couch, made to feel bright on gray Seattle days. The menu covers coffee classics, teas, blended drinks and smoothies, with collagen- and vegetable-powder boosted lattes and playful drinks like Wake & Bake and Don't Huck With Me."
+   "Coffee industry veteran Taylor Platt opened Lula Coffee Co. in West Seattle in 2020, and it thrived through the pandemic. A second cafe followed in SoDo in 2023, on Airport Way South by the Old Rainier Brewery's giant R sign.",
+   "The SoDo shop is all hot-pink counters and walls, puffy clouds on the ceiling and a plush blue couch, made to feel bright on gray Seattle days. The menu covers coffee classics, teas, blended drinks and smoothies, with collagen and MCT boosters and playful drinks like the Wake and Bake, Living La Vida Mocha and Don't Huck With Me."
   ],
+  "aboutSections": [],
   "facts": {
    "Owner": "Taylor Platt",
    "Founded": "2020, West Seattle",
    "Locations": "4451 California Ave SW (West Seattle) + 3100 Airport Way S (SoDo)",
-   "Known for": "Hot-pink cafes, playful drink names, drive-thru",
-   "Menu": "Coffee, tea, blended drinks, smoothies, boosted lattes",
+   "Known for": "Hot-pink cafes, playful drink names",
+   "Menu": "Coffee, tea, blended + energy drinks, pastries",
    "Website": "lulacoffeeco.com",
    "Instagram": "@lulacoffeeco"
   },
@@ -279,6 +281,7 @@
    "Zadart started with one leased BMW, when founder Jonny Netz was 17 and still in high school on the Eastside. It grew into a Seattle-area fleet of exotic and luxury cars, built mostly on word of mouth and five-star reviews.",
    "Today it runs as Zadart Exotic Car Club & Rentals, handling rentals, delivery and detailing, so the car shows up ready for the occasion."
   ],
+  "aboutSections": [],
   "facts": {
    "Business": "Zadart Exotic Car Club & Rentals",
    "Founder": "Jonny Netz",
@@ -388,6 +391,7 @@
    "TurboTax is Intuit's tax software, used by millions of people to file every year, with in-person stores and local tax experts around the Seattle area.",
    "For tax season, a TurboTax street marketing team hit the city in branded apparel and a promo vehicle, handing out flyers, stopping into local businesses and talking with people along the way."
   ],
+  "aboutSections": [],
   "facts": {
    "Brand": "TurboTax (Intuit)",
    "Campaign": "Tax-season street activation",
@@ -511,6 +515,7 @@
    "NuWav makes streetwear and apparel. For its latest jacket, the brand wanted more than a product ad: a film that placed the jacket inside Seattle's creative community.",
    "The campaign features local creatives Kid Steez, Xavier Weeks and D. Hayes, each filmed in their own world, from recording in the studio to streaming setups and outdoor performances."
   ],
+  "aboutSections": [],
   "facts": {
    "Industry": "Fashion, streetwear + apparel",
    "Product": "Jacket launch",
@@ -606,6 +611,7 @@
    "Peristera is a new apparel brand that came into its first collection with a clear creative vision: big back graphics led by its dove and NOT MONEY print, plus a puff-print graffiti logo.",
    "The debut collection covers T-shirts, sweaters, hoodies and crewnecks, in colorways from cobalt and black to charcoal, brown and cream."
   ],
+  "aboutSections": [],
   "facts": {
    "Industry": "Fashion + apparel",
    "The name": "Greek for \"dove\"",
@@ -672,17 +678,18 @@
   ],
   "scope": [],
   "creditList": [],
-  "aboutShort": "Texas-style, oak-smoked barbecue from Dallas native Jack Timmons, served across Seattle since he opened the original SoDo roadhouse.",
+  "aboutShort": "Texas-style barbecue from Texan Jack Timmons, served across Washington since he opened the original SoDo roadhouse.",
   "about": [
-   "Jack's BBQ is a Texas-style barbecue restaurant in Seattle, founded by Jack Timmons, a Dallas native and Texas A&M graduate who trained at the university's barbecue camp before opening his first location. The original roadhouse in SoDo, on Airport Way South, is known for oak-smoked brisket cooked low and slow in steel offset smokers over Texas post oak and Washington applewood.",
-   "The menu covers the Texas classics: brisket, spare ribs and smoked sausage on the Texas Trinity plate, plus breakfast tacos, Texas chili, corn pudding and pecan pie. Jack's has grown to several locations around the Puget Sound, including South Lake Union and Redmond, and works with local philanthropic partners throughout the year."
+   "Jack's BBQ is a Texas-style barbecue restaurant in Seattle, founded by Jack Timmons, who grew up in Texas, trained at Texas A&M's BBQ Summer Camp in 2012 and toured Central Texas barbecue before opening his first location. The original roadhouse in SoDo, on Airport Way South, is known for brisket cooked low and slow in offset smokers.",
+   "Brisket is the star of the menu, with breakfast tacos as a favorite bonus. Jack's has grown to several locations around Washington, including South Lake Union, Lakewood and Bellingham."
   ],
+  "aboutSections": [],
   "facts": {
    "Owner": "Jack Timmons",
-   "Style": "Texas-style, oak-smoked barbecue",
-   "Known for": "Brisket, spare ribs, smoked sausage, breakfast tacos",
+   "Style": "Texas-style barbecue",
+   "Known for": "Brisket and breakfast tacos",
    "Original location": "3924 Airport Way S, Seattle (SoDo)",
-   "Neighborhoods": "SoDo, South Lake Union, Redmond and more"
+   "Locations": "SoDo, South Lake Union, Lakewood, Bellingham and more"
   },
   "stills": [
    "img/jacks-still-01.jpg",
@@ -815,8 +822,9 @@
   "aboutShort": "Three TurboTax activations in one tax-season package: Sneaker Con Seattle, a Bellevue pickleball day and the opening of a new Bellevue location.",
   "about": [
    "TurboTax is Intuit's tax software, used by millions of people to file every year, with in-person stores and local tax experts around the Seattle area.",
-   "For tax season, TurboTax showed up in person: a booth at Sneaker Con, the city's one-day sneaker convention, a community pickleball activation in Bellevue, and the grand opening of a new Bellevue location with florals, live violin and a photo station."
+   "For tax season, TurboTax showed up in person: a booth at Sneaker Con Seattle, a community pickleball activation in Bellevue, and the grand opening of a new Bellevue location with florals, live violin and a photo station."
   ],
+  "aboutSections": [],
   "facts": {
    "Brand": "TurboTax (Intuit)",
    "Events": "Sneaker Con, Bellevue Pickleball, Bellevue Grand Opening",
@@ -968,18 +976,34 @@
     "Reelclip"
    ]
   ],
-  "aboutShort": "Atlanta R&B singer-songwriter Mariah The Scientist, live at Sarajevo, the Mediterranean kitchen and late-night lounge on 1st Avenue in downtown Seattle.",
+  "aboutShort": "Atlanta R&B singer-songwriter Mariah The Scientist, live at Sarajevo, a Belltown nightclub in Seattle.",
   "about": [
-   "Mariah The Scientist is an R&B singer-songwriter from Atlanta. Her 2025 album Hearts Sold Separately debuted at No. 1 on Billboard's Top R&B Albums chart, and its single \"Burning Blue\" became her biggest hit yet, reaching the Top 30 of the Hot 100 and going 2x Platinum.",
-   "Sarajevo Restaurant & Lounge serves Balkan, Greek and Turkish small plates by day, with a patio looking out over Puget Sound. At night it turns into one of downtown's late-night spots, with DJs most nights of the week."
+   "Mariah The Scientist is an R&B singer-songwriter from Atlanta. Her 2025 album Hearts Sold Separately debuted at No. 1 on Billboard's Top R&B Albums chart.",
+   "Sarajevo is a nightclub in Seattle's Belltown neighborhood, known for Latin Fridays and hip hop, R&B and Top 40 Saturdays."
+  ],
+  "aboutSections": [
+   {
+    "name": "Mariah The Scientist",
+    "paras": [
+     "Mariah The Scientist is an R&B singer-songwriter from Atlanta. Her 2025 album Hearts Sold Separately debuted at No. 1 on Billboard's Top R&B Albums chart.",
+     "Its lead single \"Burning Blue\" debuted at No. 25 on the Billboard Hot 100, her first Top 40 hit, and she took the album on the road with the 2026 Hearts Sold Separately Tour."
+    ]
+   },
+   {
+    "name": "Sarajevo",
+    "paras": [
+     "Sarajevo is a nightclub in Seattle's Belltown neighborhood, open late Thursday through Saturday for guests 21 and over.",
+     "Its weekends run on Latin Fridays and Saturdays of hip hop, R&B and Top 40, with live artist performances and VIP bottle service."
+    ]
+   }
   ],
   "facts": {
    "Artist": "Mariah The Scientist",
    "Hometown": "Atlanta, GA",
    "Latest album": "Hearts Sold Separately (2025)",
-   "Venue": "Sarajevo Restaurant & Lounge",
-   "Address": "2332 1st Ave, Seattle",
-   "What's served": "Balkan + Mediterranean small plates, cocktails, late-night DJs"
+   "Venue": "Sarajevo Nightclub",
+   "Neighborhood": "Belltown, Seattle",
+   "Club nights": "Latin Fridays; hip hop, R&B + Top 40 Saturdays"
   },
   "stills": [
    "img/ev-ms-h1.jpg",
@@ -1087,6 +1111,7 @@
   ],
   "aboutShort": "A multi-day series of culinary presentations about Chilean salmon in Seattle, at the University of Washington and a hotel venue.",
   "about": [],
+  "aboutSections": [],
   "facts": {
    "Client": "Chilean Salmon",
    "Where": "University of Washington + a Seattle hotel venue",
@@ -1203,12 +1228,13 @@
   ],
   "aboutShort": "Grown-and-sexy R&B nights in Seattle, built on the dance and sing-along songs R&B fans know by heart.",
   "about": [
-   "Laid Back Allure throws R&B parties around Seattle, best known for its Late Nights R&B series. The nights celebrate the dance floor and karaoke classics that R&B lovers hold dear, and have taken over rooms like Neumos on Capitol Hill and Good Bar in Pioneer Square."
+   "Laid Back Allure throws R&B parties around Seattle, best known for its Late Nights R&B series. The nights celebrate the dance floor and karaoke classics that R&B lovers hold dear, and have taken over rooms like Neumos on Capitol Hill and Legion Sports Bar in Bellevue."
   ],
+  "aboutSections": [],
   "facts": {
    "Known for": "Late Nights R&B series",
    "Music": "R&B dance + sing-along classics",
-   "Past venues": "Neumos, Good Bar",
+   "Past venues": "Neumos, Legion Sports Bar",
    "Vibe": "Grown and sexy"
   },
   "stills": [
@@ -1335,6 +1361,7 @@
   "about": [
    "Saint Meadow came in with a creative vision for \"Can't Complain\" and secured the house where most of the video was shot. When the planned house-party concept couldn't happen on the day, Reelclip reworked it on location into a darker, performance-driven film."
   ],
+  "aboutSections": [],
   "facts": {
    "Artist": "Saint Meadow (Rell Moore)",
    "Track": "\"Can't Complain\"",
@@ -1464,6 +1491,7 @@
   "about": [
    "\"My Life\" by TBG Kam Bino premiered on the Reel Clip YouTube channel in March 2022. It was planned as a story told across several scenes; scheduling cut the shoot short, so the final film leans on performance, the overpass location and a dark, almost monochrome grade."
   ],
+  "aboutSections": [],
   "facts": {
    "Artist": "TBG Kam Bino",
    "Track": "\"My Life\"",
@@ -1594,6 +1622,7 @@
   "about": [
    "\"Ruthless\" by YoungCam206 premiered on the Reel Clip YouTube channel in July 2024, with more of his videos on his own YouTube channel, @YoungCam206."
   ],
+  "aboutSections": [],
   "facts": {
    "Artist": "YoungCam206",
    "Track": "\"Ruthless\"",
@@ -1720,6 +1749,7 @@
   "about": [
    "\"Chrome Hearts\" is named after the luxury jewelry and fashion house that has become a staple in hip-hop style. Rell Moore set the concept and a starting location, and the video was shot across Seattle in 2023, premiering on the Reel Clip YouTube channel that April."
   ],
+  "aboutSections": [],
   "facts": {
    "Artist": "Rell Moore (Saint Meadow)",
    "Instagram": "@rellmoore1221",
@@ -1851,6 +1881,7 @@
   "about": [
    "\"Street Runner\" by Tha Baby, produced by UJADEN, was shot at the Washington State Fair in Puyallup and premiered on the artist's own YouTube channel in May 2022. It's streaming on Apple Music."
   ],
+  "aboutSections": [],
   "facts": {
    "Artist": "Tha Baby",
    "Track": "\"Street Runner\"",
@@ -1972,6 +2003,7 @@
   "about": [
    "\"Different Time\" was filmed late at night around Tacoma and Spanaway, at a neighborhood 7-Eleven, on local streets and in a studio, with friends from the community in the group scenes. It premiered on the Reel Clip YouTube channel in November 2025."
   ],
+  "aboutSections": [],
   "facts": {
    "Artist": "SlotLifeBaby",
    "Instagram": "@slotlifebaby",
