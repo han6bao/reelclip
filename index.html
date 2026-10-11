@@ -711,6 +711,37 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 @keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 @media (prefers-reduced-motion:reduce){.hero-cue i{animation:none}}
 @media (max-width:760px){.hero-land{padding-block:28px 84px}.hero-land .hero-h{font-size:calc((100vw - 32px) / 12.7) !important}.hero-land .hero-ctas .pill-btn{min-height:52px}}
+/* one-minute quiz */
+.quiz-card{position:relative;margin-top:56px;padding:clamp(26px,4vw,48px);border-radius:22px;background:#151515;box-shadow:inset 0 0 0 1px var(--line);color:var(--on-dark,#F3EEE3)}
+.quiz-frog{position:absolute;right:clamp(16px,5%,56px);top:-58px;width:min(170px,34vw);height:auto;pointer-events:none}
+.quiz-eyebrow{display:block;font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--soft)}
+.quiz-h{margin:12px 0 0;font-size:clamp(34px,5.4vw,76px);font-weight:900;letter-spacing:-.045em;line-height:.92;color:var(--peri)}
+.quiz-sub{margin:14px 0 0;font-size:clamp(16px,1.4vw,19px);color:var(--muted)}
+.quiz-intro .pill-btn{margin-top:26px}
+.quiz-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.quiz-step{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--soft)}
+.quiz-bar{flex:1;max-width:240px;height:4px;border-radius:9px;background:var(--line);overflow:hidden}
+.quiz-bar i{display:block;height:100%;background:var(--peri);transition:width .35s}
+.quiz-q{margin:0 0 20px;font-size:clamp(26px,3.4vw,44px);font-weight:900;letter-spacing:-.035em;line-height:1;max-width:22ch}
+.quiz-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.quiz-opt{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:16px 18px;border-radius:14px;border:0;background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px var(--line);color:inherit;font:inherit;cursor:pointer;transition:box-shadow .15s,background .15s,transform .15s}
+.quiz-opt b{font-size:16.5px;font-weight:800}
+.quiz-opt span{font-size:14px;color:var(--soft);line-height:1.4}
+.quiz-opt:hover,.quiz-opt:focus-visible{background:rgba(141,162,219,.1);box-shadow:inset 0 0 0 2px var(--peri);outline:none;transform:translateY(-1px)}
+.quiz-back{margin-top:18px;background:none;border:0;padding:6px 0;color:var(--soft);font-family:var(--mono);font-size:12px;letter-spacing:.14em;cursor:pointer}
+.quiz-back:hover,.quiz-back:focus-visible{color:var(--ink);outline:none}
+.quiz-result{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+.quiz-result .quiz-eyebrow{color:var(--f-yellow)}
+.quiz-pick{margin:10px 0 0;font-size:clamp(36px,5vw,68px);font-weight:900;letter-spacing:-.045em;line-height:.92;color:var(--peri)}
+.quiz-why{margin:16px 0 0;font-size:17px;line-height:1.55;color:var(--muted);max-width:52ch}
+.quiz-get{margin:0;padding:20px 22px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--line);list-style:none;display:grid;gap:9px;font-size:15px}
+.quiz-get li{display:flex;gap:10px}.quiz-get li::before{content:"";flex:none;width:7px;height:7px;margin-top:8px;border-radius:50%;background:var(--f-yellow)}
+.quiz-get-h{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--soft);margin-bottom:4px}
+.quiz-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.quiz-actions .ghost-btn{text-decoration:none}
+.quiz-also{margin-top:16px;font-size:14px;color:var(--soft)}.quiz-also a{color:var(--ink)}
+@media (max-width:760px){.quiz-result{grid-template-columns:1fr}.quiz-frog{top:-44px;width:120px}.quiz-opts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.quiz-opt,.quiz-bar i{transition:none}}
 </style>
 
 <header class="site">
@@ -799,6 +830,16 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
         <a class="tcard" href="/services/production-crew"><h3>Production crew + support</h3><p>Already have a creative plan? We bring the crew and the execution.</p><span class="tlink">EXPLORE →</span></a>
       </div>
       <div class="tier-more"><span class="mono">ALSO:</span><a href="/services/social-media-video">Social media content</a><a href="/services/music-videos">Music videos</a><a href="/services/content-partnerships">Ongoing content partnerships</a></div>
+      <div class="quiz-card" id="quiz">
+        <img class="quiz-frog" src="img/frog-lounge-pink.png" alt="" aria-hidden="true">
+        <div class="quiz-intro" id="quiz-intro">
+          <span class="quiz-eyebrow">NOT SURE WHERE TO START?</span>
+          <h3 class="quiz-h">TAKE THE ONE-MINUTE QUIZ.</h3>
+          <p class="quiz-sub">Four quick questions, one clear first step.</p>
+          <button type="button" class="pill-btn" id="quiz-start">START THE QUIZ <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="quiz-body" id="quiz-body" hidden aria-live="polite"></div>
+      </div>
       <div class="price-box">
         <div><h3>Every project starts with a conversation.</h3>
         <p>Projects typically start at $2,000, with custom quotes based on the creative direction, production needs, and final deliverables. Tell us what you're hoping to create and the budget you have in mind, and we'll explore what's possible together.</p></div>
@@ -1648,6 +1689,97 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     else dest = '#services';
     e.preventDefault(); location.hash = dest;
   });
+
+  // ---------- one-minute quiz ----------
+  (function(){
+    var card = document.getElementById('quiz'); if (!card) return;
+    var intro = document.getElementById('quiz-intro'), body = document.getElementById('quiz-body');
+    var Q = [
+      {k:'goal', q:'What do you want the video to do?', o:[
+        ['product','Launch a product','A new product, collection or drop'],
+        ['commercial','Run an ad or campaign','Get people to buy, book or visit'],
+        ['brand','Tell our story','Show the people and purpose behind the business'],
+        ['event','Cover an event','Recaps, interviews and photos from the day'],
+        ['corporate','Reach our team or partners','Recruiting, training, leadership or company news'],
+        ['social','Keep our socials going','Reels, TikToks and Shorts that hold attention'],
+        ['music','Release a song','A music video and rollout clips']]},
+      {k:'stage', q:'Where are you with the idea?', o:[
+        ['idea','Just an idea','Help me shape it into something'],
+        ['refs','Rough idea + references','I know the feel, need the plan'],
+        ['plan','Full plan or agency brief','I need a crew to execute it']]},
+      {k:'freq', q:'How often do you need video?', o:[
+        ['once','One project','Something specific, start to finish'],
+        ['few','A few times a year','Launches, seasons and events'],
+        ['monthly','Every month','A steady flow of fresh content']]},
+      {k:'budget', q:'Budget you have in mind?', o:[
+        ['Under $2,000','Under $2,000',''],
+        ['$2,000–$2,499','$2,000–$2,499',''],
+        ['$2,500–$4,999','$2,500–$4,999',''],
+        ['$5,000+','$5,000+',''],
+        ["I'd like guidance on budget",'Not sure yet','Help me figure out what makes sense']]}
+    ];
+    var SVC = {
+      commercial:{slug:'commercial-video-production', name:'Commercials + ad campaigns', form:'Commercial / ad campaign', why:'You want people to act. We build the concept, script and shoot around what you sell and who it’s for, then cut it for every platform.', get:['A hero commercial (15–60s)','Vertical cutdowns for Reels, TikTok + Shorts','Ad variations for testing']},
+      product:{slug:'product-video-production', name:'Product video + launches', form:'Product launch', why:'A launch needs one consistent look from first teaser to the last ad. We plan the hero film and the always-on assets together.', get:['A launch hero film','Teasers + countdown clips','Product-page loops + paid social set']},
+      brand:{slug:'brand-films', name:'A brand film', form:'Brand film', why:'A brand film shows who you are without sounding like an ad. It lives at the top of your website and keeps working for years.', get:['Website hero film (30–90s)','A longer story cut','Social teasers + stills']},
+      event:{slug:'event-videography', name:'Event coverage', form:'Event coverage', why:'Events don’t give second takes. We plan the must-have moments, cover the room and deliver the recap while people are still talking about it.', get:['Highlight recap (60–90s)','Vertical recaps for social','Interviews + event photos']},
+      corporate:{slug:'corporate-video-production', name:'Corporate video', form:'Corporate video', why:'Company video that still feels made with taste: clear messages, clean audio and graphics that make the information easy to follow.', get:['A polished hero video','Interview + training cuts','Captioned, accessible versions']},
+      social:{slug:'social-media-video', name:'Social media content', form:'Social media content', why:'We shoot vertical-first and plan batches, so one shoot day turns into weeks of posts that earn attention in the first second.', get:['Reels, TikToks + Shorts','Hook-driven edits with captions','Monthly batches if you want them']},
+      music:{slug:'music-videos', name:'A music video', form:'Music video + rollout', why:'Concept, direction, cinematography, edit and color, built to look as good as the record sounds, with clips for the rollout.', get:['The official music video','Vertical teasers + snippets','Thumbnail stills + BTS']},
+      crew:{slug:'production-crew', name:'Production crew + support', form:null, why:'The idea is done; what you need is execution. We bring and brief the crew, run the shoot and deliver to your specs on deadline.', get:['Videographers, audio + editors','On-site production management','Footage or finished edits, on time']},
+      partner:{slug:'content-partnerships', name:'An ongoing content partnership', form:null, why:'You need video regularly. One consistent team that knows your look and your people makes every project faster and stronger.', get:['A planned content calendar','Monthly or quarterly shoot days','Event coverage on call']}
+    };
+    var ans = {}, step = 0;
+    function keep(){ var t = card.getBoundingClientRect().top; if (t < 70 || t > innerHeight * .5) scrollTo({top: scrollY + t - 96, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); }
+    function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+    function pick(){
+      var base = SVC[ans.goal] || SVC.commercial;
+      if (ans.stage === 'plan') return {main:SVC.crew, alt:base, type:'crew', form:base.form};
+      if (ans.freq === 'monthly' || (ans.freq === 'few' && ans.goal === 'social')) return {main:SVC.partner, alt:base, type:'partnership', form:base.form};
+      return {main:base, alt:ans.freq === 'few' ? SVC.partner : null, type:'project', form:base.form};
+    }
+    function render(){
+      if (step >= Q.length) return result();
+      var q = Q[step];
+      body.innerHTML = '<div class="quiz-top"><span class="quiz-step">QUESTION '+(step+1)+' / '+Q.length+'</span><span class="quiz-bar"><i style="width:'+((step)/Q.length*100)+'%"></i></span></div>'+
+        '<h3 class="quiz-q" tabindex="-1" style="outline:none">'+esc(q.q)+'</h3><div class="quiz-opts">'+
+        q.o.map(function(o){ return '<button type="button" class="quiz-opt" data-v="'+esc(o[0])+'"><b>'+esc(o[1])+'</b>'+(o[2]?'<span>'+esc(o[2])+'</span>':'')+'</button>'; }).join('')+'</div>'+
+        '<button type="button" class="quiz-back">'+(step ? '← BACK' : '← CLOSE')+'</button>';
+      var hq = body.querySelector('.quiz-q'); if (hq) hq.focus({preventScroll:true});
+    }
+    function result(){
+      var r = pick(), m = r.main;
+      body.innerHTML = '<div class="quiz-top"><span class="quiz-step">YOUR FIRST STEP</span><span class="quiz-bar"><i style="width:100%"></i></span></div>'+
+        '<div class="quiz-result"><div><span class="quiz-eyebrow">START WITH</span><h3 class="quiz-pick">'+esc(m.name.toUpperCase())+'.</h3><p class="quiz-why">'+esc(m.why)+'</p>'+
+        '<div class="quiz-actions"><button type="button" class="pill-btn" id="quiz-connect">LET\'S CONNECT →</button><a class="pill-btn ghost-btn" href="/services/'+m.slug+'">SEE WHAT\'S INCLUDED</a></div>'+
+        (r.alt ? '<p class="quiz-also">Also worth a look: <a href="/services/'+r.alt.slug+'">'+esc(r.alt.name)+'</a></p>' : '')+
+        '<button type="button" class="quiz-back" data-restart="1">↺ RETAKE THE QUIZ</button></div>'+
+        '<ul class="quiz-get"><li class="quiz-get-h" style="display:block">WHAT YOU\'D GET</li>'+m.get.map(function(g){ return '<li>'+esc(g)+'</li>'; }).join('')+'</ul></div>';
+      document.getElementById('quiz-connect').addEventListener('click', function(){
+        function setSel(id, text){ var el = document.getElementById(id); if (!el || !text) return; for (var i=0;i<el.options.length;i++){ if (el.options[i].value === text || el.options[i].text === text){ el.selectedIndex = i; return; } } }
+        setSel('rc-service', r.form || 'Not sure yet');
+        var t = document.getElementById('rc-type'); if (t) t.value = r.type;
+        setSel('rc-budget', ans.budget);
+        var msg = document.getElementById('rc-msg');
+        if (msg && !msg.value.trim()){
+          var lab = function(qi){ var o = Q[qi].o.filter(function(x){ return x[0] === ans[Q[qi].k]; })[0]; return o ? o[1] : ''; };
+          msg.value = 'From the quiz: '+lab(0)+' · '+lab(1)+' · '+lab(2)+'. Suggested: '+m.name+'.\n\n';
+        }
+        location.hash = '#contact';
+      });
+    }
+    document.getElementById('quiz-start').addEventListener('click', function(){ ans = {}; step = 0; intro.hidden = true; body.hidden = false; render(); });
+    body.addEventListener('click', function(e){
+      var opt = e.target.closest('.quiz-opt');
+      if (opt){ ans[Q[step].k] = opt.getAttribute('data-v'); step++; render(); keep(); return; }
+      var back = e.target.closest('.quiz-back');
+      if (back){
+        if (back.getAttribute('data-restart')){ ans = {}; step = 0; render(); return; }
+        if (step === 0){ body.hidden = true; intro.hidden = false; document.getElementById('quiz-start').focus({preventScroll:true}); return; }
+        step--; render();
+      }
+    });
+  })();
   casesReady = true;
   route();
 
