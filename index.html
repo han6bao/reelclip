@@ -78,7 +78,7 @@
 
 
 <style>
-.hero-kicker{display:block;font-family:var(--mono);font-size:clamp(11px,1.1vw,13px);font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-bottom:18px;line-height:1.4}
+.hero-kicker{display:block;flex-basis:100%;font-family:var(--mono);font-size:clamp(11px,1.1vw,13px);font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);margin-bottom:18px;line-height:1.4}
 .site-dir{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) 1.6fr;gap:28px;padding-block:8px 64px;text-align:left}
 @media (max-width:980px){.site-dir{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:560px){.site-dir{grid-template-columns:1fr}}
@@ -89,6 +89,48 @@
 .site-dir p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5}
 .dir-cities div{display:flex;flex-wrap:wrap;gap:6px 14px}
 .dir-more{margin-top:12px}.dir-more summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--ink);list-style:none}.dir-more summary::-webkit-details-marker{display:none}.dir-more summary::after{content:" \25BE";font-size:12px}.dir-more[open] summary::after{content:" \25B4"}.dir-more div{margin-top:12px}
+.hero-sub{max-width:720px;margin:22px auto 0;font-size:clamp(17px,1.6vw,21px);line-height:1.5;color:var(--muted)}
+.hero-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px}
+.ghost-btn{background:transparent !important;color:var(--ink) !important;box-shadow:inset 0 0 0 2px var(--line)}
+.ghost-btn:hover{box-shadow:inset 0 0 0 2px var(--ink)}
+.svc-head-line{font-size:clamp(34px,5.2vw,80px);letter-spacing:-.04em;line-height:.95;margin-top:14px;max-width:1100px}
+.svc-intro{max-width:720px;margin:22px 0 0;font-size:18px;line-height:1.55;color:var(--on-dark-soft)}
+.tier{display:grid;gap:18px;margin-top:18px;grid-template-columns:repeat(2,minmax(0,1fr))}
+.tier-1{margin-top:44px}
+@media (max-width:760px){.tier{grid-template-columns:1fr}}
+.tcard{display:flex;flex-direction:column;gap:10px;padding:26px;border-radius:16px;background:rgba(255,255,255,.03);box-shadow:inset 0 0 0 1px var(--line);border-top:3px solid var(--c,var(--line));color:var(--on-dark);text-decoration:none;transition:transform .2s}
+.tcard:hover{transform:translateY(-3px);color:var(--on-dark)}
+.tcard h3{margin:0;font-weight:900;letter-spacing:-.02em;line-height:1.02}
+.tier-1 .tcard{padding:34px;min-height:240px}
+.tier-1 .tcard h3{font-size:clamp(28px,3vw,42px)}
+.tier-2 .tcard h3{font-size:clamp(22px,2.2vw,30px)}
+.tier-3 .tcard{padding:20px 24px}
+.tier-3 .tcard h3{font-size:20px}
+.tcard p{margin:0;font-size:16px;line-height:1.5;color:var(--on-dark-soft);max-width:520px}
+.tier-3 .tcard p{font-size:15px}
+.tcard .tlink{margin-top:auto;font-size:12px;font-weight:900;letter-spacing:.12em;color:var(--c)}
+.tier-more{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;margin-top:22px;font-size:15px}
+.tier-more .mono{color:var(--soft)}
+.tier-more a{color:var(--on-dark-soft);text-decoration:underline;text-underline-offset:3px}
+.price-box{margin-top:56px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px;padding:32px;border-radius:18px;background:var(--f-yellow);color:#111}
+.price-box h3{margin:0;font-size:clamp(24px,2.6vw,34px);font-weight:900;letter-spacing:-.02em}
+.price-box p{margin:10px 0 0;max-width:720px;font-size:16px;line-height:1.5}
+.price-box .pill-btn{background:#111 !important;color:#F3EEE3 !important}
+.how-we-work{padding-block:96px 40px}
+.hww-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 48px;margin-top:28px}
+@media (max-width:760px){.hww-grid{grid-template-columns:1fr}}
+.hww-grid p{margin:0;font-size:18px;line-height:1.6;color:var(--muted)}
+.areas-line{margin:48px 0 0;padding-top:24px;border-top:1px solid var(--line);font-size:18px;font-weight:800}
+.areas-line span{display:block;font-weight:400;font-size:15px;color:var(--soft);margin-top:6px}
+.who-we-are{max-width:820px;margin:14px 0 0;font-size:clamp(19px,1.9vw,24px);line-height:1.5;color:var(--muted)}
+.team-wrap{display:grid;grid-template-columns:1.3fr minmax(220px,300px) 1fr;gap:28px;margin-top:40px;align-items:start}
+@media (max-width:900px){.team-wrap{grid-template-columns:1fr}.founder{max-width:320px}}
+.team-intro h3{margin:0;font-size:clamp(26px,2.8vw,38px);font-weight:900;letter-spacing:-.02em;line-height:1.05;color:var(--navy)}
+.team-intro p{margin:14px 0 0;font-size:17px;line-height:1.6}
+.founder{margin:0;display:flex;flex-direction:column;gap:12px}
+.collab-card{border-radius:16px;padding:24px;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;gap:10px}
+.collab-card p{margin:0;font-size:16px;line-height:1.5}
+body[data-route="contact"] .foot-invite{display:none !important}
 /* Layout: cream ground, black + navy bands, centered 1360px container; one-page site with hash routing */
 :root{
   --cream:#111111; --ink:#F3EEE3; --navy:#F3EEE3; --peri:#8DA2DB; --peri-text:#8DA2DB;
@@ -650,7 +692,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       <a href="#work" data-nav="work">WORK</a>
       <a href="#manifesto" data-nav="manifesto">MANIFESTO</a>
       <a href="#shop" data-nav="shop">SHOP</a>
-      <a href="#contact" class="cta">START A PROJECT</a>
+      <a href="#contact" class="cta">LET'S CONNECT</a>
     </nav>
   </div>
 </header>
@@ -661,9 +703,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   <section class="wrap" style="padding-block:48px 8px;text-align:center">
     <h1 class="big hero-h">
       <span class="hero-kicker">Seattle video production company · commercials, brand films + events</span>
-      <span style="color:var(--peri-text)">EVERYONE'S POSTING.</span>
-      <span style="color:var(--navy)">REELCLIP MAKES IT WORTH SEEING.</span>
+      <span style="color:var(--peri-text)">YOUR VISION,</span>
+      <span style="color:var(--navy)">CARED FOR LIKE OUR OWN.</span>
     </h1>
+    <p class="hero-sub">We create video content for businesses through close collaboration, thoughtful creative direction, and care for every detail, from the first conversation to the final delivery.</p>
+    <div class="hero-ctas"><a href="#contact" class="pill-btn">LET'S CONNECT</a><a href="#work" class="pill-btn ghost-btn">VIEW OUR WORK</a></div>
   </section>
 
   <!-- carousel -->
@@ -707,13 +751,39 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   <section class="band-dark" style="margin-top:120px">
     <img src="img/frog-lounge-green.png" alt="" style="position:absolute;right:6%;top:-82px;width:min(220px,40vw);height:auto">
     <div class="wrap" style="padding-block:88px">
-      <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap"><img src="img/runner-lb.png" alt="" class="runner-lg"><h2 class="big mega" style="">OUR SERVICES</h2></div>
-      <div class="svc-grid">
-        <div class="svc" style="border-top-color:var(--f-pink)"><div class="svc-head"><img src="img/runner-pink.png" alt="" class="runner-sm"><h3>BRAND CAMPAIGNS</h3></div><ul><li>Creative development</li><li>Treatments + moodboards</li><li>Scripts + storyboards</li><li>Commercial production</li><li>Campaign stills</li></ul></div>
-        <div class="svc" style="border-top-color:var(--f-yellow)"><div class="svc-head"><img src="img/runner-yellow.png" alt="" class="runner-sm"><h3>PRODUCT PROMOTION</h3></div><ul><li>Product promotion films</li><li>Product photo + video</li><li>Launch content + cutdowns</li></ul></div>
-        <div class="svc" style="border-top-color:var(--f-green)"><div class="svc-head"><img src="img/runner-green.png" alt="" class="runner-sm"><h3>MUSIC VIDEOS + ROLLOUTS</h3></div><ul><li>Music videos</li><li>Cover art + visualizers</li><li>Teasers + BTS</li><li>Scheduled content</li><li>Color + edit</li></ul></div>
+      <div class="eyebrow" style="color:var(--peri)">WHAT WE CREATE</div>
+      <h2 class="big svc-head-line">EVERYONE'S POSTING. <span style="color:var(--peri)">REELCLIP MAKES IT WORTH SEEING.</span></h2>
+      <p class="svc-intro">We create video content that brings your business and vision to life. Through thoughtful creative direction and quality production, we help express what matters to you and connect it with the people you want to reach.</p>
+      <div class="tier tier-1">
+        <a class="tcard" href="/services/commercial-video-production" style="--c:var(--f-pink)"><img src="img/runner-pink.png" alt="" class="runner-sm"><h3>Commercials + ad campaigns</h3><p>Campaigns and ads with a point of view, from concept and scripting to the final cut for every platform. Product launches can live inside a campaign.</p><span class="tlink">EXPLORE →</span></a>
+        <a class="tcard" href="/services/corporate-video-production" style="--c:var(--f-yellow)"><img src="img/runner-yellow.png" alt="" class="runner-sm"><h3>Corporate videos</h3><p>Company introductions, founder and employee interviews, recruiting and training videos, and recaps of your company events.</p><span class="tlink">EXPLORE →</span></a>
+      </div>
+      <div class="tier tier-2">
+        <a class="tcard" href="/services/product-video-production" style="--c:var(--f-green)"><h3>Product videos + launches</h3><p>Launch films, teasers and product content built to sell.</p><span class="tlink">EXPLORE →</span></a>
+        <a class="tcard" href="/services/event-videography" style="--c:var(--f-peri)"><h3>Event coverage</h3><p>Recaps, interviews and photography, including corporate event recaps.</p><span class="tlink">EXPLORE →</span></a>
+      </div>
+      <div class="tier tier-3">
+        <a class="tcard" href="/services/brand-films"><h3>Brand films</h3><p>The people and purpose behind your business, on film.</p></a>
+        <a class="tcard" href="/services/production-crew"><h3>Production crew + support</h3><p>Already have a creative plan? We bring the crew and the execution.</p></a>
+      </div>
+      <div class="tier-more"><span class="mono">ALSO:</span><a href="/services/social-media-video">Social media content</a><a href="/services/music-videos">Music videos</a><a href="/services/content-partnerships">Ongoing content partnerships</a></div>
+      <div class="price-box">
+        <div><h3>Every project starts with a conversation.</h3>
+        <p>Projects typically start at $2,000, with custom quotes based on the creative direction, production needs, and final deliverables. Tell us what you're hoping to create and the budget you have in mind, and we'll explore what's possible together.</p></div>
+        <a href="#contact" class="pill-btn">LET'S CONNECT</a>
       </div>
     </div>
+  </section>
+
+  <!-- how we work -->
+  <section class="wrap how-we-work">
+    <div class="eyebrow" style="color:var(--peri)">HOW WE WORK</div>
+    <h2 class="big" style="font-size:clamp(34px,4.6vw,68px);letter-spacing:-.04em;margin-top:12px">WE START WITH A CONVERSATION.</h2>
+    <div class="hww-grid">
+      <p>We get to know you, your business, and what you hope to create. Then we shape the direction together and bring in the right team for your project: people who care about the work and take ownership of seeing it through.</p>
+      <p>We take on projects thoughtfully, making sure we have the time, people, and creative energy to give each one the attention it deserves.</p>
+    </div>
+    <p class="areas-line">Working across Seattle, Bellevue, Tacoma, and wherever your project takes us. <span>Serving surrounding Washington communities and open to traveling farther.</span></p>
   </section>
 </div>
 
@@ -743,13 +813,15 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 <div class="page" data-page="manifesto" hidden>
   <section class="wrap" style="padding-block:56px 96px;position:relative">
     <img src="img/frog-stack-color.png" alt="" style="position:absolute;right:32px;top:40px;width:min(300px,30vw);height:auto">
-    <div class="eyebrow" style="color:var(--peri-text)">THE MANIFESTO</div>
-    <h2 class="big" style="margin-top:16px;max-width:820px;font-size:clamp(32px,4.4vw,64px);color:var(--navy);letter-spacing:-.04em">WE'D RATHER MAKE FEWER THINGS, BETTER, WITH PEOPLE WE LIKE.</h2>
+    <div class="eyebrow" style="color:var(--peri-text)">WHO WE ARE</div>
+    <p class="who-we-are">Reelclip is a video production company built on care, creativity, and connection. From local businesses to established brands, we work with people who are putting something into the world, and bring our own passion and personal investment to helping them do it.</p>
+    <div class="eyebrow" style="color:var(--peri-text);margin-top:48px">THE MANIFESTO</div>
+    <h2 class="big" style="margin-top:16px;max-width:900px;font-size:clamp(32px,4.4vw,64px);color:var(--navy);letter-spacing:-.04em">THERE'S LIFE BEHIND EVERY BUSINESS. WE'RE HERE TO HELP PEOPLE SEE IT.</h2>
     <ol class="mlist">
-      <li><span class="tag" style="color:var(--f-pink)">01</span><div><h2>We build with people.</h2><p>Strong relationships come first. The work gets better when everyone on set actually knows each other.</p></div></li>
-      <li><span class="tag" style="color:var(--f-yellow)">02</span><div><h2>We curate something worth seeing.</h2><p>Taste over volume. If it doesn't stop the scroll, it doesn't leave the edit.</p></div></li>
-      <li><span class="tag" style="color:var(--f-green)">03</span><div><h2>We're selective, on purpose.</h2><p>Fewer clients, deeper work. We'd rather be your team for years than your vendor for a week.</p></div></li>
-      <li><span class="tag" style="color:var(--f-red)">04</span><div><h2>Joy, purpose, complete vision.</h2><p>Concept to final delivery under one roof, and it should feel good the whole way through.</p></div></li>
+      <li><span class="tag" style="color:var(--f-pink)">01</span><div><h2>Everyone has a story.</h2><p>Behind the finished product are people, unseen hours, and details someone cared enough to get right. We take time to understand the people we work with, what matters to them, and what they want to share.</p></div></li>
+      <li><span class="tag" style="color:var(--f-yellow)">02</span><div><h2>We create so people can be seen and heard.</h2><p>We want our videos to carry personality, feeling, and life. From a company introduction to a commercial or an event film, we look for the moments that help people connect.</p></div></li>
+      <li><span class="tag" style="color:var(--f-green)">03</span><div><h2>Your vision, cared for like our own.</h2><p>We bring a piece of ourselves to the work: our creativity, attention, and care. We shape the direction with you and bring together people who are personally invested in seeing it through.</p></div></li>
+      <li><span class="tag" style="color:var(--f-red)">04</span><div><h2>Our care carries through to the finish.</h2><p>We take on projects thoughtfully, giving each one the time and energy it deserves. We listen, communicate, and follow through so the care you feel in our conversations comes through in the final work.</p></div></li>
     </ol>
   </section>
 
@@ -757,13 +829,14 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     <div class="wrap" style="padding-block:88px">
       <div class="row-head">
         <h2 class="big mega" style=";color:var(--navy)">THE TEAM</h2>
-        <span style="font-size:15px;font-weight:800;letter-spacing:.04em"><span style="color:var(--f-pink)">#family</span> <span style="color:var(--f-green)">#workbesties</span></span>
       </div>
-      <div style="margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
-        <figure style="margin:0;display:flex;flex-direction:column;gap:12px"><div class="still" style="aspect-ratio:4/5"><span class="mono">[B&amp;W PORTRAIT]</span></div><figcaption><div style="font-size:20px;font-weight:900">[NAME]</div><div style="font-size:14px"><i class="team-dot" style="background:var(--f-pink)"></i>[Director / Founder]</div></figcaption></figure>
-        <figure style="margin:0;display:flex;flex-direction:column;gap:12px"><div class="still" style="aspect-ratio:4/5"><span class="mono">[B&amp;W PORTRAIT]</span></div><figcaption><div style="font-size:20px;font-weight:900">[NAME]</div><div style="font-size:14px"><i class="team-dot" style="background:var(--f-yellow)"></i>[Producer]</div></figcaption></figure>
-        <figure style="margin:0;display:flex;flex-direction:column;gap:12px"><div class="still" style="aspect-ratio:4/5"><span class="mono">[B&amp;W PORTRAIT]</span></div><figcaption><div style="font-size:20px;font-weight:900">[NAME]</div><div style="font-size:14px"><i class="team-dot" style="background:var(--f-green)"></i>[DP / Editor]</div></figcaption></figure>
-        <figure style="margin:0;display:flex;flex-direction:column;gap:12px"><div class="still" style="aspect-ratio:4/5"><span class="mono">[B&amp;W PORTRAIT]</span></div><figcaption><div style="font-size:20px;font-weight:900">[NAME]</div><div style="font-size:14px"><i class="team-dot" style="background:var(--f-sky)"></i>[Creative / Social]</div></figcaption></figure>
+      <div class="team-wrap">
+        <div class="team-intro">
+          <h3>Reelclip begins with a personal connection.</h3>
+          <p>Led by our founder, we bring together filmmakers and creative collaborators around each project. We take time to understand your business, shape the direction with you, and assemble a team that cares about seeing it through.</p>
+        </div>
+        <figure class="founder"><div class="still" style="aspect-ratio:4/5"><span class="mono">[FOUNDER PORTRAIT]</span></div><figcaption><div style="font-size:22px;font-weight:900">Evelio Manzano</div><div style="font-size:14px"><i class="team-dot" style="background:var(--f-pink)"></i>Founder</div></figcaption></figure>
+        <div class="collab-card"><span class="mono">THE COLLABORATORS</span><p>Filmmakers, editors and creative collaborators, brought together for each project based on what it needs.</p></div>
       </div>
     </div>
   </section>
@@ -824,10 +897,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   <section class="wrap" style="padding-block:48px 120px;display:flex;flex-wrap:wrap;gap:64px">
     <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:28px">
       <h2 class="big" style="font-size:clamp(40px,5.4vw,92px);letter-spacing:-.04em;overflow-wrap:break-word">
-        <span style="color:var(--peri-text)">GOT AN IDEA?</span><br>
-        <span style="color:var(--navy)">LET'S BUILD IT TOGETHER.</span>
+        <span style="color:var(--peri-text)">WHAT YOU'RE BUILDING</span><br>
+        <span style="color:var(--navy)">MATTERS.</span>
       </h2>
-      <p style="margin:0;max-width:460px;font-size:18px;line-height:1.5;color:var(--muted)">We take on a small number of projects at a time. Tell us about yours and we'll get back within two business days.</p>
+      <p style="margin:0;max-width:460px;font-size:18px;line-height:1.5;color:var(--muted)">We'd love to hear about it. Tell us about your business, what matters to you, and how you'd like people to see it. We'll find the direction together.</p>
+      <p style="margin:0;max-width:460px;font-size:15px;line-height:1.5;color:var(--soft)">Projects typically start at $2,000, with custom quotes based on the creative direction, production needs, and final deliverables.</p>
       <div style="display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:700">
         <a href="mailto:thereelclip@gmail.com" style="color:var(--navy);text-decoration:none;user-select:all">thereelclip@gmail.com</a>
         <span>Seattle, WA</span>
@@ -851,10 +925,10 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
         <div class="field"><label for="rc-service">WHAT DO YOU NEED?</label>
           <select id="rc-service"><option>Commercial / ad campaign</option><option>Brand film</option><option>Product launch</option><option>Event coverage</option><option>Social media content</option><option>Corporate video</option><option>Music video + rollout</option><option>Not sure yet</option></select></div>
         <div class="field"><label for="rc-budget">BUDGET</label>
-          <select id="rc-budget"><option>$2,000 or under</option><option>$2,500</option><option>$5,000+</option><option>Other</option></select></div>
+          <select id="rc-budget"><option>Under $2,000</option><option>$2,000–$2,499</option><option>$2,500–$4,999</option><option>$5,000+</option><option>I'd like guidance on budget</option></select></div>
       </div>
       <div class="field"><label for="rc-msg">TELL US ABOUT IT</label><textarea id="rc-msg" rows="4" style="resize:vertical"></textarea></div>
-      <button type="submit" class="btn">SEND IT →</button>
+      <button type="submit" class="btn">LET'S CONNECT →</button>
       <input id="rc-website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <p id="form-note" class="sent" role="status" hidden></p>
     </form>
@@ -863,30 +937,24 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 </main>
 
 <footer class="cta-foot">
-  <div class="wrap" style="padding-block:96px 40px;display:flex;flex-direction:column;align-items:center;gap:28px;text-align:center;position:relative">
+  <div class="wrap foot-invite" style="padding-block:96px 40px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center;position:relative">
     <img src="img/frog-stack-color.png" alt="" style="width:150px;height:auto">
-    <h2 class="big" style="font-size:clamp(36px,6vw,88px);color:var(--navy)">got something worth seeing?</h2>
-    <a href="#contact" class="pill-btn big-pill">START TODAY</a>
-    <nav aria-label="Social" style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px;font-size:13px;font-weight:800;letter-spacing:.08em">
-      <a href="https://instagram.com" style="color:var(--ink)">INSTAGRAM</a>
-      <a href="https://vimeo.com" style="color:var(--ink)">VIMEO</a>
-      <a href="https://tiktok.com" style="color:var(--ink)">TIKTOK</a>
-      <a href="#shop" style="color:var(--f-yellow)">SHOP MERCH</a>
-    </nav>
+    <h2 class="big" style="font-size:clamp(36px,6vw,88px);color:var(--navy)">What you're building matters.</h2>
+    <p style="margin:0;max-width:560px;font-size:18px;line-height:1.5;color:var(--muted)">We'd love to hear about it. Tell us about your business, what matters to you, and how you'd like people to see it. We'll find the direction together.</p>
+    <a href="#contact" class="pill-btn big-pill">LET'S CONNECT</a>
   </div>
-  <nav class="site-dir wrap" aria-label="Site directory">
-    <div><h3>Services</h3><ul><li><a href="/services/commercial-video-production">Commercial Video Production</a></li><li><a href="/services/brand-films">Brand Films</a></li><li><a href="/services/product-video-production">Product Video Production</a></li><li><a href="/services/event-videography">Event Videography</a></li><li><a href="/services/social-media-video">Social Media Video</a></li><li><a href="/services/corporate-video-production">Corporate Video Production</a></li><li><a href="/services">All services →</a></li></ul></div>
-    <div><h3>Industries</h3><ul><li><a href="/industries/food-beverage">Food, Beverage + Spirits</a></li><li><a href="/industries/fashion-apparel">Fashion + Apparel</a></li><li><a href="/industries/automotive">Automotive + Exotic Cars</a></li><li><a href="/industries/corporate-events">Corporate Events + Brand Activations</a></li><li><a href="/industries/hospitality-nightlife">Hospitality + Nightlife</a></li><li><a href="/industries/music-entertainment">Music + Entertainment</a></li><li><a href="/industries/retail-brands">Retail, Consumer + Growing Brands</a></li><li><a href="/industries">All 100+ industries →</a></li></ul></div>
-    <div><h3>Case studies</h3><ul><li><a href="/work/turbotax-event-video-production">TurboTax</a></li><li><a href="/work/chilean-salmon-event-video">Chilean Salmon</a></li><li><a href="/work/nuwav-jacket-launch-commercial">NuWav</a></li><li><a href="/work/peristera-clothing-launch-campaign">Peristera</a></li><li><a href="/work/gerard-cycles-brand-film">Gerard Cycles</a></li><li><a href="/work/jacks-bbq-restaurant-commercial">Jack&#x27;s BBQ</a></li><li><a href="/work/lula-coffee-cafe-promo-video">Lula Coffee Co.</a></li><li><a href="/work/zadart-exotic-car-promo-video">Zadart</a></li><li><a href="/work">All work →</a></li></ul></div>
-    <div class="dir-cities"><h3>Seattle-based. Available across Washington.</h3><p>Commercial video production, event videography and branded content throughout Seattle, Bellevue, Tacoma and communities across the state.</p><div><a href="/locations/seattle">Seattle</a><a href="/locations/bellevue">Bellevue</a><a href="/locations/tacoma">Tacoma</a><a href="/locations/redmond">Redmond</a><a href="/locations/kirkland">Kirkland</a><a href="/locations/renton">Renton</a><a href="/locations/federal-way">Federal Way</a><a href="/locations/everett">Everett</a></div><details class="dir-more"><summary>35 more areas</summary><div><a href="/locations/kent">Kent</a><a href="/locations/tukwila">Tukwila</a><a href="/locations/seatac">SeaTac</a><a href="/locations/auburn">Auburn</a><a href="/locations/issaquah">Issaquah</a><a href="/locations/burien">Burien</a><a href="/locations/des-moines">Des Moines</a><a href="/locations/shoreline">Shoreline</a><a href="/locations/sammamish">Sammamish</a><a href="/locations/bothell">Bothell</a><a href="/locations/woodinville">Woodinville</a><a href="/locations/mercer-island">Mercer Island</a><a href="/locations/lakewood">Lakewood</a><a href="/locations/puyallup">Puyallup</a><a href="/locations/university-place">University Place</a><a href="/locations/gig-harbor">Gig Harbor</a><a href="/locations/sumner">Sumner</a><a href="/locations/spanaway">Spanaway</a><a href="/locations/fife">Fife</a><a href="/locations/lynnwood">Lynnwood</a><a href="/locations/edmonds">Edmonds</a><a href="/locations/mukilteo">Mukilteo</a><a href="/locations/mill-creek">Mill Creek</a><a href="/locations/marysville">Marysville</a><a href="/locations/arlington">Arlington</a><a href="/locations/olympia">Olympia</a><a href="/locations/lacey">Lacey</a><a href="/locations/tumwater">Tumwater</a><a href="/locations/bremerton">Bremerton</a><a href="/locations/silverdale">Silverdale</a><a href="/locations/bellingham">Bellingham</a><a href="/locations/leavenworth">Leavenworth</a><a href="/locations/yakima">Yakima</a><a href="/locations/spokane">Spokane</a><a href="/locations/vancouver-wa">Vancouver, WA</a></div></details>
-  </div>
+  <nav class="site-dir wrap" aria-label="Site links">
+    <div><h3>Services</h3><ul><li><a href="/services/commercial-video-production">Commercials + ad campaigns</a></li><li><a href="/services/corporate-video-production">Corporate videos</a></li><li><a href="/services/product-video-production">Product videos + launches</a></li><li><a href="/services/event-videography">Event coverage</a></li><li><a href="/services">All services →</a></li></ul></div>
+    <div><h3>Work</h3><ul><li><a href="/work/jacks-bbq-restaurant-commercial">Jack's BBQ</a></li><li><a href="/work/gerard-cycles-brand-film">Gerard Cycles</a></li><li><a href="/work/turbotax-tax-season-promo">TurboTax</a></li><li><a href="/work">All work →</a></li></ul></div>
+    <div><h3>Reelclip</h3><ul><li><a href="#manifesto">Manifesto + team</a></li><li><a href="#contact">Let's connect</a></li><li><a href="#shop">Shop merch</a></li><li><a href="mailto:thereelclip@gmail.com">thereelclip@gmail.com</a></li></ul></div>
+    <div class="dir-cities"><h3>Seattle-based</h3><p>Working across Seattle, Bellevue, Tacoma, and wherever your project takes us.</p></div>
   </nav>
   <div class="band-navy">
     <img src="img/frog-lounge-yellow.png" alt="" style="position:absolute;left:5%;top:-50px;width:130px;height:auto">
     <div class="wrap" style="padding-block:48px 28px;display:flex;flex-direction:column;gap:28px">
       <div class="footer-word">REELCLIP</div>
       <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12px;color:var(--peri)">
-        <span>Made with love in Seattle, WA. <span style="color:var(--f-pink)">#family</span> <span style="color:var(--f-green)">#workbesties</span></span><a href="mailto:thereelclip@gmail.com" style="color:inherit;text-decoration:none;user-select:all">thereelclip@gmail.com</a>
+        <span>Made with love in Seattle, WA.</span><a href="mailto:thereelclip@gmail.com" style="color:inherit;text-decoration:none;user-select:all">thereelclip@gmail.com</a>
       </div>
     </div>
   </div>
@@ -921,6 +989,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     var target = h === 'team' ? 'manifesto' : (h.indexOf('case-') === 0 ? 'case' : h);
     if (!document.querySelector('[data-page="'+target+'"]')) target = 'home';
     pages.forEach(function(p){ p.hidden = p.getAttribute('data-page') !== target; });
+    document.body.setAttribute('data-route', target);
     document.querySelectorAll('[data-nav]').forEach(function(a){
       var navKey = target === 'case' ? 'work' : target; a.classList.toggle('on', a.getAttribute('data-nav') === h || (h !== 'team' && a.getAttribute('data-nav') === navKey));
     });
@@ -981,7 +1050,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
                 "Jack Timmons welcoming guests under the neon Jack's BBQ sign in the dining room"],
      deliverables:'30-second commercial, shot in 4K',
      framesOnly:true,
-     credits:{'Featuring':'Jack Timmons, owner + pitmaster'},
+     creditList:[['Pre-production + planning','Reelclip'],['Production crew + editing coordination','Reelclip'],['Featuring','Jack Timmons, owner + pitmaster']],
      brief:"Show what regulars already know: real Texas barbecue, cooked over wood, in a room that feels like a neighborhood hangout.",
      line:"Come warm up with Southern hospitality and soul.",
      beats:[
@@ -1017,8 +1086,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   function slugify(t){ return String(t).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
   function projSlug(m){ return slugify(m.artist+'-'+m.song); }
   function mediaUrl(m){ return (m.file && !m.vimeo && !m.drive && !m.id) ? m.file : m.drive ? 'https://drive.google.com/file/d/'+m.drive+'/view' : m.vimeo ? 'https://vimeo.com/'+m.vimeo : 'https://www.youtube.com/watch?v='+m.id; }
-  // Homepage carousel order: Peristera, Jack's BBQ, Gerard Cycles, TurboTax, then music videos last.
-  var CAROUSEL = [MEDIA[2], MEDIA[3], MEDIA[5], MEDIA[4], VIDEOS[5], VIDEOS[0]];  // six slides
+  // Homepage carousel order: Jack's BBQ, Gerard Cycles, TurboTax first (approved featured work).
+  var CAROUSEL = [MEDIA[3], MEDIA[5], MEDIA[4], MEDIA[2], MEDIA[6], VIDEOS[0]];  // Jack's BBQ, Gerard Cycles, TurboTax first
   var labels = CAROUSEL.map(function(v){ return v.artist+' — '+v.song; });
   function esc(t){ return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
   function cover(v, i, size){
@@ -1067,14 +1136,16 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   // ---------- FEATURED WORK (by session type) ----------
   // Session types shown as tabs. Add more here (e.g. {key:'events', label:'Events'}).
   var SESSIONS = [
-    {key:'product', label:'Product Promotion'},
-    {key:'brand',   label:'Brand Campaigns'},
+    {key:'featured', label:'Featured'},
+    {key:'brand',   label:'Commercials + Campaigns'},
+    {key:'product', label:'Products + Launches'},
     {key:'events',  label:'Events'},
     {key:'music',   label:'Music Videos'}
   ];
   // Featured rows. Music videos point at the VIDEOS list by number (0 = first).
   // For new work: add client, title, kind, and paste the YouTube link into video and a still into img.
   var FEATURED = [
+    {session:'featured', m:3}, {session:'featured', m:5}, {session:'featured', m:4},
     {session:'music', v:0}, {session:'music', v:2}, {session:'music', v:3},
     {session:'brand', m:3},
     {session:'brand', m:4},
@@ -1088,11 +1159,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     {session:'events', m:10},
     {session:'events', m:11}
   ];
-  var sessionTabs = document.getElementById('session-tabs'), featList = document.getElementById('feat-list'), activeSession = 'product';
+  var sessionTabs = document.getElementById('session-tabs'), featList = document.getElementById('feat-list'), activeSession = 'featured';
   var playSm = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>';
   function featRow(f){
     var v = (typeof f.v === 'number') ? VIDEOS[f.v] : (typeof f.m === 'number' ? MEDIA[f.m] : null);
-    var kinds = {music:'Official music video', brand:'Brand campaign', events:'Event highlight', product:'Product promotion'};
+    var kinds = {music:'Official music video', brand:'Commercial campaign', events:'Event highlight', product:'Product promotion', featured:'Featured project'};
     var client = v ? v.artist : f.client, title = v ? v.song : f.title, kind = v ? (v.kind || kinds[f.session]) : f.kind;
     var link = v ? mediaUrl(v) : (f.video || '');
     var thumb;
@@ -1257,8 +1328,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   // ---------- WORK INDEX ----------
   // Industries shown as filters, in this order. Add or rename here.
   var INDUSTRIES = [
-    {key:'product',  label:'Product Promotion',   color:'var(--f-peach)'},
-    {key:'brand',    label:'Brand Campaigns',     color:'var(--f-sky)'},
+    {key:'brand',    label:'Commercials + Campaigns', color:'var(--f-sky)'},
+    {key:'product',  label:'Products + Launches',  color:'var(--f-peach)'},
     {key:'events',   label:'Events',              color:'var(--f-red)'},
     {key:'music',    label:'Music Videos',        color:'var(--f-peri)'}
   ];
@@ -1266,14 +1337,14 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   // and video to its YouTube link if there is one. Empty img shows an "asset coming" tile.
   // Example: {industry:'brand', client:'Client', title:'Title', type:'Brand campaign', year:'2026', img:'img/still.jpg', video:'https://vimeo.com/123'}
   var WORK = [];
+  WORK.push({industry:'brand', industryLabel:'Food + Hospitality', client:MEDIA[3].artist, title:MEDIA[3].song, type:'Commercial campaign', year:'2024', img:MEDIA[3].img, video:mediaUrl(MEDIA[3]), _v:MEDIA[3]});
   WORK.push({industry:'product', client:MEDIA[5].artist, title:MEDIA[5].song, type:'Brand film + website hero', year:'2026', img:MEDIA[5].img, video:mediaUrl(MEDIA[5]), _v:MEDIA[5]});
+  WORK.push({industry:'brand', client:MEDIA[4].artist, title:MEDIA[4].song, type:'Tax-season promo film', year:'2026', img:MEDIA[4].img, video:mediaUrl(MEDIA[4]), _v:MEDIA[4]});
   // Lula Coffee Co.: plays from Google Drive (see MEDIA[6]).
   WORK.push({industry:'product', client:MEDIA[6].artist, title:MEDIA[6].song, type:'Brand film + social ad', year:'2024', img:MEDIA[6].img, video:mediaUrl(MEDIA[6]), _v:MEDIA[6]});
   WORK.push({industry:'product', industryLabel:'Luxury + Exotic Car Rentals', client:MEDIA[7].artist, title:MEDIA[7].song, type:'Social ad campaign', year:'2026', img:MEDIA[7].img, video:'', _v:MEDIA[7]});
-  WORK.push({industry:'brand', client:MEDIA[4].artist, title:MEDIA[4].song, type:'Tax-season promo film', year:'2026', img:MEDIA[4].img, video:mediaUrl(MEDIA[4]), _v:MEDIA[4]});
   WORK.push({industry:'brand', industryLabel:'Fashion + Apparel', client:MEDIA[1].artist, title:MEDIA[1].song, type:'Jacket launch commercial', year:'2024', img:MEDIA[1].img, video:mediaUrl(MEDIA[1]), _v:MEDIA[1]});
   WORK.push({industry:'brand', industryLabel:'Fashion + Apparel', client:MEDIA[2].artist, title:MEDIA[2].song, type:'Launch campaign + reels', year:'', img:MEDIA[2].img, video:mediaUrl(MEDIA[2]), _v:MEDIA[2]});
-  WORK.push({industry:'brand', industryLabel:'Food + Hospitality', client:MEDIA[3].artist, title:MEDIA[3].song, type:'Commercial campaign', year:'2024', img:MEDIA[3].img, video:mediaUrl(MEDIA[3]), _v:MEDIA[3]});
   // Placeholders: videos coming soon (add the Vimeo link in video and a still in img once uploaded).
   WORK.push({industry:'brand', client:'Anthony Langdon', title:'Brand Video', type:'Brand video', year:'', img:'', video:''});
   WORK.push({industry:'brand', client:'Cerise', title:'Brand Video', type:'Brand video', year:'', img:'', video:''});
@@ -1310,9 +1381,14 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   var activeFilter = 'all';
   function renderWork(){
     var html = '';
+    var featured = WORK.slice(0, 3);  // Jack's BBQ, Gerard Cycles, TurboTax Tax Season Promo
+    if (activeFilter === 'all') {
+      html += '<section class="wk-group" aria-labelledby="wk-featured"><div class="wk-head"><h2 id="wk-featured"><i class="swatch" style="background:var(--f-yellow)"></i>Featured</h2>'+
+        '<span class="mono" style="color:var(--soft)">03 PROJECTS</span></div><div class="wk-grid">'+featured.map(workCard).join('')+'</div></section>';
+    }
     INDUSTRIES.forEach(function(ind){
       if (activeFilter !== 'all' && activeFilter !== ind.key) return;
-      var items = WORK.filter(function(w){ return w.industry===ind.key; });
+      var items = WORK.filter(function(w){ return w.industry===ind.key && (activeFilter !== 'all' || featured.indexOf(w) < 0); });
       if (!items.length) return;
       html += '<section class="wk-group" aria-labelledby="wk-'+ind.key+'">'+
         '<div class="wk-head"><h2 id="wk-'+ind.key+'"><i class="swatch" style="background:'+ind.color+'"></i>'+esc(ind.label)+'</h2>'+
@@ -1505,7 +1581,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     fetch('/api/contact', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(data)})
       .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if (!r.ok || !j.ok) throw new Error(j.error || 'send failed'); }); })
       .then(function(){ form.reset(); note.textContent = "Got it. We'll get back to you soon."; note.hidden = false; btn.textContent = 'SENT ✓'; })
-      .catch(function(){ note.innerHTML = 'That didn\u2019t go through. Email us at <a href="mailto:thereelclip@gmail.com">thereelclip@gmail.com</a> instead.'; note.hidden = false; btn.disabled = false; btn.textContent = 'SEND IT →'; });
+      .catch(function(){ note.innerHTML = 'That didn\u2019t go through. Email us at <a href="mailto:thereelclip@gmail.com">thereelclip@gmail.com</a> instead.'; note.hidden = false; btn.disabled = false; btn.textContent = 'LET\'S CONNECT →'; });
   });
 })();
 </script>

@@ -1,5 +1,99 @@
 [
  {
+  "slug": "jack-s-bbq-commercial-campaign",
+  "industry": "brand",
+  "industryLabel": "Food + Hospitality",
+  "client": "Jack's BBQ",
+  "title": "Commercial Campaign",
+  "titleFirst": false,
+  "type": "Commercial campaign",
+  "year": "2024",
+  "kind": "Commercial campaign",
+  "img": "img/jacks-bbq.jpg",
+  "poster": "img/jacks-still-02.jpg",
+  "vimeo": "1188290142",
+  "youtube": "",
+  "drive": "",
+  "file": "img/jacks-bbq.mp4",
+  "deliverables": "30-second commercial, shot in 4K",
+  "brief": "Show what regulars already know: real Texas barbecue, cooked over wood, in a room that feels like a neighborhood hangout.",
+  "result": "A 30-second commercial shot in 4K for social, web and ads, built around the pitmaster, the crew and the community.",
+  "line": "Come warm up with Southern hospitality and soul.",
+  "approach": [],
+  "beats": [
+   {
+    "title": "The sign out front",
+    "text": "We open on the original SoDo roadhouse on Airport Way South.",
+    "img": "img/jacks-still-01.jpg"
+   },
+   {
+    "title": "Over the fire",
+    "text": "Owner and pitmaster Jack Timmons hangs brisket and house sausage over the open pit.",
+    "img": "img/jacks-still-02.jpg"
+   },
+   {
+    "title": "Into the room",
+    "text": "A tray of brisket heads inside to a full room of regulars raising a glass.",
+    "img": "img/jacks-still-06.jpg"
+   }
+  ],
+  "scope": [],
+  "creditList": [
+   [
+    "Pre-production + planning",
+    "Reelclip"
+   ],
+   [
+    "Production crew + editing coordination",
+    "Reelclip"
+   ],
+   [
+    "Featuring",
+    "Jack Timmons, owner + pitmaster"
+   ]
+  ],
+  "aboutShort": "Texas-style barbecue from Texan Jack Timmons, served across Washington since he opened the original SoDo roadhouse.",
+  "about": [
+   "Jack's BBQ is a Texas-style barbecue restaurant in Seattle, founded by Jack Timmons, who grew up in Texas, trained at Texas A&M's BBQ Summer Camp in 2012 and toured Central Texas barbecue before opening his first location. The original roadhouse in SoDo, on Airport Way South, is known for brisket cooked low and slow in offset smokers.",
+   "Brisket is the star of the menu, with breakfast tacos as a favorite bonus. Jack's has grown to several locations around Washington, including South Lake Union, Lakewood and Bellingham."
+  ],
+  "aboutSections": [],
+  "facts": {
+   "Owner": "Jack Timmons",
+   "Style": "Texas-style barbecue",
+   "Known for": "Brisket and breakfast tacos",
+   "Original location": "3924 Airport Way S, Seattle (SoDo)",
+   "Locations": "SoDo, South Lake Union, Lakewood, Bellingham and more"
+  },
+  "stills": [
+   "img/jacks-still-01.jpg",
+   "img/jacks-still-02.jpg",
+   "img/jacks-still-06.jpg",
+   "img/jacks-still-10.jpg",
+   "img/jacks-still-03.jpg",
+   "img/jacks-still-04.jpg",
+   "img/jacks-still-05.jpg",
+   "img/jacks-still-12.jpg",
+   "img/jacks-still-09.jpg",
+   "img/jacks-still-13.jpg",
+   "img/jacks-still-14.jpg"
+  ],
+  "stillAlts": [
+   "Jack's BBQ sign outside the original SoDo restaurant in Seattle",
+   "Owner and pitmaster Jack Timmons hanging brisket and house sausage over the fire",
+   "Friends raising margaritas in the Jack's BBQ dining room",
+   "A white classic Cadillac rolling up head-on outside Jack's BBQ in SoDo",
+   "Oysters, quail and steaks cooking over open flame on the Jack's BBQ grill",
+   "A cast-iron skillet catching fire over the coals",
+   "A Jack's BBQ cook carrying a tray of smoked brisket",
+   "House sausage and brisket hung on the smoker rack over the fire",
+   "Regulars laughing over plates of barbecue in a full Jack's BBQ dining room",
+   "Glowing oak coals and a split log in the Jack's BBQ firebox",
+   "Jack Timmons welcoming guests under the neon Jack's BBQ sign in the dining room"
+  ],
+  "films": []
+ },
+ {
   "slug": "gerard-cycles-brand-film",
   "industry": "product",
   "industryLabel": "",
@@ -71,6 +165,91 @@
    "Launched": "April 2026",
    "Website": "gerardcycles.com",
    "Instagram": "@gerardcycles"
+  },
+  "stills": [],
+  "stillAlts": [],
+  "films": []
+ },
+ {
+  "slug": "turbotax-tax-season-promo",
+  "industry": "brand",
+  "industryLabel": "",
+  "client": "TurboTax",
+  "title": "Tax Season Promo",
+  "titleFirst": false,
+  "type": "Tax-season promo film",
+  "year": "2026",
+  "kind": "Tax-season promo film",
+  "img": "img/turbotax.jpg",
+  "poster": "",
+  "vimeo": "1186140040",
+  "youtube": "",
+  "drive": "",
+  "file": "",
+  "deliverables": "About 60-second promotional video",
+  "brief": "Capture the energy of a TurboTax tax-season street team as it hits the city, with the branded gear, the promo vehicle and the people it meets.",
+  "result": "A roughly 60-second promo that documents the campaign from flyers and storefront visits to street conversations, made by a two-person crew in an unpredictable, live setting.",
+  "line": "Capturing a campaign in motion, from the people behind it to the communities it reaches.",
+  "approach": [],
+  "beats": [
+   {
+    "title": "No storyboard, just priorities",
+    "text": "Minimal preproduction and no formal storyboard. We worked from the client's shot list and reacted to what happened in real time.",
+    "img": ""
+   },
+   {
+    "title": "Two cameras, one plan",
+    "text": "The lead videographer directed on site and tracked every requested shot, while a second camera grabbed supporting B-roll.",
+    "img": ""
+   },
+   {
+    "title": "Cut fast, graded clean",
+    "text": "Edited and color graded into a short, punchy promo that keeps the pace of the day.",
+    "img": ""
+   }
+  ],
+  "scope": [
+   "On-site production direction",
+   "Primary + secondary cinematography",
+   "Live shot coordination",
+   "Branded merch + vehicle coverage",
+   "Community engagement footage",
+   "Supporting B-roll",
+   "Editing + color grading",
+   "Short-form promo delivery"
+  ],
+  "creditList": [
+   [
+    "On-site direction",
+    "Reelclip"
+   ],
+   [
+    "Primary camera + shot coordination",
+    "Reelclip"
+   ],
+   [
+    "Second camera",
+    "Tadashi Garvida (@ghostboy.mov)",
+    "https://www.instagram.com/ghostboy.mov/"
+   ],
+   [
+    "Edit + color",
+    "Tadashi Garvida (@ghostboy.mov)",
+    "https://www.instagram.com/ghostboy.mov/"
+   ]
+  ],
+  "aboutShort": "TurboTax is Intuit's tax software, and this tax-season street team took the brand out to local businesses and neighbors in person.",
+  "about": [
+   "TurboTax is Intuit's tax software, used by millions of people to file every year, with in-person stores and local tax experts around the Seattle area.",
+   "For tax season, a TurboTax street marketing team hit the city in branded apparel and a promo vehicle, handing out flyers, stopping into local businesses and talking with people along the way."
+  ],
+  "aboutSections": [],
+  "facts": {
+   "Brand": "TurboTax (Intuit)",
+   "Campaign": "Tax-season street activation",
+   "Area": "Renton, WA",
+   "Crew": "Two-person production team",
+   "Style": "Run-and-gun"
   },
   "stills": [],
   "stillAlts": [],
@@ -319,91 +498,6 @@
   "films": []
  },
  {
-  "slug": "turbotax-tax-season-promo",
-  "industry": "brand",
-  "industryLabel": "",
-  "client": "TurboTax",
-  "title": "Tax Season Promo",
-  "titleFirst": false,
-  "type": "Tax-season promo film",
-  "year": "2026",
-  "kind": "Tax-season promo film",
-  "img": "img/turbotax.jpg",
-  "poster": "",
-  "vimeo": "1186140040",
-  "youtube": "",
-  "drive": "",
-  "file": "",
-  "deliverables": "About 60-second promotional video",
-  "brief": "Capture the energy of a TurboTax tax-season street team as it hits the city, with the branded gear, the promo vehicle and the people it meets.",
-  "result": "A roughly 60-second promo that documents the campaign from flyers and storefront visits to street conversations, made by a two-person crew in an unpredictable, live setting.",
-  "line": "Capturing a campaign in motion, from the people behind it to the communities it reaches.",
-  "approach": [],
-  "beats": [
-   {
-    "title": "No storyboard, just priorities",
-    "text": "Minimal preproduction and no formal storyboard. We worked from the client's shot list and reacted to what happened in real time.",
-    "img": ""
-   },
-   {
-    "title": "Two cameras, one plan",
-    "text": "The lead videographer directed on site and tracked every requested shot, while a second camera grabbed supporting B-roll.",
-    "img": ""
-   },
-   {
-    "title": "Cut fast, graded clean",
-    "text": "Edited and color graded into a short, punchy promo that keeps the pace of the day.",
-    "img": ""
-   }
-  ],
-  "scope": [
-   "On-site production direction",
-   "Primary + secondary cinematography",
-   "Live shot coordination",
-   "Branded merch + vehicle coverage",
-   "Community engagement footage",
-   "Supporting B-roll",
-   "Editing + color grading",
-   "Short-form promo delivery"
-  ],
-  "creditList": [
-   [
-    "On-site direction",
-    "Reelclip"
-   ],
-   [
-    "Primary camera + shot coordination",
-    "Reelclip"
-   ],
-   [
-    "Second camera",
-    "Tadashi Garvida (@ghostboy.mov)",
-    "https://www.instagram.com/ghostboy.mov/"
-   ],
-   [
-    "Edit + color",
-    "Tadashi Garvida (@ghostboy.mov)",
-    "https://www.instagram.com/ghostboy.mov/"
-   ]
-  ],
-  "aboutShort": "TurboTax is Intuit's tax software, and this tax-season street team took the brand out to local businesses and neighbors in person.",
-  "about": [
-   "TurboTax is Intuit's tax software, used by millions of people to file every year, with in-person stores and local tax experts around the Seattle area.",
-   "For tax season, a TurboTax street marketing team hit the city in branded apparel and a promo vehicle, handing out flyers, stopping into local businesses and talking with people along the way."
-  ],
-  "aboutSections": [],
-  "facts": {
-   "Brand": "TurboTax (Intuit)",
-   "Campaign": "Tax-season street activation",
-   "Area": "Renton, WA",
-   "Crew": "Two-person production team",
-   "Style": "Run-and-gun"
-  },
-  "stills": [],
-  "stillAlts": [],
-  "films": []
- },
- {
   "slug": "nuwav-jacket-launch-commercial",
   "industry": "brand",
   "industryLabel": "Fashion + Apparel",
@@ -635,87 +729,6 @@
    "Model in sunglasses wearing a black Peristera crewneck with the dove and NOT MONEY back print",
    "Masked model in a charcoal hoodie and black gloves against a white wall",
    "Model in a lime ski mask wearing a cream S4NT GEAR crewneck with a sleeve print"
-  ],
-  "films": []
- },
- {
-  "slug": "jack-s-bbq-commercial-campaign",
-  "industry": "brand",
-  "industryLabel": "Food + Hospitality",
-  "client": "Jack's BBQ",
-  "title": "Commercial Campaign",
-  "titleFirst": false,
-  "type": "Commercial campaign",
-  "year": "2024",
-  "kind": "Commercial campaign",
-  "img": "img/jacks-bbq.jpg",
-  "poster": "img/jacks-still-02.jpg",
-  "vimeo": "1188290142",
-  "youtube": "",
-  "drive": "",
-  "file": "img/jacks-bbq.mp4",
-  "deliverables": "30-second commercial, shot in 4K",
-  "brief": "Show what regulars already know: real Texas barbecue, cooked over wood, in a room that feels like a neighborhood hangout.",
-  "result": "A 30-second commercial shot in 4K for social, web and ads, built around the pitmaster, the crew and the community.",
-  "line": "Come warm up with Southern hospitality and soul.",
-  "approach": [],
-  "beats": [
-   {
-    "title": "The sign out front",
-    "text": "We open on the original SoDo roadhouse on Airport Way South.",
-    "img": "img/jacks-still-01.jpg"
-   },
-   {
-    "title": "Over the fire",
-    "text": "Owner and pitmaster Jack Timmons hangs brisket and house sausage over the open pit.",
-    "img": "img/jacks-still-02.jpg"
-   },
-   {
-    "title": "Into the room",
-    "text": "A tray of brisket heads inside to a full room of regulars raising a glass.",
-    "img": "img/jacks-still-06.jpg"
-   }
-  ],
-  "scope": [],
-  "creditList": [],
-  "aboutShort": "Texas-style barbecue from Texan Jack Timmons, served across Washington since he opened the original SoDo roadhouse.",
-  "about": [
-   "Jack's BBQ is a Texas-style barbecue restaurant in Seattle, founded by Jack Timmons, who grew up in Texas, trained at Texas A&M's BBQ Summer Camp in 2012 and toured Central Texas barbecue before opening his first location. The original roadhouse in SoDo, on Airport Way South, is known for brisket cooked low and slow in offset smokers.",
-   "Brisket is the star of the menu, with breakfast tacos as a favorite bonus. Jack's has grown to several locations around Washington, including South Lake Union, Lakewood and Bellingham."
-  ],
-  "aboutSections": [],
-  "facts": {
-   "Owner": "Jack Timmons",
-   "Style": "Texas-style barbecue",
-   "Known for": "Brisket and breakfast tacos",
-   "Original location": "3924 Airport Way S, Seattle (SoDo)",
-   "Locations": "SoDo, South Lake Union, Lakewood, Bellingham and more"
-  },
-  "stills": [
-   "img/jacks-still-01.jpg",
-   "img/jacks-still-02.jpg",
-   "img/jacks-still-06.jpg",
-   "img/jacks-still-10.jpg",
-   "img/jacks-still-03.jpg",
-   "img/jacks-still-04.jpg",
-   "img/jacks-still-05.jpg",
-   "img/jacks-still-12.jpg",
-   "img/jacks-still-09.jpg",
-   "img/jacks-still-13.jpg",
-   "img/jacks-still-14.jpg"
-  ],
-  "stillAlts": [
-   "Jack's BBQ sign outside the original SoDo restaurant in Seattle",
-   "Owner and pitmaster Jack Timmons hanging brisket and house sausage over the fire",
-   "Friends raising margaritas in the Jack's BBQ dining room",
-   "A white classic Cadillac rolling up head-on outside Jack's BBQ in SoDo",
-   "Oysters, quail and steaks cooking over open flame on the Jack's BBQ grill",
-   "A cast-iron skillet catching fire over the coals",
-   "A Jack's BBQ cook carrying a tray of smoked brisket",
-   "House sausage and brisket hung on the smoker rack over the fire",
-   "Regulars laughing over plates of barbecue in a full Jack's BBQ dining room",
-   "Glowing oak coals and a split log in the Jack's BBQ firebox",
-   "Jack Timmons welcoming guests under the neon Jack's BBQ sign in the dining room"
   ],
   "films": []
  },

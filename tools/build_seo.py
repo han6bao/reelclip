@@ -89,7 +89,7 @@ def head(title, desc, path, img='img/ev-tt.jpg', schema=None, robots='index,foll
   <a class="logo" href="/" aria-label="Reelclip home"><img src="/img/frog-stack-color.png" alt="" width="44" height="40"><span>REELCLIP</span></a>
   <nav class="main" aria-label="Main">
     <a href="/work">WORK</a><a href="/services">SERVICES</a><a href="/industries">INDUSTRIES</a><a href="/locations">LOCATIONS</a>
-    <a href="/#contact" class="cta">START A PROJECT</a>
+    <a href="/#contact" class="cta">LET'S CONNECT</a>
   </nav>
 </div></header>
 <main id="main" class="wrap">
@@ -132,9 +132,9 @@ document.addEventListener('click',function(ev){{var b=ev.target.closest('[data-e
 </html>
 '''
 
-def cta_band(title="Let's make something worth watching.", text="Tell us what you're building. We'll come back with ideas, a plan and a quote."):
+def cta_band(title="What you're building matters.", text="We'd love to hear about it. Tell us about your business, what matters to you, and how you'd like people to see it. We'll find the direction together."):
     return f'''<section><div class="cta-band"><div><h2>{e(title)}</h2><p>{e(text)}</p></div>
-<a class="btn" href="/#contact">START A PROJECT →</a></div></section>'''
+<a class="btn" href="/#contact">LET'S CONNECT →</a></div></section>'''
 
 PATHS = f'''<section><div class="section-head"><h2>How we can work together</h2></div>
 <div class="paths">
@@ -174,7 +174,7 @@ def build_services():
     c, cs = crumbs([("Home", "/"), ("Services", None)])
     body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>Production services</p><h1>Video production services in Seattle</h1>
 <p class="lede">Commercials, brand films, product launches, event coverage, social content, corporate video and music videos, from concept to final delivery, for businesses across Washington.</p>
-<div class="ctas"><a class="btn" href="/#contact">START A PROJECT →</a><a class="btn ghost" href="/work">SEE THE WORK</a></div></div>
+<div class="ctas"><a class="btn" href="/#contact">LET'S CONNECT →</a><a class="btn ghost" href="/work">SEE THE WORK</a></div></div>
 <section><div class="grid g3">{cards}</div></section>{PATHS}{cta_band()}'''
     write('/services/', head("Video Production Services in Seattle | Reelclip",
         "Reelclip's Seattle video production services: commercials, brand films, product launches, event videography, social, corporate and music videos.",
@@ -191,7 +191,7 @@ def build_services():
                   "description": s['desc'], "provider": {"@id": SITE + "/#org", "@type": "ProfessionalService", "name": "Reelclip", "url": SITE + "/"},
                   "areaServed": ORG['areaServed'], "url": SITE + "/services/" + s['slug']}]
         body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>{e(s["short"])}</p><h1>{e(s["h1"])}</h1><p class="lede">{e(s["lede"])}</p>
-<div class="ctas"><a class="btn" href="/#contact">START A PROJECT →</a>{'<a class="btn ghost" href="#work">SEE EXAMPLES</a>' if s['work'] else '<a class="btn ghost" href="/work">SEE OUR WORK</a>'}</div>
+<div class="ctas"><a class="btn" href="/#contact">LET'S CONNECT →</a>{'<a class="btn ghost" href="#work">SEE EXAMPLES</a>' if s['work'] else '<a class="btn ghost" href="/work">SEE OUR WORK</a>'}</div>
 <div class="hero-media"><img src="/{e(img)}" alt="{e(s["name"])} by Reelclip" width="1600" height="900" fetchpriority="high"></div></div>
 <section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px">{"".join(f"<p class=muted>{e(p)}</p>" for p in s["intro"])}</div>
 <div class="card"><h3>What's included</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in s["includes"])}</ul></div></section>
@@ -310,7 +310,7 @@ def build_industries():
     total = len(NICHES) + len(ALIASES)
     body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>Industries</p><h1>Video production for every industry</h1>
 <p class="lede">From restaurants and law firms to biotech, pickleball clubs and private jets: {total}+ industries, one creative production team, available across Washington.</p>
-<div class="ctas"><a class="btn" href="/#contact">START A PROJECT \u2192</a><a class="btn ghost" href="#all">FIND YOUR INDUSTRY</a></div></div>
+<div class="ctas"><a class="btn" href="/#contact">LET'S CONNECT \u2192</a><a class="btn ghost" href="#all">FIND YOUR INDUSTRY</a></div></div>
 <section><div class="grid g3">{cards}</div></section>
 <section id="all"><div class="section-head"><h2>Every industry we serve</h2></div><div class="grid g2" style="gap:36px 28px">{groups}</div></section>{cta_band()}'''
     write('/industries/', head("Video Production for Every Industry | Washington | Reelclip",
@@ -327,7 +327,7 @@ def build_industries():
         svc = ''.join(f'<a class="card" href="/services/{s}"><span class="tag">Service</span><h3>{e(SVC[s]["name"])}</h3><p>{e(SVC[s]["lede"])}</p></a>' for s in i['services'])
         locs = ''.join(f'<a href="/locations/{ct}">{e(i["name"].split(",")[0])} video in {e(CITY[ct]["name"])}</a>' for ct in i['cities'] if ct in CITY)
         body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>{e(i["name"])}</p><h1>{e(i["h1"])}</h1><p class="lede">{e(i["lede"])}</p>
-<div class="ctas"><a class="btn" href="/#contact">START A PROJECT →</a><a class="btn ghost" href="#work">SEE THE WORK</a></div>
+<div class="ctas"><a class="btn" href="/#contact">LET'S CONNECT →</a><a class="btn ghost" href="#work">SEE THE WORK</a></div>
 {shero}<p class="mono" style="color:var(--soft);margin-top:-8px">{("EXAMPLE HERO FILM: " if sexample else "WATCH: ") + e(wname(WORK[swork[0]]).upper())}</p></div>
 <section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px">{"".join(f"<p class=muted>{e(p)}</p>" for p in i["intro"])}</div>
 <div class="card"><h3>What we make</h3><ul class="ticks">{"".join(f"<li>{e(x)}</li>" for x in i["makes"])}</ul></div></section>
@@ -369,7 +369,7 @@ def build_niches():
         faqs = [(f"Do you make video for {low}?", x['line'] + " Reelclip is based in Seattle and works across Washington."),
                 (f"What kind of videos do {low} need?", "Most start with " + ', '.join(i.lower() for i in x['ideas'][:-1]) + f" and {x['ideas'][-1].lower()}, then add vertical cutdowns for social. We'll recommend the right mix for your goals and budget."),
                 sec['faqs'][0],
-                (f"How much does video for {low} cost?", "It depends on scope: shoot days, crew, locations and how many deliverables you need. Share your budget range on the project form and we'll design the strongest version that fits it.")]
+                (f"How much does video for {low} cost?", "Projects typically start at $2,000, with custom quotes based on the creative direction, production needs, and final deliverables. Tell us what you're hoping to create and the budget you have in mind, and we'll explore what's possible together.")]
         title = f"Video Production for {nm} | Seattle + Washington | Reelclip"
         if len(title) > 70: title = f"{nm} Video Production | Reelclip"
         desc = f"{x['line']} Seattle-based Reelclip makes video for {low} across Washington."
@@ -380,7 +380,7 @@ def build_niches():
                   "areaServed": {"@type": "State", "name": "Washington"}, "url": SITE + path}]
         body = f"""{c}<div class="hero"><p class="eyebrow"><i></i>{e(sec["name"])}</p><h1>Video production for {e(low)}</h1>
 <p class="lede">{e(x["line"])}</p>
-<div class="ctas"><a class="btn" href="/#contact">START A PROJECT \u2192</a><a class="btn ghost" href="#work">{"SEE AN EXAMPLE" if example else "SEE RELATED WORK"}</a></div>
+<div class="ctas"><a class="btn" href="/#contact">LET'S CONNECT \u2192</a><a class="btn ghost" href="#work">{"SEE AN EXAMPLE" if example else "SEE RELATED WORK"}</a></div>
 {hero}<p class="mono" style="color:var(--soft);margin-top:-8px">{("EXAMPLE HERO FILM: " if example else "WATCH: ") + e(wname(WORK[ws[0]]).upper())}</p></div>
 <section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px"><h2>Video made for {e(low)}</h2><p class="muted">{e(sec["intro"][0])}</p><p class="muted">{e(sec["intro"][1])}</p></div>
 <div class="card"><h3>What we make for {e(low)}</h3><ul class="ticks">{"".join(f"<li>{e(m)}</li>" for m in makes)}</ul></div></section>
@@ -390,7 +390,7 @@ def build_niches():
 {PATHS}
 <section><p class="mono" style="color:var(--soft);margin-bottom:12px">{e(nm.upper())} VIDEO ACROSS WASHINGTON</p><div class="chips">{locs}<a href="/locations">All areas \u2192</a></div>
 <p class="mono" style="color:var(--soft);margin:22px 0 12px">MORE IN {e(sec["name"].upper())}</p><div class="chips"><a href="/industries/{sec["slug"]}">{e(sec["name"])}</a>{sib}</div></section>
-{cta_band(f"Let's make something for your {low.rstrip('s') if low.endswith('s') and not low.endswith('ss') else low} brand." if False else "Let's make something worth watching.", f"Tell us about your business and what you need. We make video for {low} across Washington.")}"""
+{cta_band()}"""
         write(path, head(title, desc, path, img, schema) + body + foot(), '0.6')
 
 # ---------- locations ----------
@@ -403,11 +403,11 @@ TIER_TEXT = {"home": "{n} is part of our home turf. We shoot here all the time, 
              "travel": "We take projects in {n} by arrangement. We don't mind the drive, and we'll build any travel into a clear quote up front."}
 SVC_LINES = {
   "commercial-video-production": "Commercials and ad campaigns for {n} businesses, built for social, web and paid media.",
-  "brand-films": "Brand and founder films that show who's behind your {n} business.",
+  "corporate-video-production": "Recruiting, training and leadership video for {n} companies and teams.",
   "product-video-production": "Launch videos and product content for brands based in or launching in {n}.",
   "event-videography": "Event recaps, interviews and photography for events and activations in {n}.",
+  "brand-films": "Brand and founder films that show who's behind your {n} business.",
   "social-media-video": "Reels, TikToks and ad creative for {n} brands that need a steady stream of content.",
-  "corporate-video-production": "Recruiting, training and leadership video for {n} companies and teams.",
 }
 
 def nearby(ct):
@@ -425,7 +425,7 @@ def build_locations():
     c, cs = crumbs([("Home", "/"), ("Locations", None)])
     body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>Areas served</p><h1>Seattle-based. Available across Washington.</h1>
 <p class="lede">Reelclip is based in Seattle and shoots across King, Pierce, Snohomish, Thurston and Kitsap counties, and anywhere in Washington by arrangement. We don't mind the drive.</p>
-<div class="ctas"><a class="btn" href="/#contact">START A PROJECT →</a></div></div>{secs}{cta_band()}'''
+<div class="ctas"><a class="btn" href="/#contact">LET'S CONNECT →</a></div></div>{secs}{cta_band()}'''
     write('/locations/', head("Areas Served | Video Production Across Washington | Reelclip",
         "Reelclip provides video production in Seattle, Bellevue, Tacoma, Federal Way, Tukwila, Everett, Olympia and cities across Washington.",
         '/locations', schema=[cs, {"@context": "https://schema.org", **ORG}]) + body + foot(), '0.8')
@@ -443,7 +443,7 @@ def build_locations():
         faqs = [(f"Do you offer video production in {n}?", TIER_TEXT[ct['tier']].format(n=n) + f" Reelclip is based in Seattle, {ct['route'] if ct['tier']!='home' or ct['slug']!='seattle' else 'and shoots all over the city'}."),
                 (f"What kinds of {n} businesses do you work with?", f"We make video for {', '.join(x.lower() for x in ct['biz'][:-1])} and {ct['biz'][-1].lower()} in {n}, plus brands anywhere that want to film here."),
                 (f"Can you film at our location in {n}?", "Yes. We film at offices, stores, restaurants, venues, warehouses and homes, and scout public locations when the story calls for it."),
-                ("How do we get a quote?", "Use the project form with your goals, timeline and budget range. We'll reply with questions, ideas and a clear quote.")]
+                ("How do we get a quote?", "Every project starts with a conversation. Projects typically start at $2,000, with custom quotes based on the creative direction, production needs, and final deliverables. Tell us what you're hoping to create and the budget you have in mind.")]
         did = (f"<p class=muted>Work we've filmed in {e(n)}: " + ', '.join(f'<a href="{wurl(k)}">{e(wname(WORK[k]))}</a>' for k in here) + ".</p>") if here else ''
         schema = [cs, faq_schema(faqs), {"@context": "https://schema.org", "@type": "Service", "name": f"Video production in {nwa}", "serviceType": "Video production",
                   "provider": {"@id": SITE + "/#org", "@type": "ProfessionalService", "name": "Reelclip", "url": SITE + "/"},
@@ -453,7 +453,7 @@ def build_locations():
         desc = f"Video production in {nwa} from Seattle's Reelclip: commercials, brand films, product launches, events and social content for {n} businesses."
         body = f'''{c}<div class="hero"><p class="eyebrow"><i></i>{e(ct["county"])}</p><h1>Video production in {e(nwa)}</h1>
 <p class="lede">Commercials, brand films, product launches, events and social content for {e(n)} businesses, from a Seattle team {e(ct["route"]) if ct["slug"]!="seattle" else "that calls this city home"}.</p>
-<div class="ctas"><a class="btn" href="/#contact">START A PROJECT IN {e(n.upper())} →</a><a class="btn ghost" href="/work">SEE THE WORK</a></div>
+<div class="ctas"><a class="btn" href="/#contact">LET'S CONNECT →</a><a class="btn ghost" href="/work">SEE THE WORK</a></div>
 <div class="hero-media"><img src="/{e(img)}" alt="{e(("A Reelclip shoot in " + n) if biz_here else "A still from a Reelclip production")}" width="1600" height="900" fetchpriority="high"></div></div>
 <section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px"><h2>Video for {e(n)} businesses</h2><p class="muted">{e(ct["angle"])}</p>
 <p class="muted">{e(TIER_TEXT[ct["tier"]].format(n=n))}</p>{did}</div>
@@ -465,7 +465,7 @@ def build_locations():
 <section><div class="section-head"><h2>{e(n)} video production questions</h2></div>{faq_html(faqs)}</section>
 {PATHS}
 <section><p class="mono" style="color:var(--soft);margin-bottom:12px">NEARBY AREAS</p><div class="chips">{near}<a href="/locations">All areas →</a></div></section>
-{cta_band(f"Planning a shoot in {n}?", "Tell us what you're making and when. We'll come back with a plan and a quote.")}'''
+{cta_band()}'''
         write('/locations/' + ct['slug'] + '/', head(title, desc, '/locations/' + ct['slug'], img, schema) + body + foot(), '0.7' if ct['tier'] != 'home' else '0.8')
 
 # what each service means for a city's local industries (used to make city x service pages specific)
@@ -510,7 +510,7 @@ def build_city_services():
                       "areaServed": {"@type": "City", "name": nwa}, "url": SITE + path}]
             body = f"""{c}<div class="hero"><p class="eyebrow"><i></i>{e(sv["short"])} · {e(ct["county"])}</p><h1>{e(sv["name"])} in {e(nwa)}</h1>
 <p class="lede">{e(SVC_LINES[sl].format(n=n))} {e(sv["lede"])}</p>
-<div class="ctas"><a class="btn" href="/#contact">START A PROJECT IN {e(n.upper())} →</a><a class="btn ghost" href="/services/{sl}">ABOUT {e(sv["short"].upper())}</a></div>
+<div class="ctas"><a class="btn" href="/#contact">LET'S CONNECT →</a><a class="btn ghost" href="/services/{sl}">ABOUT {e(sv["short"].upper())}</a></div>
 <div class="hero-media"><img src="/{e(img if here else alt_img)}" alt="{e(sv["name"])} by Reelclip" width="1600" height="900" fetchpriority="high"></div></div>
 <section class="grid g2"><div style="display:flex;flex-direction:column;gap:16px"><h2>{e(sv["name"])} for {e(n)} businesses</h2>
 <p class="muted">{e(SVC_BRIDGE[sl].format(n=n, b0=b[0], b1=b[1]))}</p><p class="muted">{e(ct["angle"])}</p><p class="muted">{e(sv["intro"][0])}</p>{did}</div>
@@ -523,7 +523,7 @@ def build_city_services():
 <section><div class="section-head"><h2>Questions about {e(sv["name"].lower())} in {e(n)}</h2></div>{faq_html(faqs)}</section>
 <section><p class="mono" style="color:var(--soft);margin-bottom:12px">MORE IN {e(n.upper())}</p><div class="chips"><a href="/locations/{ct["slug"]}">Video production in {e(n)}</a>{other}</div>
 <p class="mono" style="color:var(--soft);margin:22px 0 12px">{e(sv["name"].upper())} NEARBY</p><div class="chips">{near}</div></section>
-{cta_band(f"Planning {sv['short'].lower()} in {n}?", "Tell us what you're making and when. We'll come back with a plan and a quote.")}"""
+{cta_band()}"""
             write(path, head(title, desc, path, img if here else alt_img, schema) + body + foot(), '0.6')
 
 def build_sitemap():
