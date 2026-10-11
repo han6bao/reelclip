@@ -131,6 +131,7 @@
 .collab-card{border-radius:16px;padding:24px;box-shadow:inset 0 0 0 1px var(--line);display:flex;flex-direction:column;gap:10px}
 .collab-card p{margin:0;font-size:16px;line-height:1.5}
 body[data-route="contact"] .foot-invite{display:none !important}
+.hero-h > span:not(.hero-kicker){flex-basis:100%;white-space:nowrap}
 /* Layout: cream ground, black + navy bands, centered 1360px container; one-page site with hash routing */
 :root{
   --cream:#111111; --ink:#F3EEE3; --navy:#F3EEE3; --peri:#8DA2DB; --peri-text:#8DA2DB;
@@ -225,7 +226,7 @@ form input,form select,form textarea{font:inherit;font-size:17px;color:var(--ink
 .sent{font-weight:800;color:var(--navy)}
 
 /* --- Offbeat-inspired additions --- */
-.hero-h{font-size:clamp(44px,7.6vw,128px);line-height:.92;letter-spacing:-.045em;display:flex;flex-wrap:wrap;justify-content:center;gap:0 .35em}
+.hero-h{font-size:clamp(36px,6.5vw,112px);line-height:.92;letter-spacing:-.045em;display:flex;flex-wrap:wrap;justify-content:center;gap:0 .35em}
 .slider{padding-block:28px 0;overflow:hidden}
 .track{display:flex;gap:24px;transition:transform .6s cubic-bezier(.2,.7,.2,1);will-change:transform}
 .slide{flex:0 0 min(860px,80vw);aspect-ratio:3/2;border-radius:14px;display:flex;align-items:flex-end;justify-content:space-between;padding:18px;box-sizing:border-box;opacity:.35;transition:opacity .5s;cursor:pointer;border:0;font:inherit;text-align:left}
@@ -663,7 +664,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   nav.main a{font-size:28px;font-weight:900;letter-spacing:-.02em;padding:14px 0;border-bottom:1px solid var(--line) !important}
   nav.main a.cta{margin-top:18px;text-align:center;font-size:15px;letter-spacing:.08em;padding:16px 18px;border-bottom:0 !important}
   /* hero + carousel */
-  .hero-h{font-size:clamp(38px,12vw,60px) !important}
+  .hero-h{font-size:calc((100vw - 40px) / 13.2) !important}
   .slide{flex-basis:88vw !important;aspect-ratio:4/5 !important;border-radius:16px}
   .track{gap:12px !important}
   .slide-play{width:56px !important;height:56px !important;inset:auto 16px 16px auto !important;margin:0 !important}
