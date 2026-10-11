@@ -526,6 +526,21 @@ def build_city_services():
 {cta_band()}"""
             write(path, head(title, desc, path, img if here else alt_img, schema) + body + foot(), '0.6')
 
+def inject_spa_data():
+    """Embed service pages + work URL map into index.html so links also work inside the single-page preview."""
+    data = {"services": [dict(slug=x['slug'], name=x['name'], short=x['short'], lede=x['lede'], intro=x['intro'], includes=x['includes'],
+                              deliverables=x['deliverables'], steps=x['steps'], faqs=x['faqs'], work=[k for k in x['work'] if k in WORK], related=x['related'])
+                         for x in SERVICES],
+            "workUrls": {wurl(k): k for k in WORK_SEO if k in WORK}}
+    fp = os.path.join(ROOT, 'index.html'); h = open(fp).read()
+    blob = '<!--SPA-DATA-START--><script id="spa-data" type="application/json">' + json.dumps(data, ensure_ascii=False).replace('</', '<\\/') + '</script><!--SPA-DATA-END-->'
+    if '<!--SPA-DATA-START-->' in h:
+        i = h.index('<!--SPA-DATA-START-->'); j = h.index('<!--SPA-DATA-END-->') + len('<!--SPA-DATA-END-->')
+        h = h[:i] + blob + h[j:]
+    else:
+        h = h.replace('<main>', '<main>' + blob, 1)
+    open(fp, 'w').write(h)
+
 def build_sitemap():
     urls = [('/', '1.0')] + PAGES
     xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + ''.join(
@@ -535,7 +550,7 @@ def build_sitemap():
     return len(urls)
 
 if __name__ == '__main__':
-    build_services(); build_work(); build_industries(); build_locations(); build_city_services(); build_niches()
+    build_services(); build_work(); build_industries(); build_locations(); build_city_services(); build_niches(); inject_spa_data()
     n = build_sitemap()
     json.dump(ORG, open(os.path.join(os.path.dirname(__file__), 'org.json'), 'w'), ensure_ascii=False)
     print(f"built {len(PAGES)} pages, sitemap has {n} URLs")
