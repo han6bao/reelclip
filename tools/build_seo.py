@@ -86,7 +86,7 @@ def head(title, desc, path, img='img/ev-tt.jpg', schema=None, robots='index,foll
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site"><div class="wrap">
-  <a class="logo" href="/" aria-label="Reelclip home"><img src="/img/runner-cream.png" alt="" width="42" height="37"><span>REELCLIP</span></a>
+  <a class="logo" href="/" aria-label="Reelclip home"><img src="/img/runner-navy.png" alt="" width="42" height="37"><span>REELCLIP</span></a>
   <nav class="main" aria-label="Main">
     <a href="/work">WORK</a><a href="/services">SERVICES</a><a href="/#about">ABOUT</a>
     <a href="/#contact" class="cta">LET'S TALK</a>
@@ -113,7 +113,7 @@ def foot():
     return f'''</main>
 <footer class="site"><div class="wrap">
   <div class="cols">
-    <div><a class="logo" href="/"><img src="/img/runner-cream.png" alt="" width="42" height="37"><span>REELCLIP</span></a>
+    <div><a class="logo" href="/"><img src="/img/runner-navy.png" alt="" width="42" height="37"><span>REELCLIP</span></a>
       <p class="muted" style="margin-top:14px;font-size:14px">Seattle-based video production for commercials, brand films, product launches, events and music videos. Available across Washington.</p>
       <p style="margin-top:14px;font-size:14px"><a href="mailto:{EMAIL}">{EMAIL}</a></p></div>
     <div><h4>SERVICES</h4><ul>{svc}</ul></div>

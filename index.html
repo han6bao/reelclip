@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://reel-clip.com/img/ev-tt.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://reel-clip.com/#org", "name": "Reelclip", "url": "https://reel-clip.com/", "logo": "https://reel-clip.com/img/frog-stack-color.png", "image": "https://reel-clip.com/img/ev-tt.jpg", "email": "thereelclip@gmail.com", "description": "Seattle-based video production company creating commercials, brand films, product campaigns, event videos and music videos across Washington.", "address": {"@type": "PostalAddress", "addressLocality": "Seattle", "addressRegion": "WA", "addressCountry": "US"}, "areaServed": [{"@type": "City", "name": "Seattle, WA"}, {"@type": "City", "name": "Bellevue, WA"}, {"@type": "City", "name": "Redmond, WA"}, {"@type": "City", "name": "Kirkland, WA"}, {"@type": "City", "name": "Renton, WA"}, {"@type": "City", "name": "Kent, WA"}, {"@type": "City", "name": "Federal Way, WA"}, {"@type": "City", "name": "Tukwila, WA"}, {"@type": "City", "name": "SeaTac, WA"}, {"@type": "City", "name": "Auburn, WA"}, {"@type": "City", "name": "Issaquah, WA"}, {"@type": "City", "name": "Burien, WA"}, {"@type": "City", "name": "Des Moines, WA"}, {"@type": "City", "name": "Shoreline, WA"}, {"@type": "City", "name": "Sammamish, WA"}, {"@type": "City", "name": "Bothell, WA"}, {"@type": "City", "name": "Woodinville, WA"}, {"@type": "City", "name": "Mercer Island, WA"}, {"@type": "City", "name": "Tacoma, WA"}, {"@type": "City", "name": "Lakewood, WA"}, {"@type": "City", "name": "Puyallup, WA"}, {"@type": "City", "name": "University Place, WA"}, {"@type": "City", "name": "Gig Harbor, WA"}, {"@type": "City", "name": "Sumner, WA"}, {"@type": "City", "name": "Spanaway, WA"}, {"@type": "City", "name": "Fife, WA"}, {"@type": "City", "name": "Everett, WA"}, {"@type": "City", "name": "Lynnwood, WA"}, {"@type": "City", "name": "Edmonds, WA"}, {"@type": "City", "name": "Mukilteo, WA"}, {"@type": "City", "name": "Mill Creek, WA"}, {"@type": "City", "name": "Marysville, WA"}, {"@type": "City", "name": "Arlington, WA"}, {"@type": "City", "name": "Olympia, WA"}, {"@type": "City", "name": "Lacey, WA"}, {"@type": "City", "name": "Tumwater, WA"}, {"@type": "City", "name": "Bremerton, WA"}, {"@type": "City", "name": "Silverdale, WA"}, {"@type": "City", "name": "Bellingham, WA"}, {"@type": "City", "name": "Leavenworth, WA"}, {"@type": "City", "name": "Yakima, WA"}, {"@type": "City", "name": "Spokane, WA"}, {"@type": "City", "name": "Vancouver, WA"}, {"@type": "State", "name": "Washington"}], "knowsAbout": ["Commercial Video Production", "Brand Films", "Product Video Production", "Event Videography", "Social Media Video", "Corporate Video Production", "Music Videos", "Production Crew + Support", "Ongoing Content Partnerships"]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "Reelclip", "url": "https://reel-clip.com/", "publisher": {"@id": "https://reel-clip.com/#org"}}</script>
-<meta name="theme-color" content="#111111">
+<meta name="theme-color" content="#F3EEE3">
 <link rel="icon" href="/img/frog-stack-color.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
 </head>
@@ -851,6 +851,76 @@ footer.foot{border-top:1px solid var(--line);background:var(--cream)}
 .mint-band .founder2{position:relative;background:#8DA2DB;box-shadow:none !important;border:1.5px solid var(--ink-navy);box-sizing:border-box}
 .mint-band .founder2{aspect-ratio:1/1}
 .mint-band .founder2 img{position:absolute;width:100%;height:auto;left:8%;bottom:-7%;object-fit:unset;transform:rotate(-5deg)}
+
+/* ===== strong color pass (Chiomao reference): full-bleed solid blocks, huge same-color frogs with halftone dots ===== */
+:root{--sun:#FFF6CC;--ember:#E8664A;--peri-strong:#8DA2DB;--green-strong:#86C255}
+.dotfrog{position:absolute;display:block;pointer-events:none}
+.dotfrog img{display:block;width:100%;height:auto}
+.dotfrog::after{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(4,20,70,.30) 30%,transparent 33%);background-size:13px 13px;-webkit-mask:var(--m) center/100% 100% no-repeat;mask:var(--m) center/100% 100% no-repeat;mix-blend-mode:multiply}
+/* hero: super light yellow panel over an ember block */
+.hx2{position:relative}
+.hx2-top{background:var(--sun);color:#111}
+.hx2-in{padding-block:40px 44px}
+.hx2-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.sticker{display:inline-block;font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.18em;background:var(--yellow);color:#111;border:2px solid #111;padding:6px 10px}
+.hx2-note{margin:0;text-align:right;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;line-height:1.6;color:#111}
+.hx2-h{margin:28px 0 0;font-weight:800;text-transform:uppercase;letter-spacing:-.045em;line-height:.9;color:#111;font-size:min(calc((100vw - 64px) / 14.4),18vh,168px);display:flex;flex-direction:column}
+.hx2-h span{white-space:nowrap}
+.hx2-foot{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
+.hx2-sub{margin:0;max-width:34ch;font-size:clamp(17px,1.4vw,20px);line-height:1.45;color:#2a2a2a}
+.hx2 .hx-ctas{margin:0}
+.sticker-btn{box-shadow:inset 0 0 0 2px #111}
+.pill-btn.line-btn{background:transparent !important;color:#111 !important;box-shadow:inset 0 0 0 2px #111}
+.pill-btn.line-btn:hover{background:#111 !important;color:var(--sun) !important}
+.pill-btn.sticker-btn:hover{background:#111 !important;color:var(--yellow) !important}
+.hx2-block{position:relative;overflow:hidden;background:var(--ember);height:clamp(380px,58vh,680px)}
+.hx2-frog{left:8%;top:7%;width:min(64vw,980px);transform:rotate(-6deg)}
+.hx2-mark{position:absolute;right:32px;bottom:22px;margin:0;display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px;letter-spacing:-.03em;line-height:.9;color:#111}
+.hx2-mark img{width:44px;filter:brightness(0)}
+.hx2-mark span{font-family:var(--mono);font-weight:500;font-size:10px;letter-spacing:.2em}
+/* ticker: black band, yellow type, so color blocks never touch */
+.ticker{background:#111;color:var(--yellow);border-bottom:1px solid var(--line)}
+.tk-set a{color:var(--yellow)}.tk-set a:hover{color:var(--yellow)}
+.tk-run{background:#1E1E1E}
+/* work: periwinkle block with a huge blue frog */
+.sel-band{position:relative;overflow:hidden}
+.sel-frog2{right:-1%;top:-262px;width:min(30vw,440px);transform:rotate(-7deg);z-index:0}
+.sel-band .sel{position:relative;z-index:1}
+.sel-grid{margin-top:48px}
+.sel-head{position:relative;z-index:1;flex-direction:column;align-items:flex-start}
+.sel-band .sel{padding-top:120px}
+/* family: full-bleed strong green */
+.fam2{position:relative;overflow:hidden;background:var(--green-strong);color:#0E2A12;margin-top:120px}
+.fam2-in{position:relative;z-index:1;padding-block:110px 120px}
+.fam2 .lbl,.fam2 .bigh,.fam2 .fam-founder a{color:var(--ink-navy)}
+.fam2 .fam-copy,.fam2 .fam-founder{color:var(--ink-navy)}
+.fam2 .bigh{margin-top:14px;max-width:9ch}
+.fam2 .pills li{background:#E8F8CF;box-shadow:inset 0 0 0 1.5px var(--ink-navy)}
+.fam2-frog{right:-8%;bottom:-22%;width:min(52vw,760px);transform:rotate(-8deg);z-index:0}
+/* contact: full-bleed yellow */
+.talk2{position:relative;overflow:hidden;background:var(--yellow);color:#111;margin-block:120px 0}
+.talk2-in{position:relative;z-index:1;padding-block:110px 130px;display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.talk2 .bigh{font-size:clamp(34px,5.4vw,88px);max-width:14ch}
+.talk2 p{margin:0;max-width:44ch;font-size:clamp(17px,1.5vw,21px);line-height:1.5}
+.talk2-frog{right:-6%;bottom:-26%;width:min(50vw,720px);transform:rotate(7deg);z-index:0}
+@media (max-width:900px){.fam2-in,.talk2-in{padding-block:80px 52vw}.fam2-frog{width:92vw;right:-14vw;bottom:-18vw}.talk2-frog{width:90vw;right:-12vw;bottom:-20vw}.sel-frog2{width:46vw;top:-120px;right:2%}}
+@media (max-width:760px){
+  .hx2-h{font-size:calc((100vw - 36px) / 12.7) !important}
+  .hx2-in{padding-block:24px 30px}
+  .hx2-block{height:78vw}
+  .hx2-frog{width:120vw;left:-6vw;top:10%}
+  .hx2-mark{display:none}
+  .hx2-note{font-size:10px}
+  .fam2,.talk2{margin-top:80px}
+}
+
+/* light-yellow intro panels on inner pages */
+.about-top,.svc-top{background:var(--sun);box-shadow:0 0 0 100vmax var(--sun);clip-path:inset(0 -100vmax);color:#111}
+.about-top .lbl,.svc-top .lbl{color:var(--ink-navy)}
+.about-top .bigh,.svc-top .bigh{color:#111}
+.about-top .about-cols p{color:#2a2a2a}.about-top .about-cols .about-lede{color:#111}
+.about-top{padding-block:64px 72px}.svc-top{padding-block:64px 56px}
+.mint-band{margin-top:0}
 /* contact page */
 .form-frog{position:absolute;right:24px;top:-92px;width:150px;height:auto;transform:rotate(6deg);pointer-events:none}
 form#contact-form{margin-top:72px !important;scroll-margin-top:110px}
@@ -871,11 +941,82 @@ form#contact-form{margin-top:72px !important;scroll-margin-top:110px}
   .talk{padding-block:150px 96px}.talk-frog{top:40px;width:170px}
   .sel-frog{width:170px;top:-100px}
 }
+
+/* ===== warm theme (Oct 17): cream + dark cream grounds, navy type from the frog outlines, strong frog-color blocks ===== */
+:root{
+  --cream:#F3EEE3; --ink:#042A84; --navy:#042A84; --peri:#4A61B5; --peri-text:#4A61B5;
+  --muted:#33467F; --soft:#5E6A93; --panel:#E9E1CF; --white:#FBF8F1; --line:rgba(4,42,132,.16);
+  --still:#E3DACA; --still-2:#DDD3C1; --still-3:#D6CBB8; --on-dark:#042A84; --on-dark-soft:#33467F; --still-label:#5E6A93;
+  --dark-cream:#E9E1CF; --ink-navy:#042A84; --btn-text:#F3EEE3; color-scheme:light;
+}
+body{background:var(--cream);color:var(--ink)}
+::selection{background:var(--yellow);color:var(--ink)}
+header.site{background:var(--cream);border-bottom:1px solid var(--line)}
+.logo span{color:var(--ink)}
+nav.main a{color:var(--peri)}
+nav.main a:hover,nav.main a.on{color:var(--ink)}
+.menu-btn{color:var(--ink)}
+.menu-btn span{background:var(--ink) !important}
+/* buttons */
+nav.main a.cta,.pill-btn,.big-pill,.btn{background:var(--yellow) !important;color:var(--ink) !important;box-shadow:inset 0 0 0 2px var(--ink)}
+nav.main a.cta:hover,.pill-btn:hover,.big-pill:hover,.btn:hover{background:var(--ink) !important;color:var(--cream) !important}
+.pill-btn.ghost-btn,.pill-btn.line-btn{background:transparent !important;color:var(--ink) !important;box-shadow:inset 0 0 0 2px var(--ink)}
+.pill-btn.ghost-btn:hover,.pill-btn.line-btn:hover{background:var(--ink) !important;color:var(--cream) !important}
+.pill-btn.dark,.price-box .pill-btn{background:var(--ink) !important;color:var(--cream) !important;box-shadow:none}
+.pill-btn.dark:hover,.price-box .pill-btn:hover{background:var(--cream) !important;color:var(--ink) !important;box-shadow:inset 0 0 0 2px var(--ink)}
+.circle{color:var(--ink)}
+/* type accents: yellow becomes a marker highlight on light grounds */
+.bigh em,.hx-h em,.hl{font-style:normal;color:inherit;background:linear-gradient(transparent 58%,var(--yellow) 58%,var(--yellow) 92%,transparent 92%)}
+/* hero */
+.hx2-top{color:var(--ink)}
+.hx2-h,.hx2-note,.hx2-sub{color:var(--ink)}
+.sticker{color:var(--ink);border-color:var(--ink)}
+.hx2-mark{color:var(--ink)}
+.hx2-mark img{filter:none}
+/* ticker in navy */
+.ticker{background:var(--ink);color:var(--yellow);border:0}
+.tk-set a,.tk-set a:hover{color:var(--yellow)}
+.tk-run{background:rgba(243,238,227,.12)}
+/* reel on dark cream */
+.reel-sec{background:var(--dark-cream);box-shadow:0 0 0 100vmax var(--dark-cream);clip-path:inset(0 -100vmax);padding-block:96px 104px}
+.reel-frame{border-color:var(--ink)}
+/* blocks */
+.talk2{color:var(--ink)}
+.talk2 .bigh{color:var(--ink)}
+.sel-band{margin-top:0}
+.fam2,.talk2{margin-top:0}
+.fam2{margin-top:0}
+.gap-cream{height:120px;background:var(--cream)}
+/* footer in navy */
+footer.foot{background:var(--ink);color:var(--cream);border:0}
+footer.foot .lbl{color:#8DA2DB}
+.foot-mail{color:var(--cream)}.foot-mail:hover{color:var(--yellow)}
+.foot-links a{color:var(--cream)}.foot-links a:hover{color:#8DA2DB}
+.foot-links .foot-shop{color:var(--yellow)}
+.foot-areas{color:rgba(243,238,227,.7)}
+/* inner pages */
+.about-top,.svc-top{color:var(--ink)}
+.about-top .bigh,.svc-top .bigh,.about-top .about-cols .about-lede{color:var(--ink)}
+.about-top .about-cols p{color:var(--muted)}
+.svc-row:hover h3,.svc-row:hover .arr{color:#E8664A}
+.svc-row{background:var(--cream)}
+form#contact-form{background:var(--white);border:1.5px solid var(--ink)}
+form input,form select,form textarea{border-bottom-color:rgba(4,42,132,.45);color:var(--ink)}
+form select option{background:var(--white);color:var(--ink)}
+.quiz-card{background:var(--dark-cream);box-shadow:none}
+.quiz-opt{background:var(--white);box-shadow:inset 0 0 0 1.5px var(--line)}
+.quiz-opt:hover,.quiz-opt:focus-visible{background:#fff;box-shadow:inset 0 0 0 2px var(--ink)}
+.quiz-get li::before{background:var(--ink)}
+.quiz-result .quiz-eyebrow{color:#E8664A}
+.player-backdrop{background:rgba(4,20,60,.82)}
+.player-box{background:var(--cream);border:1.5px solid var(--ink)}
+#player-title{color:var(--ink) !important}
+.case-hero .big-play,.film-media .play,.reel-tile .play{color:var(--ink)}
 </style>
 
 <header class="site">
   <div class="wrap">
-    <a class="logo" href="#home" aria-label="Reelclip home"><img src="img/runner-cream.png" alt=""><span>REELCLIP</span></a>
+    <a class="logo" href="#home" aria-label="Reelclip home"><img src="img/runner-navy.png" alt=""><span>REELCLIP</span></a>
     <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu"><span></span><span></span></button>
     <nav class="main" id="main-nav" aria-label="Main">
       <a href="#work" data-nav="work">WORK</a>
@@ -890,14 +1031,21 @@ form#contact-form{margin-top:72px !important;scroll-margin-top:110px}
 <!-- ================= HOME ================= -->
 <div class="page" data-page="home">
   <!-- hero -->
-  <section class="hx" aria-label="Intro">
-    <div class="wrap hx-in">
-      <p class="lbl">Seattle, WA · Production for brands worth seeing</p>
-      <h1 class="hx-h"><span>YOUR VISION,</span> <span>CARED FOR <em>LIKE OUR OWN.</em></span></h1>
-      <p class="hx-sub">A small Seattle production family making commercials, brand films and event videos.</p>
-      <div class="hx-ctas"><a href="#contact" class="pill-btn">START A PROJECT</a><button type="button" class="pill-btn ghost-btn" data-reel>WATCH THE REEL</button></div>
+  <section class="hx2" aria-label="Intro">
+    <div class="hx2-top">
+      <div class="wrap hx2-in">
+        <div class="hx2-row"><span class="sticker">REELCLIP</span><p class="hx2-note">Seattle, WA.<br>Production for brands worth seeing.</p></div>
+        <h1 class="hx2-h"><span>YOUR VISION,</span> <span>CARED FOR LIKE OUR OWN.</span></h1>
+        <div class="hx2-foot">
+          <p class="hx2-sub">A small Seattle production family making commercials, brand films and event videos.</p>
+          <div class="hx-ctas"><a href="#contact" class="pill-btn sticker-btn">START A PROJECT</a><button type="button" class="pill-btn line-btn" data-reel>WATCH THE REEL</button></div>
+        </div>
+      </div>
     </div>
-    <img class="hx-frog" src="img/frog-yellow.png" alt="" aria-hidden="true">
+    <div class="hx2-block">
+      <span class="dotfrog hx2-frog" style="--m:url(img/frog-red.png)" aria-hidden="true"><img src="img/frog-red.png" alt=""></span>
+      <p class="hx2-mark"><img src="img/runner-navy.png" alt="">REELCLIP<br><span>PRODUCTION</span></p>
+    </div>
   </section>
 
   <!-- service ticker -->
@@ -917,29 +1065,31 @@ form#contact-form{margin-top:72px !important;scroll-margin-top:110px}
   <section class="sel-band" aria-labelledby="sel-h"><div class="wrap sel">
     <div class="sel-head"><h2 class="bigh" id="sel-h">SELECTED WORK</h2><a class="lbl-link" href="/work">ALL WORK →</a></div>
     <div class="sel-grid">
-      <img class="sel-frog" src="img/frog-red.png" alt="" aria-hidden="true">
+      <span class="dotfrog sel-frog2" style="--m:url(img/frog-peri.png)" aria-hidden="true"><img src="img/frog-peri.png" alt=""></span>
       <a class="wcard" href="/work/jacks-bbq-restaurant-commercial"><span class="wimg"><img src="img/jacks-bbq.jpg" alt="Pitmaster Jack Timmons in Jack's BBQ commercial" loading="lazy"></span><span class="wtxt"><h3>JACK'S BBQ</h3><span class="wtag" style="--t:#E8664A">COMMERCIAL</span></span></a>
       <a class="wcard" href="/work/gerard-cycles-brand-film"><span class="wimg"><img src="img/gerard-cycles.jpg" alt="A rider at dawn in the Gerard Cycles brand film" loading="lazy"></span><span class="wtxt"><h3>GERARD CYCLES</h3><span class="wtag" style="--t:#E8F8CF">BRAND FILM</span></span></a>
       <a class="wcard" href="/work/turbotax-tax-season-promo"><span class="wimg"><img src="img/turbotax.jpg" alt="TurboTax tax-season promo still" loading="lazy"></span><span class="wtxt"><h3>TURBOTAX</h3><span class="wtag" style="--t:#FBE13A">PROMO</span></span></a>
     </div>
   </div></section>
 
+  <div class="gap-cream"></div>
   <!-- the family -->
-  <section class="wrap fam" aria-labelledby="fam-h">
-    <img class="fam-frog" src="img/frog-peri.png" alt="" aria-hidden="true">
-    <div class="fam-card">
+  <section class="fam2" aria-labelledby="fam-h">
+    <span class="dotfrog fam2-frog" style="--m:url(img/frog-mint.png)" aria-hidden="true"><img src="img/frog-mint.png" alt=""></span>
+    <div class="wrap fam2-in">
       <p class="lbl">The family</p>
       <h2 class="bigh" id="fam-h">BUILD WITH PEOPLE.</h2>
       <p class="fam-copy">Reelclip is a small production family. We're selective on purpose and loyal for the long run, so the people we work with get a team that knows them and wants them to win.</p>
-      <ul class="pills"><li style="--p:#8DA2DB">JOY</li><li style="--p:#FBE13A">PURPOSE</li><li style="--p:#E8F8CF">COMPLETE VISION</li><li style="--p:#E8664A">TASTE</li></ul>
+      <ul class="pills"><li>JOY</li><li>PURPOSE</li><li>COMPLETE VISION</li><li>TASTE</li></ul>
       <p class="fam-founder"><b>Evelio</b> · Founder + creative director <a href="#about">Meet the family →</a></p>
     </div>
   </section>
 
+  <div class="gap-cream"></div>
   <!-- contact -->
-  <section class="wrap talk" aria-labelledby="talk-h">
-    <img class="talk-frog" src="img/frog-mint.png" alt="" aria-hidden="true">
-    <div class="talk-box">
+  <section class="talk2" aria-labelledby="talk-h">
+    <span class="dotfrog talk2-frog" style="--m:url(img/frog-yellow.png)" aria-hidden="true"><img src="img/frog-yellow.png" alt=""></span>
+    <div class="wrap talk2-in">
       <h2 class="bigh" id="talk-h">EVERY PROJECT STARTS WITH A CONVERSATION.</h2>
       <p>Projects typically start at $2,000. Tell us what you're making and we'll take it from there.</p>
       <a href="#contact" class="pill-btn dark">START A PROJECT</a>
@@ -1051,7 +1201,7 @@ form#contact-form{margin-top:72px !important;scroll-margin-top:110px}
     <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:28px">
       <h2 class="big" style="font-size:clamp(40px,5.4vw,92px);letter-spacing:-.04em;overflow-wrap:break-word">
         <span>WHAT YOU'RE BUILDING</span><br>
-        <span style="color:var(--f-yellow)">MATTERS.</span>
+        <span class="hl">MATTERS.</span>
       </h2>
       <p style="margin:0;max-width:460px;font-size:18px;line-height:1.5;color:var(--muted)">We'd love to hear about it. Tell us about your business, what matters to you, and how you'd like people to see it. We'll find the direction together.</p>
       <p style="margin:0;max-width:460px;font-size:15px;line-height:1.5;color:var(--soft)">Projects typically start at $2,000, with custom quotes based on the creative direction, production needs, and final deliverables.</p>

@@ -160,3 +160,20 @@ nav.main a.cta:hover,.btn:hover{background:var(--ink);color:#111;filter:none}
 .cta-band .btn{background:#111;color:var(--ink)}
 .cta-band .btn:hover{background:var(--ink);color:#111}
 .logo img{width:42px;height:auto}
+
+/* warm theme (Oct 17): cream grounds, navy type, yellow actions */
+:root{--bg:#F3EEE3;--ink:#042A84;--muted:#33467F;--soft:#5E6A93;--line:rgba(4,42,132,.16);--panel:#E9E1CF;--panel-2:#E3DACA;--peri:#4A61B5;color-scheme:light}
+body{background:var(--bg);color:var(--ink)}
+header.site{background:var(--bg);border-bottom:1px solid var(--line)}
+.logo span{color:var(--ink)}
+nav.main a.cta,.btn{background:var(--yellow);color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+nav.main a.cta:hover,.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+.cta-band{background:var(--yellow);color:var(--ink)}
+.cta-band .btn{background:var(--ink);color:var(--bg);box-shadow:none}
+.cta-band .btn:hover{background:var(--bg);color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+footer.site{background:var(--ink);color:var(--bg)}
+footer.site a,footer.site h4,footer.site .muted{color:var(--bg)}
+footer.site h4{color:#8DA2DB}
+footer.site .city-cloud a{color:var(--bg)}
