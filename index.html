@@ -1051,6 +1051,11 @@ footer.foot{background:#042A84 !important;color:#F3EEE3}
 .mint-band .collab-card{box-shadow:none !important;border:36px solid transparent;border-image:url(img/crayon-box.png) 72 stretch;border-image-width:36px;padding:2px 6px}
 
 footer.foot{background:#021A55 !important}
+
+.filter-inner{flex-wrap:wrap;overflow:visible}
+.filter-inner button{white-space:normal;max-width:100%}
+.wk-head h2{overflow-wrap:anywhere;min-width:0}
+.hx2-h,.bigh,.big{overflow-wrap:anywhere}
 </style>
 
 <header class="site">
@@ -1140,7 +1145,7 @@ footer.foot{background:#021A55 !important}
 <div class="page" data-page="work" hidden>
   <section class="wrap" style="padding-block:48px 16px">
     <div class="eyebrow" style="color:var(--peri)">WORK</div>
-    <h2 class="big" style="margin-top:12px;font-size:clamp(52px,10.5vw,176px);letter-spacing:-.04em">
+    <h2 class="big" style="margin-top:12px;font-size:clamp(34px,11.5vw,176px);letter-spacing:-.04em">
       <span style="color:var(--peri)">COMMERCIAL</span> <span>+ CAMPAIGNS</span>
     </h2>
     <p style="margin:20px 0 0;max-width:540px;font-size:18px;line-height:1.5;color:var(--muted)">Brand campaigns, product promotions, events and music video rollouts, sorted by type and industry.</p>
@@ -2057,6 +2062,24 @@ footer.foot{background:#021A55 !important}
         step--; render();
       }
     });
+  })();
+
+  // fit the hero headline to its column so it never cuts off, whatever font the visitor's device has
+  (function(){
+    var h = document.querySelector('.hx2-h'); if (!h) return;
+    function fit(){
+      if (h.offsetParent === null) return;
+      h.style.removeProperty('font-size');
+      var spans = h.querySelectorAll('span'), avail = h.clientWidth, widest = 0;
+      spans.forEach(function(sp){ widest = Math.max(widest, sp.scrollWidth); });
+      if (widest > avail && widest > 0) {
+        var cur = parseFloat(getComputedStyle(h).fontSize);
+        h.style.setProperty('font-size', Math.floor(cur * avail / widest * 0.985) + 'px', 'important');
+      }
+    }
+    fit(); window.addEventListener('resize', fit); window.addEventListener('load', fit);
+    window.addEventListener('hashchange', function(){ setTimeout(fit, 30); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
   })();
   casesReady = true;
   route();
