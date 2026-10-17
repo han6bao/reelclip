@@ -146,3 +146,17 @@ details.more-areas summary{font-size:14px;font-weight:700;color:var(--ink);justi
 details.more-areas summary::after{content:"\25BE";font-size:12px}
 details.more-areas[open] summary::after{content:"\25B4"}
 details.more-areas .city-cloud{margin-top:12px}
+
+/* vision brief v2: yellow actions, periwinkle mono labels */
+a:focus-visible,button:focus-visible{outline-color:var(--yellow)}
+nav.main a{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(--peri)}
+nav.main a:hover{color:var(--ink)}
+nav.main a.cta,.btn{background:var(--yellow);color:#111;font-family:var(--mono);font-weight:500;letter-spacing:.14em}
+nav.main a.cta:hover,.btn:hover{background:var(--ink);color:#111;filter:none}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#111}
+.eyebrow i{background:var(--yellow)}
+.cta-band{background:var(--yellow)}
+.cta-band .btn{background:#111;color:var(--ink)}
+.cta-band .btn:hover{background:var(--ink);color:#111}
+.logo img{width:42px;height:auto}

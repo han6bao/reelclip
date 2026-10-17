@@ -25,55 +25,17 @@
 <body>
 <div id="rc-loader" aria-hidden="true">
   <style>
-    #rc-loader{position:fixed;inset:0;z-index:9999;background:#111;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .5s ease,visibility .5s;overflow:hidden}
+    #rc-loader{position:fixed;inset:0;z-index:9999;background:#111;display:flex;align-items:center;justify-content:center;transition:opacity .2s ease,visibility .2s}
     #rc-loader.done{opacity:0;visibility:hidden}
-    #rc-loader .track{--w:110px;--g:30px;--h:96px;position:relative;display:flex;gap:var(--g);height:calc(var(--h) + 24px);align-items:flex-end}
-    #rc-loader .runner{width:var(--w);opacity:.14;animation:rc-turn 2.4s ease-in-out infinite}
-    #rc-loader .runner img{width:100%;height:auto;display:block}
-    #rc-loader .runner:nth-child(2){animation-delay:.6s}
-    #rc-loader .runner:nth-child(3){animation-delay:1.2s}
-    #rc-loader .runner:nth-child(4){animation-delay:1.8s}
-    @keyframes rc-turn{
-      0%{opacity:.14;transform:translateY(6px) scale(.96)}
-      5%{opacity:1;transform:translateY(-8px) scale(1.04) rotate(-3deg)}
-      10%{transform:translateY(0) scale(1.04) rotate(3deg)}
-      15%{transform:translateY(-8px) scale(1.04) rotate(-3deg)}
-      21%{opacity:1;transform:translateY(0) scale(1.04) rotate(2deg)}
-      30%{opacity:.14;transform:translateY(6px) scale(.96)}
-      100%{opacity:.14;transform:translateY(6px) scale(.96)}
-    }
-    #rc-loader.finish .runner{animation:none}
-    #rc-loader.finish .runner:nth-child(4){opacity:1;transform:translateY(-4px) scale(1.04)}
-    #rc-loader.finish .runner:not(:nth-child(4)){opacity:.14;transform:translateY(6px) scale(.96)}
-    @media (max-width:600px){#rc-loader .track{--w:64px;--g:14px;--h:56px}}
-    #rc-loader{gap:40px}
-    @media (prefers-reduced-motion:reduce){#rc-loader .runner,#rc-loader .label span{animation:none;opacity:1}#rc-loader .bar i{animation:none;width:100%}}
-    #rc-loader .bar{width:calc(4 * var(--w) + 3 * var(--g));height:3px;border-radius:3px;background:#262626;overflow:hidden;margin-top:-6px}
-    #rc-loader .bar i{display:block;height:100%;width:0;border-radius:3px;background:#8DA2DB;animation:rc-fill 2.4s linear forwards}
-    @keyframes rc-fill{0%{width:0;background:#8DA2DB}24.9%{background:#8DA2DB}25%{background:#F77BA8}49.9%{background:#F77BA8}50%{background:#FBE13A}74.9%{background:#FBE13A}75%{background:#86C255}93%{width:100%}100%{width:100%;background:#86C255}}
-    #rc-loader .label{font:500 12px/1 'IBM Plex Mono',ui-monospace,Menlo,monospace;letter-spacing:.32em;color:#D2CCBF}
-    #rc-loader .label span{animation:rc-dot 1.2s steps(1) infinite;opacity:0}
-    #rc-loader .label span:nth-child(2){animation-delay:.3s}
-    #rc-loader .label span:nth-child(3){animation-delay:.6s}
-    @keyframes rc-dot{0%{opacity:0}25%,100%{opacity:1}}
-    #rc-loader.finish .bar i{animation:none;width:100%;background:#86C255}
+    #rc-loader .track{display:flex;gap:22px}
+    #rc-loader img{width:84px;height:auto;opacity:.14;animation:rc-pop .2s ease-out forwards}
+    #rc-loader img:nth-child(2){animation-delay:.15s}#rc-loader img:nth-child(3){animation-delay:.3s}#rc-loader img:nth-child(4){animation-delay:.45s}
+    @keyframes rc-pop{0%{opacity:.14;transform:translateY(6px)}100%{opacity:1;transform:none}}
+    @media (max-width:600px){#rc-loader img{width:54px}#rc-loader .track{gap:12px}}
+    @media (prefers-reduced-motion:reduce){#rc-loader img{animation:none;opacity:1}}
   </style>
-  <div class="track">
-    <div class="runner"><img src="img/runner-lb.png" alt=""></div>
-    <div class="runner"><img src="img/runner-pink.png" alt=""></div>
-    <div class="runner"><img src="img/runner-yellow.png" alt=""></div>
-    <div class="runner"><img src="img/runner-green.png" alt=""></div>
-    <div class="bar" style="position:absolute;left:0;bottom:-18px;margin:0"><i></i></div>
-  </div>
-  <div class="label">LOADING<span>.</span><span>.</span><span>.</span></div>
-  <script>
-    (function(){
-      var el = document.getElementById('rc-loader'), t0 = Date.now(), gone = false;
-      var LAP = 2400; // one full relay: blue > pink > yellow > green
-      function hide(){ if (gone) return; gone = true; var t = Date.now() - t0, end = Math.max(1, Math.ceil(t / LAP)) * LAP - 150; setTimeout(function(){ el.classList.add('finish'); setTimeout(function(){ el.classList.add('done'); setTimeout(function(){ el.remove(); }, 600); }, 450); }, Math.max(0, end - t)); }
-      window.addEventListener('load', hide); setTimeout(hide, 2 * LAP);
-    })();
-  </script>
+  <div class="track"><img src="img/runner-lb.png" alt=""><img src="img/runner-pink.png" alt=""><img src="img/runner-yellow.png" alt=""><img src="img/runner-green.png" alt=""></div>
+  <script>(function(){var el=document.getElementById('rc-loader');setTimeout(function(){el.classList.add('done');setTimeout(function(){el.remove();},250);},700);})();</script>
 </div>
 
 
@@ -742,18 +704,180 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 .quiz-also{margin-top:16px;font-size:14px;color:var(--soft)}.quiz-also a{color:var(--ink)}
 @media (max-width:760px){.quiz-result{grid-template-columns:1fr}.quiz-frog{top:-44px;width:120px}.quiz-opts{grid-template-columns:1fr}}
 @media (prefers-reduced-motion:reduce){.quiz-opt,.quiz-bar i{transition:none}}
+
+/* ===== Vision brief v2 (Oct 2026): black base, cream type, periwinkle labels, yellow actions ===== */
+:root{--yellow:#FBE13A;--ink-navy:#042A84}
+html,body{margin:0}
+main{overflow-x:clip}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline-color:var(--yellow)}
+.lbl{margin:0;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--peri)}
+.bigh{margin:0;font-weight:800;text-transform:uppercase;letter-spacing:-.045em;line-height:.9;font-size:clamp(44px,7vw,112px)}
+.bigh em,.hx-h em{font-style:normal;color:var(--yellow)}
+nav.main a.cta,.pill-btn,.big-pill,.btn{background:var(--yellow) !important;color:#111 !important}
+nav.main a.cta:hover,.pill-btn:hover,.big-pill:hover,.btn:hover{background:var(--ink) !important;color:#111 !important}
+.pill-btn.ghost-btn{background:transparent !important;color:var(--ink) !important;box-shadow:inset 0 0 0 2px var(--ink)}
+.pill-btn.ghost-btn:hover{background:var(--ink) !important;color:#111 !important}
+.pill-btn.dark{background:#111 !important;color:#F3EEE3 !important}
+.pill-btn.dark:hover{background:#F3EEE3 !important;color:#111 !important}
+.pill-btn,.btn,nav.main a{font-family:var(--mono) !important;font-weight:500 !important;letter-spacing:.14em !important}
+.logo img{width:42px}
+.logo span{font-weight:800;letter-spacing:-.03em}
+nav.main{gap:28px}
+nav.main a{font-size:13px;color:var(--peri)}
+nav.main a:hover,nav.main a.on{color:var(--ink)}
+nav.main a.on{border-bottom-color:var(--ink)}
+nav.main a.cta{padding:12px 20px}
+/* hero */
+.hx{position:relative;overflow:hidden;min-height:calc(100svh - 81px);display:flex;align-items:center}
+.hx-in{position:relative;z-index:2;width:100%;padding-block:56px 140px}
+.hx-h{margin:22px 0 0;font-weight:800;text-transform:uppercase;letter-spacing:-.045em;line-height:.9;font-size:min(calc((100vw - 64px) / 14.4), 20vh, 168px);display:flex;flex-direction:column}
+.hx-h span{white-space:nowrap}
+.hx-sub{margin:26px 0 0;max-width:30ch;font-size:clamp(17px,1.5vw,22px);line-height:1.45;color:var(--muted)}
+.hx-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hx-ctas .pill-btn{min-height:56px;padding:0 28px}
+.hx-frog{position:absolute;z-index:1;right:-4vw;bottom:-14vw;width:min(50vw,820px);height:auto;transform:rotate(-8deg);pointer-events:none}
+/* ticker */
+.ticker{background:var(--yellow);color:#111;overflow:hidden}
+.tk-track{display:flex;width:max-content;animation:tk 36s linear infinite}
+.ticker:hover .tk-track{animation-play-state:paused}
+.tk-set{display:flex;align-items:center;gap:28px;padding:18px 14px;font-family:var(--mono);font-weight:500;font-size:clamp(14px,1.3vw,18px);letter-spacing:.16em;white-space:nowrap}
+.tk-set a{color:#111}.tk-set a:hover{color:#111;text-decoration:underline}
+.tk-set i{font-style:normal}
+.tk-run{display:inline-flex;align-items:center;gap:8px;background:#111;border-radius:999px;padding:7px 14px}
+.tk-run img{height:22px;width:auto}
+@keyframes tk{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.tk-track{animation:none;width:auto}.tk-set[aria-hidden]{display:none}.tk-set{flex-wrap:wrap;white-space:normal}}
+/* reel */
+.reel-sec{padding-block:112px 0}
+.reel-h{font-size:clamp(34px,5.4vw,88px);max-width:16ch}
+.reel-frame{position:relative;margin-top:36px;aspect-ratio:16/9;max-width:100%;border:1.5px solid var(--ink);border-radius:18px;overflow:hidden;background:#000}
+.reel-poster,.reel-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0;display:block}
+.reel-bg{pointer-events:none}
+.reel-lbl{position:absolute;left:18px;top:16px;z-index:2;font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:#F3EEE3;background:rgba(17,17,17,.6);padding:6px 10px;border-radius:999px}
+.reel-play{position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);width:clamp(76px,9vw,124px);aspect-ratio:1;border-radius:50%;border:0;background:var(--yellow);display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 40px rgba(0,0,0,.45);transition:transform .2s}
+.reel-play:hover{transform:translate(-50%,-50%) scale(1.06)}
+/* selected work */
+.sel{padding-block:136px 0}
+.sel-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px}
+.lbl-link{font-family:var(--mono);font-size:13px;letter-spacing:.16em;color:var(--peri)}
+.lbl-link:hover{color:var(--ink)}
+.sel-grid{position:relative;margin-top:120px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.sel-frog{position:absolute;z-index:0;left:50%;top:-118px;width:min(230px,40vw);transform:translateX(-50%) rotate(4deg);pointer-events:none}
+.wcard{position:relative;z-index:1;background:#F3EEE3;color:var(--ink-navy);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s}
+.wcard:hover{transform:translateY(-4px);color:var(--ink-navy)}
+.wimg{display:block;aspect-ratio:4/3;overflow:hidden;background:#000}
+.wimg img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+.wcard:hover .wimg img{transform:scale(1.04)}
+.wtxt{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:20px 22px 22px}
+.wtxt h3{margin:0;font-size:clamp(22px,2vw,30px);font-weight:800;letter-spacing:-.03em;line-height:1}
+.wtag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;padding:6px 10px;border-radius:999px;background:var(--t);color:var(--ink-navy);box-shadow:inset 0 0 0 1.5px var(--ink-navy);white-space:nowrap}
+/* the family */
+.fam{position:relative;padding-block:200px 0}
+.fam-frog{position:absolute;z-index:0;right:clamp(24px,8%,120px);top:60px;width:min(250px,42vw);transform:rotate(6deg);pointer-events:none}
+.fam-card{position:relative;z-index:1;background:#F3EEE3;color:var(--ink-navy);border-radius:24px;padding:clamp(28px,5vw,64px)}
+.fam-card .lbl{color:var(--ink-navy)}
+.fam-card .bigh{margin-top:14px;color:var(--ink-navy)}
+.fam-copy{margin:20px 0 0;max-width:52ch;font-size:clamp(17px,1.5vw,21px);line-height:1.5}
+.pills{list-style:none;margin:28px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.pills li{font-family:var(--mono);font-size:12px;letter-spacing:.16em;padding:10px 16px;border-radius:999px;background:var(--p);color:var(--ink-navy);box-shadow:inset 0 0 0 1.5px var(--ink-navy)}
+.fam-founder{margin:28px 0 0;font-family:var(--mono);font-size:13px;letter-spacing:.06em;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center}
+.fam-founder b{font-family:var(--display);font-size:18px;letter-spacing:-.01em}
+.fam-founder a{color:var(--ink-navy);text-decoration:underline;text-underline-offset:3px}
+/* contact block */
+.talk{position:relative;padding-block:200px 140px}
+.talk-frog{position:absolute;z-index:0;left:clamp(24px,8%,120px);top:62px;width:min(250px,42vw);transform:rotate(-7deg);pointer-events:none}
+.talk-box{position:relative;z-index:1;background:var(--yellow);color:#111;border-radius:24px;padding:clamp(32px,6vw,80px);display:flex;flex-direction:column;align-items:flex-start;gap:22px}
+.talk-box .bigh{font-size:clamp(34px,5.4vw,88px);max-width:15ch}
+.talk-box p{margin:0;max-width:46ch;font-size:clamp(17px,1.5vw,21px);line-height:1.5}
+/* footer */
+footer.foot{border-top:1px solid var(--line);background:var(--cream)}
+.foot-in{padding-block:48px 56px;display:grid;gap:18px}
+.foot-mail{font-size:clamp(24px,3.4vw,44px);font-weight:800;letter-spacing:-.03em;color:var(--ink);justify-self:start}
+.foot-links{display:flex;flex-wrap:wrap;gap:10px 24px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+.foot-links a{color:var(--ink)}.foot-links a:hover{color:var(--peri)}
+.foot-links .foot-shop{color:var(--yellow)}
+.foot-areas{margin:0;color:var(--soft);font-size:14px}
+/* about page */
+.about-top{padding-block:64px 24px}
+.about-h{margin-top:16px;font-size:clamp(52px,10vw,168px)}
+.about-cols{margin-top:36px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 48px;max-width:1100px}
+.about-cols p{margin:0;font-size:clamp(17px,1.5vw,21px);line-height:1.55;color:var(--muted)}
+.about-cols .about-lede{color:var(--ink);font-size:clamp(20px,2vw,28px);line-height:1.35}
+.team2{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center;padding-block:96px 140px}
+.founder2{margin:0;aspect-ratio:4/5;border-radius:20px;overflow:hidden;background:#000;box-shadow:inset 0 0 0 1px var(--line)}
+.founder2 img{width:100%;height:100%;object-fit:cover;display:block}
+.team2-txt{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.team2-txt .role{margin:0;font-family:var(--mono);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--peri)}
+.team2-txt>p:not(.lbl):not(.role){margin:0;max-width:46ch;font-size:18px;line-height:1.55;color:var(--muted)}
+.team2 .collab-card{margin:8px 0;padding:20px 22px;border-radius:16px;box-shadow:inset 0 0 0 1px var(--line);max-width:46ch}
+.team2 .collab-card p{margin:8px 0 0;color:var(--muted);font-size:15px;line-height:1.5}
+/* services index */
+.svc-top{position:relative;padding-block:64px 8px}
+.svc-top .bigh{margin-top:14px;font-size:clamp(52px,10vw,168px)}
+.svc-frog{position:absolute;right:-30px;top:28px;width:min(240px,34vw);transform:rotate(-10deg);pointer-events:none}
+.svc-rows{border-top:1px solid var(--line)}
+.svc-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px;padding:30px 0;border-bottom:1px solid var(--line);color:var(--ink)}
+.svc-row h3{margin:0;font-size:clamp(34px,6.4vw,104px);font-weight:800;letter-spacing:-.045em;line-height:.92}
+.svc-row p{margin:12px 0 0;color:var(--muted);font-size:17px;max-width:52ch}
+.svc-row .arr{font-size:clamp(28px,4vw,56px);color:var(--peri);transition:transform .2s}
+.svc-row:hover{color:var(--ink)}.svc-row:hover h3,.svc-row:hover .arr{color:var(--yellow)}.svc-row:hover .arr{transform:translateX(8px)}
+.svc-more{margin:28px 0 0;font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);display:flex;flex-wrap:wrap;gap:8px 18px}
+.svc-more a{color:var(--ink)}
+
+/* solid color blocks (Evelio, Oct 17): one frog color per block, never two blocks back to back */
+.sel-band{background:#8DA2DB;color:var(--ink-navy);margin-top:136px}
+.sel-band .sel{padding-block:96px 112px}
+.sel-band .bigh{color:var(--ink-navy)}
+.sel-band .lbl-link{color:var(--ink-navy)}
+.sel-band .lbl-link:hover{color:#111}
+.sel-band .wcard{box-shadow:0 0 0 1.5px var(--ink-navy)}
+.fam-card{background:#E8F8CF}
+.fam{padding-block:220px 0}
+.fam-frog{top:80px}
+@media (max-width:760px){.sel-band{margin-top:96px}.sel-band .sel{padding-block:72px 80px}.fam{padding-block:160px 0}.fam-frog{top:44px}}
+
+.svc-rows{position:relative;margin-top:110px}
+.svc-frog{position:absolute;z-index:0;right:8%;top:-112px;width:min(220px,40vw);transform:rotate(-6deg);pointer-events:none}
+.svc-row{position:relative;z-index:1;background:var(--cream)}
+.mint-band{background:#E8F8CF;color:var(--ink-navy);margin-top:72px}
+.mint-band .team2{padding-block:96px}
+.mint-band .bigh,.mint-band .lbl{color:var(--ink-navy)}
+.mint-band .team2-txt .role{color:var(--ink-navy);opacity:.75}
+.mint-band .team2-txt>p:not(.lbl):not(.role),.mint-band .collab-card p{color:var(--ink-navy)}
+.mint-band .collab-card{box-shadow:inset 0 0 0 1.5px var(--ink-navy)}
+.mint-band .founder2{box-shadow:none}
+@media (max-width:760px){.svc-frog{width:150px;top:-84px;right:4%}.svc-rows{margin-top:84px}}
+/* contact page */
+.form-frog{position:absolute;right:24px;top:-92px;width:150px;height:auto;transform:rotate(6deg);pointer-events:none}
+form#contact-form{margin-top:72px !important;scroll-margin-top:110px}
+.quiz-card{margin-top:0}
+@media (max-width:900px){
+  .sel-grid{grid-template-columns:1fr;margin-top:110px}
+  .about-cols,.team2{grid-template-columns:1fr}
+  .founder2{max-width:420px}
+}
+@media (max-width:760px){
+  .hx{min-height:0;display:block}
+  .hx-in{padding-block:40px 66vw}
+  .hx-h{font-size:calc((100vw - 36px) / 12.7) !important}
+  .hx-frog{width:86vw;right:-10vw;bottom:-16vw}
+  .reel-sec{padding-block:80px 0}
+  .sel{padding-block:96px 0}
+  .fam{padding-block:150px 0}.fam-frog{top:36px;width:170px}
+  .talk{padding-block:150px 96px}.talk-frog{top:40px;width:170px}
+  .sel-frog{width:170px;top:-100px}
+}
 </style>
 
 <header class="site">
   <div class="wrap">
-    <a class="logo" href="#home" aria-label="Reelclip home"><img src="img/frog-stack-color.png" alt=""><span>REELCLIP</span></a>
+    <a class="logo" href="#home" aria-label="Reelclip home"><img src="img/runner-cream.png" alt=""><span>REELCLIP</span></a>
     <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="main-nav" aria-label="Open menu"><span></span><span></span></button>
     <nav class="main" id="main-nav" aria-label="Main">
-      <a href="#team" data-nav="team">TEAM</a>
       <a href="#work" data-nav="work">WORK</a>
-      <a href="#manifesto" data-nav="manifesto">MANIFESTO</a>
-      <a href="#shop" data-nav="shop">SHOP</a>
-      <a href="#contact" class="cta">LET'S CONNECT</a>
+      <a href="#services" data-nav="service">SERVICES</a>
+      <a href="#about" data-nav="manifesto">ABOUT</a>
+      <a href="#contact" class="cta">LET'S TALK</a>
     </nav>
   </div>
 </header>
@@ -761,102 +885,61 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 <main><!--SPA-DATA-START--><script id="spa-data" type="application/json">{"services": [{"slug": "commercial-video-production", "name": "Commercial Video Production", "short": "Commercials + campaigns", "lede": "Commercials and campaigns with a point of view, built for the screens your customers actually watch: social feeds, paid ads, your website and the big screen.", "intro": ["Reelclip creates commercials for brands that want to be remembered, not scrolled past. We start with what you're selling, who it's for and how it should feel, then build the concept, the shot list and the crew around that.", "Some clients come with a finished creative direction and need a production team to execute it. Others come with a product and a deadline. Either way, you get one team that takes it from idea to final delivery, with every cutdown and aspect ratio your campaign needs."], "includes": ["Creative concept + scripting", "Mood boards, storyboards + shot lists", "Casting + talent coordination", "Location scouting + permits guidance", "Cinema camera, lighting + audio crew", "Drone + FPV aerials when the story needs them", "Editing, color grading + sound design", "Cutdowns for 6s, 15s, 30s + vertical"], "deliverables": ["Hero commercial (15–60s)", "Vertical cutdowns for Reels, TikTok + Shorts", "Paid-social ad variations", "Website + YouTube versions", "Behind-the-scenes stills"], "steps": [["Discovery", "We learn the product, audience, goal and budget, and agree on what success looks like."], ["Concept + plan", "Treatment, mood board, script, shot list, schedule and crew, approved before we roll."], ["Production", "A tight, organized shoot day with the right crew size for the job."], ["Post + delivery", "Edit, color, sound and every cutdown, with clear review rounds."]], "faqs": [["How much does a commercial cost in Seattle?", "Projects typically start at $2,000, with custom quotes based on the creative direction, production needs, and final deliverables. Tell us what you're hoping to create and the budget you have in mind, and we'll explore what's possible together."], ["Do you write the concept, or do we?", "Both work. We can develop the full creative from scratch, or execute a concept your team or agency already has."], ["Can you deliver versions for every platform?", "Yes. We plan coverage for vertical and horizontal from the start, so every cutdown looks intentional, not cropped."], ["How long does a commercial take?", "Most projects take two to six weeks from kickoff to final delivery. Rush timelines are possible; our TurboTax package delivered three videos in one week."]], "work": ["nuwav-jacket-launch-commercial", "jack-s-bbq-commercial-campaign", "zadart-exotic-car-campaign", "peristera-first-collection-launch"], "related": ["product-video-production", "brand-films", "social-media-video"]}, {"slug": "corporate-video-production", "name": "Corporate Video Production", "short": "Corporate video", "lede": "Recruiting films, executive messages, educational and training content, and conference video that still feels like it was made by people with taste.", "intro": ["Corporate video doesn't have to look corporate. We bring the same cinematic eye we use for commercials to the videos your company makes for employees, partners and recruits.", "For Chilean Salmon we filmed chef demonstrations, educational talks and interviews across multiple days and venues, and delivered a 1:42 film with text animations that made the information easy to follow."], "includes": ["Recruiting + culture films", "Executive and leadership messages", "Training + educational video", "Conference and keynote coverage", "Interview lighting + clean audio", "Motion graphics for data and key points"], "deliverables": ["Polished hero video", "Internal comms cuts", "Training modules", "Conference session edits", "Captioned, accessible versions"], "steps": [["Brief", "Goals, audiences, approvals and brand guidelines."], ["Pre-production", "Scripts, interview questions, schedules and locations."], ["Filming", "Low-disruption shoots at your office, venue or on location."], ["Review + deliver", "Structured review rounds that fit your approval process."]], "faqs": [["Can you film at our office without disrupting work?", "Yes. We plan compact setups and schedules around your team's day."], ["Can you add captions and graphics?", "Yes. Captions, lower thirds, text animation and simple motion graphics are part of our post-production."], ["Do you work with procurement and vendor onboarding?", "Yes. We're used to working with marketing teams at larger organizations and can provide what your vendor process needs."]], "work": ["chilean-salmon-culinary-event-film", "turbotax-three-event-campaign"], "related": ["event-videography", "brand-films", "content-partnerships"]}, {"slug": "product-video-production", "name": "Product Video Production", "short": "Product launches", "lede": "Product films and short-form assets that make people want the thing, designed for launch day, your product pages and paid social.", "intro": ["Launching something new? We plan the hero film, the teasers and the always-on assets together, so your launch has a consistent look from the first teaser to the last retargeting ad.", "We've filmed an apparel brand's first collection, a streetwear jacket launch, a bike brand's hero film and an exotic car rental campaign. Each one got a different approach, because a jacket and a Lamborghini shouldn't be filmed the same way."], "includes": ["Launch campaign planning", "Styled product + macro cinematography", "Lifestyle scenes with real people", "Studio or on-location setups", "E-commerce and product-page clips", "Motion graphics + text animation"], "deliverables": ["Launch hero film", "Teasers + countdown clips", "Product-page loops", "Paid social ad set", "Vertical reels per product or look"], "steps": [["Launch plan", "Map every asset to a launch moment: teaser, drop day and after."], ["Styling", "Props, sets, wardrobe and talent that fit your audience."], ["Shoot", "Hero, detail and lifestyle coverage in one efficient schedule."], ["Roll-out", "Edits sized and paced for every placement."]], "faqs": [["Can you shoot multiple products in one day?", "Yes. We build the schedule around your product list so you get the most usable assets per shoot day."], ["Do you provide models or talent?", "We can cast talent, or feature your community. NuWav's launch starred local creatives instead of models, and it fit the brand perfectly."], ["Can you make ads in multiple versions for testing?", "Yes. We plan alternate hooks, lengths and calls-to-action so your team can A/B test."]], "work": ["peristera-first-collection-launch", "nuwav-jacket-launch-commercial", "gerard-cycles-brand-film", "zadart-exotic-car-campaign"], "related": ["commercial-video-production", "social-media-video", "brand-films"]}, {"slug": "event-videography", "name": "Event Videography", "short": "Events + activations", "lede": "Corporate events, brand activations, concerts and nightlife, captured as they happen and cut into recaps people actually finish watching.", "intro": ["Live events don't give second takes. We show up with a shot list, a plan for audio and enough crew to be in the right place when the moment happens. Then we turn it around fast, because recaps matter most while the event is still being talked about.", "We've covered a three-event TurboTax campaign (delivered in one week), a multi-day Chilean Salmon culinary program at the University of Washington and a Seattle hotel venue, Mariah The Scientist at Sarajevo and a full Laid Back Allure weekend."], "includes": ["Event recap films", "On-site interviews + testimonials", "Mic setup + live audio capture", "Multi-camera crews for larger events", "Event photography", "Same-week and rush delivery", "Brand activation + sponsor coverage"], "deliverables": ["Highlight recap (60–90s)", "Vertical recaps for social", "Interview + testimonial clips", "Full-length session recordings", "Edited event photo gallery"], "steps": [["Run of show", "We review your schedule, sponsors and must-have moments."], ["Crew plan", "The right number of shooters, audio and photo for the room."], ["Event day", "Coverage of the program, the people and the brand."], ["Fast turnaround", "Recaps delivered while the buzz is still fresh."]], "faqs": [["How fast can we get our event recap?", "Turnaround depends on scope, and we can move fast: for TurboTax, all three event recaps were delivered inside one week."], ["Can you cover multiple events or locations?", "Yes. We hire and direct additional videographers when events overlap or run across several venues."], ["Do you record interviews and testimonials?", "Yes. We bring microphones and set up clean audio for interviews, presenters and live demos."], ["Do you also take photos?", "Yes. Event photography can be added to any video package."]], "work": ["turbotax-three-event-campaign", "chilean-salmon-culinary-event-film", "sarajevo-mariah-the-scientist", "laid-back-allure-weekend-recap"], "related": ["production-crew", "social-media-video", "corporate-video-production"]}, {"slug": "brand-films", "name": "Brand Films", "short": "Brand films", "lede": "Visual storytelling that shows the people, personality and purpose behind your business, made to live at the top of your website and travel everywhere else.", "intro": ["A brand film is the video that explains why you exist without sounding like an ad. It's the hero on your homepage, the first thing investors see, the clip your team shares when they're proud of where they work.", "We build brand films from the ground up when there's no style guide yet, or match an established look when there is. For Gerard Cycles we created the visual language from scratch, from mood board to color, and delivered a 60-second hero film for their new website."], "includes": ["Brand discovery + story development", "Founder and team interviews", "Visual identity, mood board + storyboard", "Multi-day shoots + drone", "Product and process cinematography", "Music licensing + sound design", "Color grading to your brand palette"], "deliverables": ["Website hero film (30–90s)", "Long-form story cut (2–4 min)", "Looping silent homepage version", "Social teasers + vertical cuts", "Stills for web and press"], "steps": [["Story", "We interview you and find the one idea the film is about."], ["Look", "Mood board, palette, locations and shot list that fit your brand."], ["Shoot", "People, places and process, filmed with care and minimal disruption."], ["Finish", "Edit, color and versions for your site, socials and pitch decks."]], "faqs": [["What's the difference between a brand film and a commercial?", "A commercial sells a specific product or offer. A brand film builds trust in who you are, so it keeps working for years on your website, in pitches and in hiring."], ["Do we need a script?", "Not necessarily. Many brand films are built from interviews and observed moments. We'll recommend scripted, documentary or a hybrid based on your story."], ["Can you make a silent version for our homepage?", "Yes. We deliver a lightweight, looping, no-audio version designed to autoplay as a website hero."]], "work": ["gerard-cycles-brand-film", "lula-coffee-co-brand-film"], "related": ["commercial-video-production", "corporate-video-production", "product-video-production"]}, {"slug": "production-crew", "name": "Production Crew + Support", "short": "Crew + support", "lede": "For agencies and marketing teams that already have the creative direction and need a reliable team to shoot, direct crews and deliver on deadline.", "intro": ["Sometimes the idea is done and what you need is execution. Reelclip can produce and direct the shoot, hire and brief additional videographers and editors, and manage the workflow from footage to final delivery.", "For TurboTax, Reelclip worked as Production Director across three activations: hiring the crew, assigning each event, filming two of them, and coordinating post so all three videos landed within a week."], "includes": ["Production direction + coordination", "Videographers and camera operators", "Audio capture and mic setup", "Editors and post-production management", "Crew hiring and briefing", "Client communication and delivery management"], "deliverables": ["Footage delivered to your specs", "Edits to your agency's brief", "Organized media handoff", "On-site production management"], "steps": [["Brief", "Your creative, shot list, specs and deadlines."], ["Crew", "We assemble and brief the right people."], ["Execute", "On-site direction and real-time problem solving."], ["Hand off", "Organized footage or finished edits, on time."]], "faqs": [["Can you scale the crew for bigger shoots?", "Yes. We regularly hire and direct additional videographers, photographers and editors for multi-location work."], ["Do you work under our agency's brand?", "Yes. We're comfortable working as your production partner behind the scenes."], ["Can you deliver raw footage only?", "Yes, or fully edited pieces. We'll match whatever your team needs."]], "work": ["turbotax-three-event-campaign", "turbotax-tax-season-promo", "chilean-salmon-culinary-event-film"], "related": ["event-videography", "corporate-video-production", "content-partnerships"]}, {"slug": "social-media-video", "name": "Social Media Video", "short": "Social content", "lede": "Cinematic vertical and horizontal content for Reels, TikTok, Shorts and paid social, made to hold attention in the first second.", "intro": ["Social content has to earn attention fast, and it has to keep coming. We shoot for vertical from the start, write hooks into the edit and plan batches so you leave one shoot day with weeks of posts.", "For Peristera we delivered a launch film plus five stylized reels, one for each look. For Laid Back Allure we cut vertical stories from the weekend's events, including the all-white party and the patio."], "includes": ["Vertical-first shooting", "Hook-driven editing", "Batch content days", "Captions + on-screen text", "Trend-aware formats", "Paid social ad variations"], "deliverables": ["Reels / TikToks / Shorts", "Story sequences", "Ad creative sets", "Monthly content batches", "Thumbnails + covers"], "steps": [["Content plan", "Pillars, formats and a posting calendar."], ["Batch shoot", "Many posts captured in one efficient day."], ["Edit", "Hooks, pacing, captions and sound for each platform."], ["Repeat", "Monthly batches that keep your feed consistent."]], "faqs": [["Can you make monthly content for us?", "Yes. Ongoing content partnerships are one of the best ways to work with us; see our partnerships page."], ["Do you post for us?", "We focus on production and editing and deliver ready-to-post files. We're happy to work alongside your social team or agency."], ["Can you shoot vertical and horizontal at the same time?", "Yes. We frame for both on set so nothing feels cropped later."]], "work": ["peristera-first-collection-launch", "laid-back-allure-weekend-recap", "zadart-exotic-car-campaign", "lula-coffee-co-brand-film"], "related": ["content-partnerships", "product-video-production", "event-videography"]}, {"slug": "music-videos", "name": "Music Videos", "short": "Music videos", "lede": "Concept, direction, cinematography, editing and color for artists who want their video to look as good as the record sounds.", "intro": ["Music videos are where Reelclip's style was built. We've shot at the Washington State Fair, in Seattle lobbies and on escalators, and on late-night streets in Tacoma and Spanaway.", "We collaborate on the concept or bring yours to life, then handle the shoot, edit and color. That range is why brands hire us too: it shows we can make something with personality."], "includes": ["Concept development + treatment", "Location scouting", "Direction + cinematography", "Lighting + practical effects", "Editing + color grading", "Release cutdowns for social"], "deliverables": ["Official music video", "Vertical teasers + snippets", "Thumbnail stills", "Behind-the-scenes content"], "steps": [["Treatment", "The idea, the look and the locations."], ["Prep", "Schedule, crew, wardrobe and gear."], ["Shoot", "Performance and story coverage."], ["Release", "Final video plus teasers for rollout."]], "faqs": [["How much is a music video?", "Projects typically start at $2,000, with custom quotes based on the concept, production needs and deliverables. Share your budget and we'll explore what's possible."], ["Do you shoot outside Seattle?", "Yes. We've shot in Tacoma, Spanaway and at the Washington State Fair in Puyallup, and travel across Washington."], ["Can you help with the concept?", "Yes. Some artists bring a full vision; others want us to develop the treatment with them."]], "work": ["saint-meadow-can-t-complain", "rell-moore-chrome-hearts", "slotlifebaby-different-time", "tha-baby-street-runner", "youngcam206-ruthless", "tbg-kam-bino-my-life"], "related": ["social-media-video", "commercial-video-production"]}, {"slug": "content-partnerships", "name": "Ongoing Content Partnerships", "short": "Ongoing partnerships", "lede": "A launch might be the first project. It doesn't have to be the last. Work with one consistent team for campaigns, seasons, events and everything after.", "intro": ["The brands that get the most from video don't hire a new crew every time. They build a relationship with a team that already knows the look, the people and the approval process, so every project starts faster and lands stronger.", "Reelclip partners with businesses that need regular campaign content, monthly social batches, event coverage and product updates. You get a planned calendar, predictable budgeting and a team that gets better at your brand every month."], "includes": ["Quarterly creative planning", "Monthly content production days", "Seasonal campaign shoots", "Event coverage on call", "Priority scheduling", "A consistent look across every asset"], "deliverables": ["Monthly social content batches", "Quarterly campaign films", "Event recaps as they happen", "Asset library for your team"], "steps": [["Plan the year", "Map launches, seasons and events into a content calendar."], ["Set the rhythm", "Monthly or quarterly production days you can count on."], ["Produce", "Shoots planned in batches for efficiency."], ["Improve", "Review what performs and refine each cycle."]], "faqs": [["How does a partnership work?", "We agree on a regular schedule and scope, like a monthly content day plus seasonal campaigns, and plan production ahead so you always have fresh content."], ["Is it cheaper than one-off projects?", "Usually it's more efficient: batching shoots and keeping one team reduces planning time and gives you more assets per dollar."], ["Can we pause or change the plan?", "Yes. Partnerships are built around your calendar and can flex with your business."]], "work": [], "related": ["social-media-video", "event-videography", "commercial-video-production"]}], "workUrls": {"/work/turbotax-event-video-production": "turbotax-three-event-campaign", "/work/chilean-salmon-event-video": "chilean-salmon-culinary-event-film", "/work/nuwav-jacket-launch-commercial": "nuwav-jacket-launch-commercial", "/work/peristera-clothing-launch-campaign": "peristera-first-collection-launch", "/work/gerard-cycles-brand-film": "gerard-cycles-brand-film", "/work/jacks-bbq-restaurant-commercial": "jack-s-bbq-commercial-campaign", "/work/lula-coffee-cafe-promo-video": "lula-coffee-co-brand-film", "/work/zadart-exotic-car-promo-video": "zadart-exotic-car-campaign", "/work/turbotax-tax-season-promo": "turbotax-tax-season-promo", "/work/laid-back-allure-event-recap": "laid-back-allure-weekend-recap", "/work/mariah-the-scientist-sarajevo-event-recap": "sarajevo-mariah-the-scientist", "/work/saint-meadow-cant-complain-music-video": "saint-meadow-can-t-complain", "/work/tbg-kam-bino-my-life-music-video": "tbg-kam-bino-my-life", "/work/youngcam206-ruthless-music-video": "youngcam206-ruthless", "/work/rell-moore-chrome-hearts-music-video": "rell-moore-chrome-hearts", "/work/tha-baby-street-runner-music-video": "tha-baby-street-runner", "/work/slotlifebaby-different-time-music-video": "slotlifebaby-different-time"}}</script><!--SPA-DATA-END-->
 <!-- ================= HOME ================= -->
 <div class="page" data-page="home">
-  <section class="wrap hero-land">
-    <script>(function(){function f(){var h=document.querySelector(".hero-land");if(h&&h.offsetParent!==null)document.documentElement.style.setProperty("--hdr",(h.getBoundingClientRect().top+scrollY)+"px")}f();addEventListener("resize",f);addEventListener("load",f);addEventListener("hashchange",function(){setTimeout(f,50)})})();</script>
-    <h1 class="big hero-h">
-      <span class="hero-kicker">Seattle video production company · commercials, brand films + events</span>
-      <span style="color:var(--peri-text)">YOUR VISION,</span>
-      <span style="color:var(--navy)">CARED FOR LIKE OUR OWN.</span>
-    </h1>
-    <p class="hero-sub">We create video content for businesses through close collaboration, thoughtful creative direction, and care for every detail, from the first conversation to the final delivery.</p>
-    <div class="hero-ctas"><a href="#contact" class="pill-btn">LET'S CONNECT</a><a href="#work" class="pill-btn ghost-btn">VIEW OUR WORK</a></div>
-    <button type="button" class="hero-cue" aria-label="Scroll to featured work" onclick="document.querySelector('.slider').scrollIntoView({behavior:'smooth'})"><span>SEE THE WORK</span><i></i></button>
+  <!-- hero -->
+  <section class="hx" aria-label="Intro">
+    <div class="wrap hx-in">
+      <p class="lbl">Seattle, WA · Production for brands worth seeing</p>
+      <h1 class="hx-h"><span>YOUR VISION,</span> <span>CARED FOR <em>LIKE OUR OWN.</em></span></h1>
+      <p class="hx-sub">A small Seattle production family making commercials, brand films and event videos.</p>
+      <div class="hx-ctas"><a href="#contact" class="pill-btn">START A PROJECT</a><button type="button" class="pill-btn ghost-btn" data-reel>WATCH THE REEL</button></div>
+    </div>
+    <img class="hx-frog" src="img/frog-yellow.png" alt="" aria-hidden="true">
   </section>
 
-  <!-- carousel -->
-  <section class="slider" aria-roledescription="carousel" aria-label="Recent stills">
-    <div class="track" id="track"></div>
-    <div class="wrap slider-ui">
-      <div class="dots" id="dots" role="tablist" aria-label="Choose still"></div>
-      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
-        <button type="button" class="circle" id="prev" aria-label="Previous still"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
-        <button type="button" class="circle" id="next" aria-label="Next still"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
-        <a href="https://vimeo.com/1233932034" target="_blank" rel="noopener" class="pill-btn reel-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>WATCH REEL</a>
-      </div>
+  <!-- service ticker -->
+  <section class="ticker" aria-label="What we make"><div class="tk-track"><div class="tk-set"><a href="/services/product-video-production">PRODUCT PROMOTION</a><i>✱</i><a href="/services/commercial-video-production">BRAND CAMPAIGNS</a><i>✱</i><a href="/services/event-videography">EVENTS</a><i>✱</i><a href="/services/music-videos">MUSIC VIDEOS + ROLLOUTS</a><span class="tk-run"><img src="img/runner-lb.png" alt=""><img src="img/runner-pink.png" alt=""><img src="img/runner-yellow.png" alt=""><img src="img/runner-green.png" alt=""></span></div><div class="tk-set" aria-hidden="true"><a href="/services/product-video-production" tabindex="-1">PRODUCT PROMOTION</a><i>✱</i><a href="/services/commercial-video-production" tabindex="-1">BRAND CAMPAIGNS</a><i>✱</i><a href="/services/event-videography" tabindex="-1">EVENTS</a><i>✱</i><a href="/services/music-videos" tabindex="-1">MUSIC VIDEOS + ROLLOUTS</a><span class="tk-run"><img src="img/runner-lb.png" alt=""><img src="img/runner-pink.png" alt=""><img src="img/runner-yellow.png" alt=""><img src="img/runner-green.png" alt=""></span></div></div></section>
+
+  <!-- reel -->
+  <section class="wrap reel-sec" id="reel" aria-labelledby="reel-h">
+    <h2 class="bigh reel-h" id="reel-h">EVERYONE'S POSTING. REELCLIP MAKES IT <em>WORTH SEEING.</em></h2>
+    <div class="reel-frame" id="reel-frame">
+      <img class="reel-poster" src="img/gerard-cycles.jpg" alt="">
+      <span class="reel-lbl">THE REEL</span>
+      <button type="button" class="reel-play" data-reel aria-label="Play the reel with sound"><svg width="40%" height="40%" viewBox="0 0 24 24" fill="#111" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
     </div>
   </section>
 
-  <!-- definition -->
-  <section class="define-cta" aria-label="What Reelclip means">
-    <div class="wrap define-cta-inner">
-      <span class="dc-frogs frog-shift" aria-hidden="true"><span class="frog-fill solid"></span><img src="img/frog-lounge-lines.png" alt=""></span>
-      <h2 class="big dc-word">reelclip</h2>
-      <span class="mono dc-say">/ˈrēl-ˌklip/ &nbsp;n.</span>
-      <ol class="dc-defs">
-        <li><span class="dc-n">1.</span>a short piece of film worth playing twice</li>
-        <li><span class="dc-n">2.</span>content made with taste, joy and a complete vision</li>
-        <li><span class="dc-n">3.</span>a Seattle production company for brands worth seeing</li>
-      </ol>
+  <!-- selected work -->
+  <section class="sel-band" aria-labelledby="sel-h"><div class="wrap sel">
+    <div class="sel-head"><h2 class="bigh" id="sel-h">SELECTED WORK</h2><a class="lbl-link" href="/work">ALL WORK →</a></div>
+    <div class="sel-grid">
+      <img class="sel-frog" src="img/frog-red.png" alt="" aria-hidden="true">
+      <a class="wcard" href="/work/jacks-bbq-restaurant-commercial"><span class="wimg"><img src="img/jacks-bbq.jpg" alt="Pitmaster Jack Timmons in Jack's BBQ commercial" loading="lazy"></span><span class="wtxt"><h3>JACK'S BBQ</h3><span class="wtag" style="--t:#E8664A">COMMERCIAL</span></span></a>
+      <a class="wcard" href="/work/gerard-cycles-brand-film"><span class="wimg"><img src="img/gerard-cycles.jpg" alt="A rider at dawn in the Gerard Cycles brand film" loading="lazy"></span><span class="wtxt"><h3>GERARD CYCLES</h3><span class="wtag" style="--t:#E8F8CF">BRAND FILM</span></span></a>
+      <a class="wcard" href="/work/turbotax-tax-season-promo"><span class="wimg"><img src="img/turbotax.jpg" alt="TurboTax tax-season promo still" loading="lazy"></span><span class="wtxt"><h3>TURBOTAX</h3><span class="wtag" style="--t:#FBE13A">PROMO</span></span></a>
+    </div>
+  </div></section>
+
+  <!-- the family -->
+  <section class="wrap fam" aria-labelledby="fam-h">
+    <img class="fam-frog" src="img/frog-peri.png" alt="" aria-hidden="true">
+    <div class="fam-card">
+      <p class="lbl">The family</p>
+      <h2 class="bigh" id="fam-h">BUILD WITH PEOPLE.</h2>
+      <p class="fam-copy">Reelclip is a small production family. We're selective on purpose and loyal for the long run, so the people we work with get a team that knows them and wants them to win.</p>
+      <ul class="pills"><li style="--p:#8DA2DB">JOY</li><li style="--p:#FBE13A">PURPOSE</li><li style="--p:#E8F8CF">COMPLETE VISION</li><li style="--p:#E8664A">TASTE</li></ul>
+      <p class="fam-founder"><b>Evelio</b> · Founder + creative director <a href="#about">Meet the family →</a></p>
     </div>
   </section>
 
-  <!-- featured work -->
-  <section class="wrap" style="padding-block:40px 24px">
-    <div class="row-head" style="flex-direction:column;align-items:flex-start;gap:20px">
-      <h2 class="big" style="font-size:clamp(36px,5vw,72px);color:var(--navy)">FEATURED WORK</h2>
-      <div class="tones" role="tablist" aria-label="Session type" id="session-tabs"></div>
+  <!-- contact -->
+  <section class="wrap talk" aria-labelledby="talk-h">
+    <img class="talk-frog" src="img/frog-mint.png" alt="" aria-hidden="true">
+    <div class="talk-box">
+      <h2 class="bigh" id="talk-h">EVERY PROJECT STARTS WITH A CONVERSATION.</h2>
+      <p>Projects typically start at $2,000. Tell us what you're making and we'll take it from there.</p>
+      <a href="#contact" class="pill-btn dark">START A PROJECT</a>
     </div>
-    <div class="feat-list" id="feat-list"></div>
-    <div style="display:flex;justify-content:center;margin-top:48px"><a href="#work" class="pill-btn reel-btn">VIEW ALL WORK</a></div>
-  </section>
-
-  <!-- services -->
-  <section class="band-dark" style="margin-top:120px">
-    <img src="img/frog-lounge-green.png" alt="" style="position:absolute;right:6%;top:-82px;width:min(220px,40vw);height:auto">
-    <div class="wrap" style="padding-block:88px">
-      <div class="eyebrow" style="color:var(--peri)">WHAT WE CREATE</div>
-      <h2 class="big svc-head-line">EVERYONE'S POSTING. <span style="color:var(--peri)">REELCLIP MAKES IT WORTH SEEING.</span></h2>
-      <p class="svc-intro">We create video content that brings your business and vision to life. Through thoughtful creative direction and quality production, we help express what matters to you and connect it with the people you want to reach.</p>
-      <div class="tier tier-1">
-        <a class="tcard" href="/services/commercial-video-production" style="--c:var(--f-pink)"><img src="img/runner-pink.png" alt="" class="runner-sm"><h3>Commercials + ad campaigns</h3><p>Campaigns and ads with a point of view, from concept and scripting to the final cut for every platform. Product launches can live inside a campaign.</p><span class="tlink">EXPLORE →</span></a>
-        <a class="tcard" href="/services/corporate-video-production" style="--c:var(--f-yellow)"><img src="img/runner-yellow.png" alt="" class="runner-sm"><h3>Corporate videos</h3><p>Company introductions, founder and employee interviews, recruiting and training videos, and recaps of your company events.</p><span class="tlink">EXPLORE →</span></a>
-      </div>
-      <div class="tier tier-2">
-        <a class="tcard" href="/services/product-video-production" style="--c:var(--f-green)"><h3>Product videos + launches</h3><p>Launch films, teasers and product content built to sell.</p><span class="tlink">EXPLORE →</span></a>
-        <a class="tcard" href="/services/event-videography" style="--c:var(--f-peri)"><h3>Event coverage</h3><p>Recaps, interviews and photography, including corporate event recaps.</p><span class="tlink">EXPLORE →</span></a>
-      </div>
-      <div class="tier tier-3">
-        <a class="tcard" href="/services/brand-films"><h3>Brand films</h3><p>The people and purpose behind your business, on film.</p><span class="tlink">EXPLORE →</span></a>
-        <a class="tcard" href="/services/production-crew"><h3>Production crew + support</h3><p>Already have a creative plan? We bring the crew and the execution.</p><span class="tlink">EXPLORE →</span></a>
-      </div>
-      <div class="tier-more"><span class="mono">ALSO:</span><a href="/services/social-media-video">Social media content</a><a href="/services/music-videos">Music videos</a><a href="/services/content-partnerships">Ongoing content partnerships</a></div>
-      <div class="quiz-card" id="quiz">
-        <img class="quiz-frog" src="img/frog-lounge-pink.png" alt="" aria-hidden="true">
-        <div class="quiz-intro" id="quiz-intro">
-          <span class="quiz-eyebrow">NOT SURE WHERE TO START?</span>
-          <h3 class="quiz-h">TAKE THE ONE-MINUTE QUIZ.</h3>
-          <p class="quiz-sub">Four quick questions, one clear first step.</p>
-          <button type="button" class="pill-btn" id="quiz-start">START THE QUIZ <span aria-hidden="true">→</span></button>
-        </div>
-        <div class="quiz-body" id="quiz-body" hidden aria-live="polite"></div>
-      </div>
-      <div class="price-box">
-        <div><h3>Every project starts with a conversation.</h3>
-        <p>Projects typically start at $2,000, with custom quotes based on the creative direction, production needs, and final deliverables. Tell us what you're hoping to create and the budget you have in mind, and we'll explore what's possible together.</p></div>
-        <a href="#contact" class="pill-btn">LET'S CONNECT</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- how we work -->
-  <section class="wrap how-we-work">
-    <div class="eyebrow" style="color:var(--peri)">HOW WE WORK</div>
-    <h2 class="big" style="font-size:clamp(34px,4.6vw,68px);letter-spacing:-.04em;margin-top:12px">WE START WITH A CONVERSATION.</h2>
-    <div class="hww-grid">
-      <p>We get to know you, your business, and what you hope to create. Then we shape the direction together and bring in the right team for your project: people who care about the work and take ownership of seeing it through.</p>
-      <p>We take on projects thoughtfully, making sure we have the time, people, and creative energy to give each one the attention it deserves.</p>
-    </div>
-    <p class="areas-line">Working across Seattle, Bellevue, Tacoma, and wherever your project takes us. <span>Serving surrounding Washington communities and open to traveling farther.</span></p>
   </section>
 </div>
 
@@ -885,35 +968,27 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 
 <!-- ================= MANIFESTO + TEAM ================= -->
 <div class="page" data-page="manifesto" hidden>
-  <section class="wrap" style="padding-block:56px 96px;position:relative">
-    <img src="img/frog-stack-color.png" alt="" style="position:absolute;right:32px;top:40px;width:min(300px,30vw);height:auto">
-    <div class="eyebrow" style="color:var(--peri-text)">WHO WE ARE</div>
-    <p class="who-we-are">Reelclip is a video production company built on care, creativity, and connection. From local businesses to established brands, we work with people who are putting something into the world, and bring our own passion and personal investment to helping them do it.</p>
-    <div class="eyebrow" style="color:var(--peri-text);margin-top:48px">THE MANIFESTO</div>
-    <h2 class="big" style="margin-top:16px;max-width:900px;font-size:clamp(32px,4.4vw,64px);color:var(--navy);letter-spacing:-.04em">THERE'S LIFE BEHIND EVERY BUSINESS. WE'RE HERE TO HELP PEOPLE SEE IT.</h2>
-    <ol class="mlist">
-      <li><span class="tag" style="color:var(--f-pink)">01</span><div><h2>Everyone has a story.</h2><p>Behind the finished product are people, unseen hours, and details someone cared enough to get right. We take time to understand the people we work with, what matters to them, and what they want to share.</p></div></li>
-      <li><span class="tag" style="color:var(--f-yellow)">02</span><div><h2>We create so people can be seen and heard.</h2><p>We want our videos to carry personality, feeling, and life. From a company introduction to a commercial or an event film, we look for the moments that help people connect.</p></div></li>
-      <li><span class="tag" style="color:var(--f-green)">03</span><div><h2>Your vision, cared for like our own.</h2><p>We bring a piece of ourselves to the work: our creativity, attention, and care. We shape the direction with you and bring together people who are personally invested in seeing it through.</p></div></li>
-      <li><span class="tag" style="color:var(--f-red)">04</span><div><h2>Our care carries through to the finish.</h2><p>We take on projects thoughtfully, giving each one the time and energy it deserves. We listen, communicate, and follow through so the care you feel in our conversations comes through in the final work.</p></div></li>
-    </ol>
+  <section class="wrap about-top">
+    <p class="lbl">About</p>
+    <h1 class="bigh about-h">BUILD WITH PEOPLE.</h1>
+    <div class="about-cols">
+      <p class="about-lede">Reelclip is a small production family in Seattle. We build with people, curate something worth seeing, and stay selective on purpose.</p>
+      <p>We take on fewer clients and get to know the people behind each business. We shape the direction together, bring in the right crew for the job, and stick around long after the first project.</p>
+    </div>
+    <ul class="pills"><li style="--p:#8DA2DB">JOY</li><li style="--p:#FBE13A">PURPOSE</li><li style="--p:#E8F8CF">COMPLETE VISION</li><li style="--p:#E8664A">TASTE</li></ul>
   </section>
 
-  <section id="team-section" class="band-peri">
-    <div class="wrap" style="padding-block:88px">
-      <div class="row-head">
-        <h2 class="big mega" style=";color:var(--navy)">THE TEAM</h2>
-      </div>
-      <div class="team-wrap">
-        <div class="team-intro">
-          <h3>Reelclip begins with a personal connection.</h3>
-          <p>Led by our founder, we bring together filmmakers and creative collaborators around each project. We take time to understand your business, shape the direction with you, and assemble a team that cares about seeing it through.</p>
-        </div>
-        <figure class="founder"><div class="still" style="aspect-ratio:4/5;padding:0;overflow:hidden;background:#000"><img src="img/founder-frog.png" alt="Evelio, founder of Reelclip, portrayed as the winking green frog" style="width:100%;height:100%;object-fit:cover;display:block"></div><figcaption><div style="font-size:22px;font-weight:900">Evelio</div><div style="font-size:14px"><i class="team-dot" style="background:var(--f-pink)"></i>Founder</div></figcaption></figure>
-        <div class="collab-card"><span class="mono">THE COLLABORATORS</span><p>Filmmakers, editors and creative collaborators, brought together for each project based on what it needs.</p></div>
-      </div>
+  <div class="mint-band"><section id="team-section" class="wrap team2" aria-labelledby="team-h">
+    <figure class="founder2"><img src="img/founder-frog.png" alt="Evelio, founder of Reelclip, as the winking green frog"></figure>
+    <div class="team2-txt">
+      <p class="lbl">The family</p>
+      <h2 class="bigh" id="team-h">EVELIO</h2>
+      <p class="role">Founder + creative director</p>
+      <p>Every project starts with a conversation with Evelio. From there he brings together the filmmakers, editors and collaborators each one needs.</p>
+      <div class="collab-card"><span class="lbl">The collaborators</span><p>Filmmakers, editors and creative collaborators, brought together for each project based on what it needs.</p></div>
+      <a class="pill-btn dark" href="#contact">START A PROJECT</a>
     </div>
-  </section>
+  </section></div>
 </div>
 
 <!-- ================= SHOP ================= -->
@@ -935,7 +1010,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
           <span class="product-tag" style="background:var(--f-pink)">NEW</span>
         </div>
         <div class="product-info">
-          <div class="product-row"><h2>[FROG STACK TEE]</h2><span class="price">[$PRICE]</span></div>
+          <div class="product-row"><h2>Frog Stack Tee</h2><span class="price">Coming soon</span></div>
           <p>Off-white tee with the four-frog stack in full color on the chest.</p>
           <div class="sizes" role="radiogroup" aria-label="Size">
             <button type="button" role="radio" aria-checked="false">S</button><button type="button" role="radio" aria-checked="true">M</button><button type="button" role="radio" aria-checked="false">L</button><button type="button" role="radio" aria-checked="false">XL</button><button type="button" role="radio" aria-checked="false">XXL</button>
@@ -952,7 +1027,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
           <img src="img/tee-cameraman.jpg" alt="Black tee with the white running cameraman and REELCLIP wordmark" class="tee-photo">
         </div>
         <div class="product-info">
-          <div class="product-row"><h2>[CAMERAMAN TEE]</h2><span class="price">[$PRICE]</span></div>
+          <div class="product-row"><h2>Cameraman Tee</h2><span class="price">Coming soon</span></div>
           <p>Black tee with the running cameraman and REELCLIP wordmark in white.</p>
           <div class="sizes" role="radiogroup" aria-label="Size">
             <button type="button" role="radio" aria-checked="false">S</button><button type="button" role="radio" aria-checked="true">M</button><button type="button" role="radio" aria-checked="false">L</button><button type="button" role="radio" aria-checked="false">XL</button><button type="button" role="radio" aria-checked="false">XXL</button>
@@ -968,11 +1043,11 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
 
 <!-- ================= CONTACT ================= -->
 <div class="page" data-page="contact" hidden>
-  <section class="wrap" style="padding-block:48px 120px;display:flex;flex-wrap:wrap;gap:64px">
+  <section class="wrap" style="padding-block:48px 80px;display:flex;flex-wrap:wrap;gap:64px">
     <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:28px">
       <h2 class="big" style="font-size:clamp(40px,5.4vw,92px);letter-spacing:-.04em;overflow-wrap:break-word">
-        <span style="color:var(--peri-text)">WHAT YOU'RE BUILDING</span><br>
-        <span style="color:var(--navy)">MATTERS.</span>
+        <span>WHAT YOU'RE BUILDING</span><br>
+        <span style="color:var(--f-yellow)">MATTERS.</span>
       </h2>
       <p style="margin:0;max-width:460px;font-size:18px;line-height:1.5;color:var(--muted)">We'd love to hear about it. Tell us about your business, what matters to you, and how you'd like people to see it. We'll find the direction together.</p>
       <p style="margin:0;max-width:460px;font-size:15px;line-height:1.5;color:var(--soft)">Projects typically start at $2,000, with custom quotes based on the creative direction, production needs, and final deliverables.</p>
@@ -980,14 +1055,9 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
         <a href="mailto:thereelclip@gmail.com" style="color:var(--navy);text-decoration:none;user-select:all">thereelclip@gmail.com</a>
         <span>Seattle, WA</span>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px">
-        <div class="still" style="aspect-ratio:4/5;padding:0;overflow:hidden"><img src="img/mv-rt-05.jpg" alt="YoungCam206 performing by a vintage car at night" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-        <div class="still" style="aspect-ratio:4/5;padding:0;overflow:hidden"><img src="img/lula-04.jpg" alt="Inside Lula Coffee Co.'s pink cafe" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-        <div class="still" style="aspect-ratio:4/5;padding:0;overflow:hidden"><img src="img/zadart-02.jpg" alt="A driver in a yellow Lamborghini convertible" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></div>
-      </div>
-    </div>
+          </div>
     <form id="contact-form" style="flex:1 1 460px;min-width:0;background:var(--white);border-radius:18px;padding:clamp(24px,4vw,40px);box-sizing:border-box;display:flex;flex-direction:column;gap:26px;position:relative;margin-top:40px">
-      <img src="img/frog-lounge-pink.png" alt="" style="position:absolute;right:24px;top:-60px;width:150px;height:auto">
+      <img src="img/frog-yellow.png" alt="" aria-hidden="true" class="form-frog">
       <div class="two">
         <div class="field"><label for="rc-name">NAME</label><input id="rc-name" type="text" autocomplete="name" required></div>
         <div class="field"><label for="rc-email">EMAIL</label><input id="rc-email" type="email" autocomplete="email" required></div>
@@ -1007,30 +1077,27 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       <p id="form-note" class="sent" role="status" hidden></p>
     </form>
   </section>
+
+  <section class="wrap" style="padding-block:0 120px">
+      <div class="quiz-card" id="quiz">
+        <div class="quiz-intro" id="quiz-intro">
+          <span class="quiz-eyebrow">NOT SURE WHAT TO ASK FOR?</span>
+          <h3 class="quiz-h">TAKE THE ONE-MINUTE QUIZ.</h3>
+          <p class="quiz-sub">Four quick questions, one clear first step.</p>
+          <button type="button" class="pill-btn" id="quiz-start">START THE QUIZ <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="quiz-body" id="quiz-body" hidden aria-live="polite"></div>
+      </div>
+  </section>
 </div>
 </main>
 
-<footer class="cta-foot">
-  <div class="wrap foot-invite" style="padding-block:96px 40px;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center;position:relative">
-    <img src="img/frog-stack-color.png" alt="" style="width:150px;height:auto">
-    <h2 class="big" style="font-size:clamp(36px,6vw,88px);color:var(--navy)">What you're building matters.</h2>
-    <p style="margin:0;max-width:560px;font-size:18px;line-height:1.5;color:var(--muted)">We'd love to hear about it. Tell us about your business, what matters to you, and how you'd like people to see it. We'll find the direction together.</p>
-    <a href="#contact" class="pill-btn big-pill">LET'S CONNECT</a>
-  </div>
-  <nav class="site-dir wrap" aria-label="Site links">
-    <div><h3>Services</h3><ul><li><a href="/services/commercial-video-production">Commercials + ad campaigns</a></li><li><a href="/services/corporate-video-production">Corporate videos</a></li><li><a href="/services/product-video-production">Product videos + launches</a></li><li><a href="/services/event-videography">Event coverage</a></li><li><a href="/services">All services →</a></li></ul></div>
-    <div><h3>Work</h3><ul><li><a href="/work/jacks-bbq-restaurant-commercial">Jack's BBQ</a></li><li><a href="/work/gerard-cycles-brand-film">Gerard Cycles</a></li><li><a href="/work/turbotax-tax-season-promo">TurboTax</a></li><li><a href="/work">All work →</a></li></ul></div>
-    <div><h3>Reelclip</h3><ul><li><a href="#manifesto">Manifesto + team</a></li><li><a href="#contact">Let's connect</a></li><li><a href="#shop">Shop merch</a></li><li><a href="mailto:thereelclip@gmail.com">thereelclip@gmail.com</a></li></ul></div>
-    <div class="dir-cities"><h3>Seattle-based</h3><p>Working across Seattle, Bellevue, Tacoma, and wherever your project takes us.</p></div>
-  </nav>
-  <div class="band-navy">
-    <img src="img/frog-lounge-yellow.png" alt="" style="position:absolute;left:5%;top:-50px;width:130px;height:auto">
-    <div class="wrap" style="padding-block:48px 28px;display:flex;flex-direction:column;gap:28px">
-      <div class="footer-word">REELCLIP</div>
-      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:12px;color:var(--peri)">
-        <span>Made with love in Seattle, WA.</span><a href="mailto:thereelclip@gmail.com" style="color:inherit;text-decoration:none;user-select:all">thereelclip@gmail.com</a>
-      </div>
-    </div>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="lbl">Reelclip · Seattle, WA · Production for brands worth seeing</p>
+    <a class="foot-mail" href="mailto:thereelclip@gmail.com">thereelclip@gmail.com</a>
+    <nav class="foot-links" aria-label="Footer"><a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#contact">Contact</a><a href="#shop" class="foot-shop">Wear the family →</a></nav>
+    <p class="foot-areas">Working across Seattle, Bellevue, Tacoma and wherever the project takes us.</p>
   </div>
 </footer>
 
@@ -1060,7 +1127,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   var casesReady = false;
   function route(){
     var h = (location.hash || '#home').slice(1);
-    var target = h === 'team' ? 'manifesto' : (h.indexOf('case-') === 0 ? 'case' : ((h === 'services' || h.indexOf('service-') === 0) ? 'service' : h));
+    var target = (h === 'team' || h === 'about') ? 'manifesto' : (h.indexOf('case-') === 0 ? 'case' : ((h === 'services' || h.indexOf('service-') === 0) ? 'service' : h));
     if (!document.querySelector('[data-page="'+target+'"]')) target = 'home';
     pages.forEach(function(p){ p.hidden = p.getAttribute('data-page') !== target; });
     document.body.setAttribute('data-route', target);
@@ -1158,6 +1225,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   var REELS = [];
   MEDIA.forEach(function(m){ (m.reels||[]).forEach(function(id, k){ REELS.push({artist:m.artist, song:'Reel '+String(k+1).padStart(2,'0'), vimeo:id, reel:true, label:'REELCLIP · REEL '+String(k+1).padStart(2,'0')}); }); });
   var PLAY = VIDEOS.concat(MEDIA.filter(function(m){ return !m.hero; }), REELS);
+  var REEL_IDX = PLAY.push({artist:'Reelclip', song:'The Reel', vimeo:'1188288427', main:true}) - 1;
   function slugify(t){ return String(t).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
   function projSlug(m){ return slugify(m.artist+'-'+m.song); }
   function mediaUrl(m){ return (m.file && !m.vimeo && !m.drive && !m.id) ? m.file : m.drive ? 'https://drive.google.com/file/d/'+m.drive+'/view' : m.vimeo ? 'https://vimeo.com/'+m.vimeo : 'https://www.youtube.com/watch?v='+m.id; }
@@ -1174,7 +1242,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       + '</span>';
   }
   var vids = CAROUSEL.map(mediaUrl);
-  var track = document.getElementById('track'), dotsEl = document.getElementById('dots');
+  var track = document.getElementById('track') || document.createElement('div'), dotsEl = document.getElementById('dots') || document.createElement('div');
   var slides = [], dots = [], idx = 0, timer = null;
   labels.forEach(function(l,i){
     var s = document.createElement('div'); s.className='slide';
@@ -1200,8 +1268,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
   }
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function restart(){ clearInterval(timer); if (!reduce) timer = setInterval(function(){ go(idx+1); }, 4500); }
-  document.getElementById('prev').addEventListener('click', function(e){ go(idx-1); restart(); if (e.detail) this.blur(); });
-  document.getElementById('next').addEventListener('click', function(e){ go(idx+1); restart(); if (e.detail) this.blur(); });
+  (document.getElementById('prev') || document.createElement('button')).addEventListener('click', function(e){ go(idx-1); restart(); if (e.detail) this.blur(); });
+  (document.getElementById('next') || document.createElement('button')).addEventListener('click', function(e){ go(idx+1); restart(); if (e.detail) this.blur(); });
   track.addEventListener('mouseenter', function(){ clearInterval(timer); });
   track.addEventListener('mouseleave', restart);
   window.addEventListener('resize', layout);
@@ -1234,7 +1302,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     {session:'events', m:10},
     {session:'events', m:11}
   ];
-  var sessionTabs = document.getElementById('session-tabs'), featList = document.getElementById('feat-list'), activeSession = 'featured';
+  var sessionTabs = document.getElementById('session-tabs') || document.createElement('div'), featList = document.getElementById('feat-list') || document.createElement('div'), activeSession = 'featured';
   var playSm = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l12-7.5z"/></svg>';
   function featRow(f){
     var v = (typeof f.v === 'number') ? VIDEOS[f.v] : (typeof f.m === 'number' ? MEDIA[f.m] : null);
@@ -1287,7 +1355,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     if (/youtube|vimeo|drive\.google/.test(e.blockedURI || '')) { blocked = true; pframe.hidden = true; pfall.hidden = false; }
   });
   PLAY.forEach(function(v,i){
-    if (v.reel) return;
+    if (v.reel || v.main) return;
     var b = document.createElement('button'); b.type='button'; b.setAttribute('role','listitem');
     b.innerHTML = '<b>'+esc(v.artist)+'</b><span>'+esc(v.song)+'</span>';
     b.dataset.i = i; b.addEventListener('click', function(){ openPlayer(i); });
@@ -1311,6 +1379,17 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     player.hidden = false; document.body.classList.add('locked'); clearInterval(timer);
     player.querySelector('.player-x').focus();
   }
+  document.addEventListener('click', function(e){ if (e.target.closest('[data-reel]')) { e.preventDefault(); openPlayer(REEL_IDX); } });
+  // muted looping reel preview (live site only; previews keep the still)
+  (function(){
+    var f = document.getElementById('reel-frame');
+    if (!f || !/reel-clip\.com$|vercel\.app$/.test(location.hostname)) return;
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var ifr = document.createElement('iframe');
+    ifr.className = 'reel-bg'; ifr.title = 'Reelclip reel, muted preview'; ifr.tabIndex = -1; ifr.setAttribute('aria-hidden','true');
+    ifr.allow = 'autoplay; fullscreen'; ifr.src = 'https://player.vimeo.com/video/1188288427?background=1&muted=1&loop=1&autoplay=1';
+    f.insertBefore(ifr, f.querySelector('.reel-lbl'));
+  })();
   function closePlayer(){
     player.hidden = true; pframe.innerHTML = ''; document.body.classList.remove('locked'); restart();
     if (lastFocus) lastFocus.focus();
@@ -1645,11 +1724,16 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
     if (!svcRoot) return;
     var list = spa().services || [];
     if (!slug) {
-      svcRoot.innerHTML = '<section class="wrap" style="padding-block:48px 24px"><div class="eyebrow" style="color:var(--peri)">SERVICES</div>'+
-        '<h2 class="big" style="margin-top:12px;font-size:clamp(44px,7vw,108px);letter-spacing:-.04em">WHAT WE CREATE</h2>'+
-        '<p class="svc-page-lede">We create video content that brings your business and vision to life.</p></section>'+
-        '<section class="wrap" style="padding-block:8px 96px"><div class="svc-page-grid">'+list.map(function(x){
-          return '<a class="svc-page-card" href="#service-'+x.slug+'"><span class="mono">'+esc(x.short.toUpperCase())+'</span><h3>'+esc(x.name)+'</h3><p>'+esc(x.lede)+'</p><span class="tlink">EXPLORE →</span></a>'; }).join('')+'</div></section>';
+      var ROWS = [['Product promotion','product-video-production','Launch films, teasers and product content built to sell.'],
+                  ['Brand campaigns','commercial-video-production','Commercials, campaigns and brand films with a point of view.'],
+                  ['Events','event-videography','Recaps, interviews and photos from the day, delivered fast.'],
+                  ['Music videos + rollouts','music-videos','Concept to color, plus the clips for the release.']];
+      var MORE = [['Brand films','brand-films'],['Corporate video','corporate-video-production'],['Social content','social-media-video'],['Crew + support','production-crew'],['Ongoing partnerships','content-partnerships']];
+      svcRoot.innerHTML = '<section class="wrap svc-top"><p class="lbl">Services</p>'+
+        '<h1 class="bigh">WHAT WE MAKE.</h1></section>'+
+        '<section class="wrap" style="padding-block:24px 120px"><div class="svc-rows"><img class="svc-frog" src="img/frog-peri.png" alt="" aria-hidden="true">'+ROWS.map(function(r){
+          return '<a class="svc-row" href="#service-'+r[1]+'"><span><h3>'+esc(r[0].toUpperCase())+'</h3><p>'+esc(r[2])+'</p></span><span class="arr" aria-hidden="true">→</span></a>'; }).join('')+'</div>'+
+        '<p class="svc-more"><span>ALSO:</span>'+MORE.map(function(m){ return '<a href="#service-'+m[1]+'">'+esc(m[0])+'</a>'; }).join('')+'</p></section>';
       return;
     }
     var x = list.filter(function(v){ return v.slug === slug; })[0];
@@ -1751,7 +1835,7 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
       var r = pick(), m = r.main;
       body.innerHTML = '<div class="quiz-top"><span class="quiz-step">YOUR FIRST STEP</span><span class="quiz-bar"><i style="width:100%"></i></span></div>'+
         '<div class="quiz-result"><div><span class="quiz-eyebrow">START WITH</span><h3 class="quiz-pick">'+esc(m.name.toUpperCase())+'.</h3><p class="quiz-why">'+esc(m.why)+'</p>'+
-        '<div class="quiz-actions"><button type="button" class="pill-btn" id="quiz-connect">LET\'S CONNECT →</button><a class="pill-btn ghost-btn" href="/services/'+m.slug+'">SEE WHAT\'S INCLUDED</a></div>'+
+        '<div class="quiz-actions"><button type="button" class="pill-btn" id="quiz-connect">ADD THIS TO MY MESSAGE ↑</button><a class="pill-btn ghost-btn" href="/services/'+m.slug+'">SEE WHAT\'S INCLUDED</a></div>'+
         (r.alt ? '<p class="quiz-also">Also worth a look: <a href="/services/'+r.alt.slug+'">'+esc(r.alt.name)+'</a></p>' : '')+
         '<button type="button" class="quiz-back" data-restart="1">↺ RETAKE THE QUIZ</button></div>'+
         '<ul class="quiz-get"><li class="quiz-get-h" style="display:block">WHAT YOU\'D GET</li>'+m.get.map(function(g){ return '<li>'+esc(g)+'</li>'; }).join('')+'</ul></div>';
@@ -1765,7 +1849,8 @@ a:focus:not(:focus-visible),button:focus:not(:focus-visible){outline:none}
           var lab = function(qi){ var o = Q[qi].o.filter(function(x){ return x[0] === ans[Q[qi].k]; })[0]; return o ? o[1] : ''; };
           msg.value = 'From the quiz: '+lab(0)+' · '+lab(1)+' · '+lab(2)+'. Suggested: '+m.name+'.\n\n';
         }
-        location.hash = '#contact';
+        if (location.hash !== '#contact') location.hash = '#contact';
+        setTimeout(function(){ var fm = document.getElementById('contact-form'); if (fm) fm.scrollIntoView({behavior:'smooth', block:'start'}); var n = document.getElementById('rc-name'); if (n) n.focus({preventScroll:true}); }, 60);
       });
     }
     document.getElementById('quiz-start').addEventListener('click', function(){ ans = {}; step = 0; intro.hidden = true; body.hidden = false; render(); });
