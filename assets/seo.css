@@ -177,3 +177,5 @@ footer.site{background:var(--ink);color:var(--bg)}
 footer.site a,footer.site h4,footer.site .muted{color:var(--bg)}
 footer.site h4{color:#8DA2DB}
 footer.site .city-cloud a{color:var(--bg)}
+
+footer.site{background:#021A55}
