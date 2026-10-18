@@ -1209,6 +1209,17 @@ header.site.c7-head .wrap{display:grid !important;grid-template-columns:1fr auto
 .c7-panel.tall{height:auto !important;min-height:0 !important;aspect-ratio:1000/468;container-type:inline-size}
 .c7-cycle .c7-zoom.blue{left:-4% !important;top:-16% !important;width:108% !important}
 .c7-quote{bottom:5.6% !important;font-size:3.5cqw !important;padding:.55em 1.1em !important;border-radius:1.8cqw !important;white-space:nowrap;max-width:none !important}
+
+/* colored dots before service names (runner colors) */
+.svc-row h3::before,.c7-make h3::before{content:"";display:inline-block;width:.42em;height:.42em;border-radius:50%;margin-right:.32em;vertical-align:.14em;background:var(--dot)}
+.svc-row:nth-of-type(1),.c7-make a:nth-child(1){--dot:#8DA2DB}
+.svc-row:nth-of-type(2),.c7-make a:nth-child(2){--dot:#F77BA8}
+.svc-row:nth-of-type(3),.c7-make a:nth-child(3){--dot:#FBE13A}
+.svc-row:nth-of-type(4),.c7-make a:nth-child(4){--dot:#86C255}
+.svc-row:hover h3{color:inherit !important}
+
+.about-top .pills{flex-wrap:nowrap;gap:clamp(4px,1.4vw,10px)}
+.about-top .pills li{white-space:nowrap;font-size:clamp(8.5px,2.6vw,12px);padding:.8em clamp(.7em,2.2vw,1.35em);letter-spacing:clamp(.06em,.8vw,.16em)}
 </style>
 
 <header class="site c7-head">
