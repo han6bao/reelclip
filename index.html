@@ -1160,11 +1160,11 @@ header.site.c7-head{border-bottom:1.5px solid var(--ink)}
 
 /* frog panel slowly cycles through the four frog colors */
 .c7-cycle{animation:c7bg 20s ease-in-out infinite}
-.c7-cycle .c7-zoom{opacity:0;animation:c7fade 20s ease-in-out infinite}
+.c7-cycle .c7-zoom{opacity:1}
 .c7-cycle .f1{animation-delay:0s}.c7-cycle .f2{animation-delay:5s}.c7-cycle .f3{animation-delay:10s}.c7-cycle .f4{animation-delay:15s}
 .c7-cycle .f3{width:96%;left:2%;top:-14%}
 @keyframes c7fade{0%{opacity:0}6%,25%{opacity:1}31%,100%{opacity:0}}
-@keyframes c7bg{0%,22%{background:#DCE3F7}28%,47%{background:#FFF1B3}53%,72%{background:#E4F3CF}78%,97%{background:#FBDCD1}100%{background:#DCE3F7}}
+@keyframes c7bg{0%,18%{background:#DCE3F7}25%,43%{background:#FBE13A}50%,68%{background:#86C255}75%,93%{background:#E8664A}100%{background:#DCE3F7}}
 .c7-cycle .c7-quote{z-index:2}
 @media (prefers-reduced-motion:reduce){.c7-cycle,.c7-cycle .c7-zoom{animation:none}.c7-cycle .f1{opacity:1}}
 
@@ -1235,7 +1235,7 @@ header.site.c7-head .wrap{display:grid !important;grid-template-columns:1fr auto
   </nav>
 
   <section class="wrap c7-frogpanel" aria-label="Everyone's posting">
-    <div class="c7-panel tall c7-cycle"><img class="c7-zoom blue f1" src="img/frog-peri.png" alt=""><img class="c7-zoom blue f2" src="img/frog-yellow.png" alt=""><img class="c7-zoom blue f3" src="img/frog-mint.png" alt=""><img class="c7-zoom blue f4" src="img/frog-red.png" alt="">
+    <div class="c7-panel tall c7-cycle"><img class="c7-zoom blue" src="img/frog-peri.png" alt="">
       <p class="c7-quote">“Everyone's posting. Reelclip makes it worth seeing.”</p>
     </div>
   </section>
