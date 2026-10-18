@@ -1204,6 +1204,11 @@ header.site.c7-head .wrap{display:grid !important;grid-template-columns:1fr auto
 @media (prefers-reduced-motion:reduce){.c7-cycle{animation:none;background:#8AA4E7}.c7-cycle .c7-zoom{animation:none;opacity:0}.c7-cycle .f1{opacity:1}}
 
 .c7-quote{left:50% !important;right:auto !important;transform:translateX(-50%);text-align:center;width:max-content;max-width:min(620px,calc(100% - 32px))}
+
+/* frog panel: same composition at every width (scales, never re-crops) */
+.c7-panel.tall{height:auto !important;min-height:0 !important;aspect-ratio:1000/468;container-type:inline-size}
+.c7-cycle .c7-zoom.blue{left:-4% !important;top:-16% !important;width:108% !important}
+.c7-quote{bottom:5.6% !important;font-size:3.5cqw !important;padding:.55em 1.1em !important;border-radius:1.8cqw !important;white-space:nowrap;max-width:none !important}
 </style>
 
 <header class="site c7-head">
