@@ -539,17 +539,17 @@
    {
     "title": "Creatives, not models",
     "text": "We scouted musicians, content creators and rising talent from Seattle's creative scene and built each scene around them.",
-    "img": ""
+    "img": "img/nuwav-04.jpg"
    },
    {
     "title": "Each in their element",
     "text": "In the studio, at their streaming setups and out on the street, lit and framed differently for each person, with no fashion posing.",
-    "img": ""
+    "img": "img/nuwav-03.jpg"
    },
    {
     "title": "Edited to stand out",
     "text": "Expressive pacing, color and VFX tie every creative and location into one film made for Instagram.",
-    "img": ""
+    "img": "img/nuwav-09.jpg"
    }
   ],
   "scope": [
@@ -617,8 +617,32 @@
    "Platforms": "Website, Instagram, social + digital ads",
    "Released": "October 2024"
   },
-  "stills": [],
-  "stillAlts": [],
+  "stills": [
+   "img/nuwav-01.jpg",
+   "img/nuwav-02.jpg",
+   "img/nuwav-03.jpg",
+   "img/nuwav-04.jpg",
+   "img/nuwav-05.jpg",
+   "img/nuwav-06.jpg",
+   "img/nuwav-07.jpg",
+   "img/nuwav-08.jpg",
+   "img/nuwav-09.jpg",
+   "img/nuwav-10.jpg",
+   "img/nuwav-11.jpg"
+  ],
+  "stillAlts": [
+   "A creator checks the NuWav jacket in the mirror before heading out.",
+   "The back of the jacket, with the glowing NuWav logo, in his gaming room.",
+   "Headphones on at the streaming setup, jacket on.",
+   "Recording in the vocal booth in the light-blue NuWav jacket.",
+   "A close-up at the mic, eyes closed.",
+   "Light pours through the studio window as he adjusts the jacket.",
+   "The embroidered cupid on the jacket back, under neon light.",
+   "The embroidered shark patch up close.",
+   "Showing the full fit in a neon-lit closet.",
+   "Fixing his cuff in the NuWav jacket and cap.",
+   "His streaming setup, ring light and green screen."
+  ],
   "films": []
  },
  {

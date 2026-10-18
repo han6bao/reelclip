@@ -88,7 +88,7 @@ def head(title, desc, path, img='img/ev-tt.jpg', schema=None, robots='index,foll
 <header class="site"><div class="wrap">
   <a class="logo" href="/" aria-label="Reelclip home"><img src="/img/runner-navy.png" alt="" width="42" height="37"><span>REELCLIP</span></a>
   <nav class="main" aria-label="Main">
-    <a href="/work">WORK</a><a href="/services">SERVICES</a><a href="/#about">ABOUT</a>
+    <a href="/work">WORK</a><a href="/services">SERVICES</a><a href="/#manifesto">MANIFESTO</a>
     <a href="/#contact" class="cta">LET'S TALK</a>
   </nav>
 </div></header>
