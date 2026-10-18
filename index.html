@@ -1162,7 +1162,6 @@ header.site.c7-head{border-bottom:1.5px solid var(--ink)}
 .c7-cycle{animation:c7bg 20s ease-in-out infinite}
 .c7-cycle .c7-zoom{opacity:1}
 .c7-cycle .f1{animation-delay:0s}.c7-cycle .f2{animation-delay:5s}.c7-cycle .f3{animation-delay:10s}.c7-cycle .f4{animation-delay:15s}
-.c7-cycle .f3{width:96%;left:2%;top:-14%}
 @keyframes c7fade{0%{opacity:0}6%,25%{opacity:1}31%,100%{opacity:0}}
 @keyframes c7bg{0%,18%{background:#DCE3F7}25%,43%{background:#FBE13A}50%,68%{background:#86C255}75%,93%{background:#E8664A}100%{background:#DCE3F7}}
 .c7-cycle .c7-quote{z-index:2}
@@ -1195,6 +1194,14 @@ header.site.c7-head .wrap{display:grid !important;grid-template-columns:1fr auto
 .about-top .about-h{margin-inline:auto}
 .about-top .about-cols{grid-template-columns:1fr !important;max-width:760px;margin-inline:auto;gap:18px}
 .about-top .pills{justify-content:center}
+
+/* frog + frame both cycle through the runner colors */
+.c7-cycle .c7-zoom{opacity:0;animation:c7fade2 20s ease-in-out infinite}
+.c7-cycle .f1{animation-delay:-1s}.c7-cycle .f2{animation-delay:4s}.c7-cycle .f3{animation-delay:9s}.c7-cycle .f4{animation-delay:14s}
+@keyframes c7fade2{0%{opacity:0}5%,25%{opacity:1}30%,100%{opacity:0}}
+.c7-cycle{animation:c7bg2 20s ease-in-out infinite}
+@keyframes c7bg2{0%,20%{background:#FBE13A}25%,45%{background:#86C255}50%,70%{background:#8DA2DB}75%,95%{background:#F77BA8}100%{background:#FBE13A}}
+@media (prefers-reduced-motion:reduce){.c7-cycle{animation:none;background:#FBE13A}.c7-cycle .c7-zoom{animation:none;opacity:0}.c7-cycle .f1{opacity:1}}
 </style>
 
 <header class="site c7-head">
@@ -1241,7 +1248,7 @@ header.site.c7-head .wrap{display:grid !important;grid-template-columns:1fr auto
   </nav>
 
   <section class="wrap c7-frogpanel" aria-label="Everyone's posting">
-    <div class="c7-panel tall c7-cycle"><img class="c7-zoom blue" src="img/frog-peri.png" alt="">
+    <div class="c7-panel tall c7-cycle"><img class="c7-zoom blue f1" src="img/frog-peri.png" alt=""><img class="c7-zoom blue f2" src="img/frog-blue-pink.png" alt=""><img class="c7-zoom blue f3" src="img/frog-blue-yellow.png" alt=""><img class="c7-zoom blue f4" src="img/frog-blue-green.png" alt="">
       <p class="c7-quote">“Everyone's posting. Reelclip makes it worth seeing.”</p>
     </div>
   </section>
